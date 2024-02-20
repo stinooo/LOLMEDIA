@@ -31,7 +31,7 @@ async def getPuuid(gamename : str, tagline : str):
 async def getStatsAccount(name : str, tag : str, region : str):
     #Check region
     region = region.lower()
-    validRegions = ["br1","eun1","euw1","jp1","na1"]
+    validRegions = ["br1","eun1","euw1","jp1","kr","la1","la2","na1","oc1","ph2","ru","sg2","th2","tr1","tw2","vn"]
     if region not in validRegions:
         return {"success" : "false"}
 
@@ -58,7 +58,6 @@ async def getStatsAccount(name : str, tag : str, region : str):
 
     #Return JSON
     return accountDataJson
-
 
 if __name__ == "__main__":
     uvicorn.run("main:app", host="127.0.0.1", port=7000, log_level="info") #local development
