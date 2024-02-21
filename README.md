@@ -1,9 +1,11 @@
 # LOLMEDIA
 
-dit project is voor YT0674 Practice Enterprise ICT 1
+**[YT0674] Practice Enterprise - ICT 1**
 
+**Frontend:** React [react-typescript]  
+**Backend:** Python [fastapi, uvicorn, requests]
 
+---
 
-
-met veel dank aan
-GRANDpa ===> arne
+*met dank aan:*  
+Grandpa - Arne
