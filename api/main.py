@@ -22,10 +22,20 @@ app.add_middleware(
 
 #Api setup
 @app.get("/get-puuid")
-async def getPuuid(gamename : str, tagline : str):
-    r = requests.get("https://europe.api.riotgames.com/riot/account/v1/accounts/by-riot-id/"
-                      + gamename + "/" + tagline + "?api_key=" + API_KEY)
-    return json.loads('{"puuid": "' + r.json()["puuid"] + '"}')
+async def getStatsAccount(name : str, tag : str):
+    #Get PUUID from Account-V1
+    
+    puuidRQ = requests.get(
+        "https://europe.api.riotgames.com/riot/"
+        + "account/v1/accounts/by-riot-id/"
+        + name + "/" + tag + "?api_key="+ API_KEY
+    )
+    
+    if not puuidRQ.status_code == 200:
+        return {"success" : "false"}
+    
+    puuidJson = puuidRQ.json()
+    return puuidJson
 
 @app.get("/getAccountStats")
 async def getStatsAccount(name : str, tag : str, region : str):
