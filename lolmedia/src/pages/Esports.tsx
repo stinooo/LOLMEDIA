@@ -1,13 +1,26 @@
 import React from 'react';
-import '../Esportspage.css';
+import '../css/Esportspage.css';
 
 
 function Esports() {
   return (
     <div>
-      <h1>Esports pagina i wantt</h1>
-      <a href="/">homescreen</a><br />
-      <a href="player">player</a>
+        <div className="navbar">
+            <h1>League of Legends</h1>
+            <nav>
+                <ul>
+                  <li><a href="/">Home</a></li>
+                  <li><a href="./Esports">Esports</a></li>
+                  <li><a href="./Player">Players</a></li>
+                  <li><a href="#">Stats</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div className="player">
+            <div className="playerContent">
+                <p>ESPORTS</p>
+            </div>
+        </div>
     </div>
   );
 }
