@@ -1,5 +1,5 @@
 import React from "react";
-import '../playerpage.css';
+import '../css/playerpage.css';
 
 
 function Player() {
