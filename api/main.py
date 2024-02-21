@@ -10,7 +10,7 @@ from credentials import API_KEY
 app = FastAPI()
 
 #setup cors rules
-origins = ["*"] #local development hha funny #origins = ["*"] #deployment code - Replace with domain
+origins = ["http://localhost:3000"] #local development hha funny #origins = ["*"] #deployment code - Replace with domain
 
 app.add_middleware(
     CORSMiddleware,
