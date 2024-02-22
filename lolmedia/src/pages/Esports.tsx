@@ -1,5 +1,6 @@
 import React from 'react';
 import '../css/Esportspage.css';
+import { Link } from 'react-router-dom';
 
 
 function Esports() {
@@ -9,10 +10,10 @@ function Esports() {
             <h1>League of Legends</h1>
             <nav>
                 <ul>
-                  <li><a href="/">Home</a></li>
-                  <li><a href="./Esports">Esports</a></li>
-                  <li><a href="./Player">Players</a></li>
-                  <li><a href="#">Stats</a></li>
+                  <li><Link to="/">Home</Link></li>
+                  <li><Link to="/Esports">Esports</Link></li>
+                  <li><Link to="/Player">Players</Link></li>
+                  <li><Link to="#">Stats</Link></li>
                 </ul>
             </nav>
         </div>

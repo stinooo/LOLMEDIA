@@ -1,6 +1,8 @@
 import React from 'react';
 import '../css/homepage.css';
 import { SearchBar } from '../searchbar/searchBar.jsx';
+import { Link } from 'react-router-dom';
+
 function App() {
   return (
     <div>
@@ -8,10 +10,10 @@ function App() {
               <h1>League Of Legends</h1>
               <nav>
                   <ul>
-                    <li><a href="/">Home</a></li>
-                    <li><a href="./Esports">Esports</a></li>
-                    <li><a href="./Player">Players</a></li>
-                    <li><a href="#">Stats</a></li>
+                    <li><Link to="/">Home</Link></li>
+                    <li><Link to="/Esports">Esports</Link></li>
+                    <li><Link to="/Player">Players</Link></li>
+                    <li><Link to="#">Stats</Link></li>
                   </ul>
               </nav>
           </div>
@@ -21,7 +23,7 @@ function App() {
                   <h1>LOLMEDIA</h1>
                   <p>Search User:</p>
                   <br></br>
-                  <SearchBar />
+                  <SearchBar/>
                   <div>searchResult</div>
               </div>
           </div>

@@ -37,6 +37,32 @@ async def getStatsAccount(name : str, tag : str):
     puuidJson = puuidRQ.json()
     return puuidJson
 
+@app.get("/geticon")
+async def getStatsAccount(name : str, tag : str, region : str):
+
+    #Check region
+    region = region.lower()
+    validRegions = ["br1","eun1","euw1","jp1","kr","la1","la2","na1","oc1","ph2","ru","sg2","th2","tr1","tw2","vn"]
+    if region not in validRegions:
+        return {"success" : "false"}
+    
+    #Get PUUID from Account-V1
+    puuidRQ = requests.get("https://europe.api.riotgames.com/riot/account/v1/accounts/by-riot-id/"
+                           +name+"/" + tag + "?api_key="+ API_KEY)
+    if not puuidRQ.status_code == 200:
+        return {"success" : "false"}
+    puuid = puuidRQ.json()["puuid"]
+
+    #get icon,level, and name from summonerV4 
+    summonerRQ = requests.get("https://" + region + ".api.riotgames.com/lol/summoner/v4/summoners/by-puuid/"
+                              + puuid + "?api_key=" + API_KEY)
+    if not summonerRQ.status_code == 200:
+        return {"success" : "false"}
+    summonerJson = summonerRQ.json()
+    return summonerJson
+
+
+
 @app.get("/getAccountStats")
 async def getStatsAccount(name : str, tag : str, region : str):
     #Check region
