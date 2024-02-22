@@ -1,19 +1,17 @@
 import React from 'react';
 import '../css/homepage.css';
-
-
+import { SearchBar } from '../searchbar/searchBar.jsx';
 function App() {
   return (
     <div>
       <div className="navbar">
               <h1>League Of Legends</h1>
-
               <nav>
                   <ul>
-                      <li><a href="/">Home</a></li>
-                      <li><a href="./Esports">Esports</a></li>
-                      <li><a href="./Player">Players</a></li>
-                      <li><a href="#">Stats</a></li>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="./Esports">Esports</a></li>
+                    <li><a href="./Player">Players</a></li>
+                    <li><a href="#">Stats</a></li>
                   </ul>
               </nav>
           </div>
@@ -23,7 +21,8 @@ function App() {
                   <h1>LOLMEDIA</h1>
                   <p>Search User:</p>
                   <br></br>
-                  <input type="search" placeholder='Search' />
+                  <SearchBar />
+                  <div>searchResult</div>
               </div>
           </div>
     </div>

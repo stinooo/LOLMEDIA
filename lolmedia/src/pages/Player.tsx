@@ -1,6 +1,6 @@
 import React from "react";
 import '../css/playerpage.css';
-
+import { Link } from 'react-router-dom';
 
 function Player() {
   return (
