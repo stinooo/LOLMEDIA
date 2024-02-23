@@ -14,7 +14,7 @@ function Player() {
                 <ul>
                   <li><Link to="/">Home</Link></li>
                   <li><Link to="/Esports">Esports</Link></li>
-                  <li><Link to="/Player">Players</Link></li>
+                  <li><Link to="/Player/EUW/thomasoke/EUW">Players</Link></li>
                   <li><Link to="#">Stats</Link></li>
                 </ul>
             </nav>
@@ -25,8 +25,30 @@ function Player() {
                 <br></br>
                 <p>Username#Tag</p>
                 <div className="container">
-                    <img className="icon" src="../6482.png" alt="icon"></img>
+                    <img className="icon" src="/6482.png" alt="icon"></img>
                     <div className="level">399</div>
+                </div>
+                <br></br>
+                <br></br>
+                <div className="soloRank">
+                    <p className="soloRankName">Ranked Solo</p>
+                    <br></br>
+                    <div className="soloRankInfo">
+                        <img className="soloRankImage" src="/6482.png"></img>
+                        <p>Emerald</p>
+                        <p>99</p>
+                    </div>
+                </div>
+                <br></br>
+                <br></br>
+                <div className="flexRank"> 
+                    <p className="flexRankName">Ranked Flex</p>
+                    <br></br>
+                    <div className="flexRankInfo">
+                        <img className="flexRankImage" src="/6482.png"></img>
+                        <p>Emerald</p>
+                        <p>99</p>
+                    </div>
                 </div>
             </div>
         </div>  

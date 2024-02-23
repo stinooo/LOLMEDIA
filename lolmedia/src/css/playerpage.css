@@ -29,6 +29,7 @@ nav ul li {
 }
 
 /*Player Info*/
+/*Player name, rank, icon and level*/
 
 .playerInfo {
     margin-left: 70px;
@@ -61,3 +62,50 @@ nav ul li {
     background-color: rgb(69, 69, 161);
   }
 
+/*Player Solo rank*/
+
+.playerInfo .soloRank {
+    background-color: rgb(53, 53, 133);
+    border-radius: 3px;
+    color: white;
+    width: 270px;
+    height: 120px;
+  }
+
+.playerInfo .soloRank .soloRankName {
+    text-align: center;
+  }
+
+.playerInfo .soloRank .soloRankInfo .soloRankImage {
+    height: 50px;
+    position: fixed;
+    margin-left: 10px;
+  }
+
+.playerInfo .soloRank .soloRankInfo p {
+    margin-left: 90px;
+  }
+
+/*Player Flex rank*/
+
+.playerInfo .flexRank {
+    background-color: rgb(53, 53, 133);
+    border-radius: 3px;
+    color: white;
+    width: 270px;
+    height: 120px;
+  }
+
+.playerInfo .flexRank .flexRankName {
+    text-align: center;
+  }
+
+.playerInfo .flexRank .flexRankInfo .flexRankImage {
+    height: 50px;
+    position: fixed;
+    margin-left: 10px;
+  }
+
+.playerInfo .flexRank .flexRankInfo p {
+    margin-left: 90px;
+  }
