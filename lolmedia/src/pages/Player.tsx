@@ -1,8 +1,11 @@
 import React from "react";
 import '../css/playerpage.css';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 
 function Player() {
+  const { server,name,tag } = useParams();
+  
+  
   return (
     <div>
         <div className="navbar">
@@ -18,11 +21,16 @@ function Player() {
         </div>
         <div className="player">
             <div className="playerContent">
+                <h1> server:{server}</h1>
+                <h1> name:{name}</h1>
+                <h1> tag:{tag}</h1>
+                
+
                 <p>Player inhoud en styling komt hieronder wooo</p>
             </div>
-        </div>
+        </div>  
     </div>
   );
 }
 
-export default Player;
+export default Player;  
