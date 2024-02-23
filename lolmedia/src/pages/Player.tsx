@@ -17,8 +17,14 @@ function Player() {
             </nav>
         </div>
         <div className="player">
-            <div className="playerContent">
-                <p>Player inhoud en styling komt hieronder wooo</p>
+            <div className="playerInfo">
+                <br></br>
+                <br></br>
+                <p>Username#Tag</p>
+                <div className="container">
+                    <img className="icon" src="../6482.png" alt="icon"></img>
+                    <div className="level">399</div>
+                </div>
             </div>
         </div>
     </div>
