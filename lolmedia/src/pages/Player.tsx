@@ -1,8 +1,11 @@
 import React from "react";
 import '../css/playerpage.css';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 
 function Player() {
+  const { server,name,tag } = useParams();
+  
+  
   return (
     <div>
         <div className="navbar">
@@ -26,9 +29,9 @@ function Player() {
                     <div className="level">399</div>
                 </div>
             </div>
-        </div>
+        </div>  
     </div>
   );
 }
 
-export default Player;
+export default Player;  
