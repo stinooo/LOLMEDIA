@@ -25,7 +25,7 @@ function Player() {
                 <br></br>
                 <p>Username#Tag</p>
                 <div className="container">
-                    <img className="icon" src="../6482.png" alt="icon"></img>
+                    <img className="icon" src="/6482.png" alt="icon"></img>
                     <div className="level">399</div>
                 </div>
             </div>

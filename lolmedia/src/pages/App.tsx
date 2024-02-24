@@ -12,7 +12,7 @@ function App() {
                   <ul>
                     <li><Link to="/">Home</Link></li>
                     <li><Link to="/Esports">Esports</Link></li>
-                    <li><Link to="/Player">Players</Link></li>
+                    <li><Link to="/Player/euw1/pugo/hihih">Players</Link></li>
                     <li><Link to="#">Stats</Link></li>
                   </ul>
               </nav>

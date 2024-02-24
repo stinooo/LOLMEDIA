@@ -10,6 +10,7 @@ export const SearchBar = () => {
             fetchdata(name, tag);
         }
     };
+    
 //http://127.0.0.1:7000/geticon?name=pugo&tag=hihih&region=euw1
 
     const fetchdata = (name,tag) => {
