@@ -65,7 +65,7 @@ nav ul li {
 /*Player Solo rank*/
 
 .playerInfo .soloRank {
-    background-color: rgb(53, 53, 133);
+    background: linear-gradient(70deg, rgb(118, 122, 225), rgb(0, 0, 133)) no-repeat;
     border-radius: 3px;
     color: white;
     width: 270px;
@@ -74,6 +74,7 @@ nav ul li {
 
 .playerInfo .soloRank .soloRankName {
     text-align: center;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
   }
 
 .playerInfo .soloRank .soloRankInfo .soloRankImage {
@@ -84,12 +85,13 @@ nav ul li {
 
 .playerInfo .soloRank .soloRankInfo p {
     margin-left: 90px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
   }
 
 /*Player Flex rank*/
 
 .playerInfo .flexRank {
-    background-color: rgb(53, 53, 133);
+    background: linear-gradient(70deg, rgb(118, 122, 225), rgb(0, 0, 133)) no-repeat;
     border-radius: 3px;
     color: white;
     width: 270px;
@@ -98,6 +100,7 @@ nav ul li {
 
 .playerInfo .flexRank .flexRankName {
     text-align: center;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
   }
 
 .playerInfo .flexRank .flexRankInfo .flexRankImage {
@@ -108,4 +111,5 @@ nav ul li {
 
 .playerInfo .flexRank .flexRankInfo p {
     margin-left: 90px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
   }
