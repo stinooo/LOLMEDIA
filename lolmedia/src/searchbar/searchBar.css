@@ -1,19 +1,44 @@
-.input{
+.input {
     background-color: white;
     width: 100%;
     border-radius: 10px;
     align-items: center;
     box-shadow: 0px 0px 8px #ddd;
     display: flex;
+    padding: 10px;
 }
 
-input{  
+input {  
     background-color: transparent;
     border: none;
     height: 100%;
     font-size: 1.25rem;
     width: 100%;
+    text-align: center; 
 }
-input:focus{
+
+input:focus {
     outline: none;
+}
+
+#serverlist {
+    color: black;
+    font-size: 1rem;
+    padding: 8px; 
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+#serverlist option {
+    color: black; 
+}
+
+.dropbox {
+    margin-right: 10px; 
+}
+
+.error-message {
+    color: red;
+    font-size: 1rem;
+    margin-top: 10px;
 }
