@@ -77,4 +77,10 @@ nav ul li {
     font-size: 1.25rem;
     margin-top: 10px;
 }
+
+.lol-lefttop {
+    margin-top: 10%;
+    margin-left: 10%;
+    float: left;
+}
 /*Home Page*/

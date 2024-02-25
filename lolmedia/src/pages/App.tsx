@@ -7,10 +7,10 @@ function App() {
   return (
     <div>
       <div className="navbar">
-              <h1>League Of Legends</h1>
+              <h1><Link className='lol-topleft' to="/">League Of Legends</Link></h1>
               <nav>
                   <ul>
-                    <li><Link to="/">Home</Link></li>
+                    <li></li>
                     <li><Link to="/Esports">Esports</Link></li>
                     <li><Link to="/Player/euw1/pugo/hihih">Players</Link></li>
                     <li><Link to="#">Stats</Link></li>
