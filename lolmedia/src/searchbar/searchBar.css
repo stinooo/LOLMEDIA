@@ -1,20 +1,20 @@
 .input {
     background-color: white;
-    width: 100%;
     border-radius: 10px;
     align-items: center;
     box-shadow: 0px 0px 8px #ddd;
     display: flex;
     padding: 10px;
+    position: flex;
+    width: 600px;
 }
 
 input {  
     background-color: transparent;
     border: none;
-    height: 100%;
     font-size: 1.25rem;
-    width: 100%;
     text-align: center; 
+    background-color: lightgray;
 }
 
 input:focus {
@@ -24,9 +24,10 @@ input:focus {
 #serverlist {
     color: black;
     font-size: 1rem;
-    padding: 8px; 
+    padding: 10px; 
     border-radius: 5px;
     border: 1px solid #ccc;
+    position: fixed;
 }
 
 #serverlist option {
@@ -34,7 +35,8 @@ input:focus {
 }
 
 .dropbox {
-    margin-right: 10px; 
+    margin-bottom: 40px;
+    margin-right: 70px;
 }
 
 .error-message {
