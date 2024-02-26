@@ -46,9 +46,9 @@ export const SearchBar = () => {
     return (
         <div className="input">
             <div className="dropbox">
-                <form action="test.php" method="post">
-                    <label htmlFor="server">Select a server:</label>
-                    <select name="server" id="serverlist" value={server} onChange={handleServerChange}>
+                <form  method="post">
+                    <label htmlFor="server"></label>
+                    <select className="drop" name="server" id="serverlist" value={server} onChange={handleServerChange}>
                         <option value="euw1">EUW</option>
                         <option value="na1">NA</option>
                         <option value="eune1">EUNE</option>

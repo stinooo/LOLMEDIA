@@ -36,7 +36,7 @@ input:focus {
 
 .dropbox {
     margin-bottom: 40px;
-    margin-right: 70px;
+    margin-right: 90px;
 }
 
 .error-message {
@@ -44,3 +44,4 @@ input:focus {
     font-size: 1rem;
     margin-top: 10px;
 }
+
