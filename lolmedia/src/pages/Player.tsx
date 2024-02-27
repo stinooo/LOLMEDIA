@@ -15,14 +15,14 @@ function Player() {
                 }
                 const data = await response.json();
                 setPlayerData(data);
-            } catch (error) {
+                console.log(data);
+                } catch (error) {
                 console.error('There was a problem with the fetch operation:', error);
             }
         };
-        
-        fetchData();
+        fetchData();   
     }, [name, tag, server]);
-
+    
 return (
         <div>
             <div className="navbar">
