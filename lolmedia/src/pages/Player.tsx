@@ -30,7 +30,7 @@ return (
                 <nav>
                     <ul>
                         <li><Link to="/Esports">Esports</Link></li>
-                        <li><Link to="/Player/EUW/thomasoke/EUW">Players</Link></li>
+                        <li><Link to="/Player/euw1/thomasoke/EUW">Players</Link></li>
                         <li><Link to="#">Stats</Link></li>
                     </ul>
                 </nav>
@@ -39,32 +39,31 @@ return (
                 <div className="playerInfo">
                     <br></br>
                     <br></br>
-                    <p>NAME#TAG</p>
+                    <div className="username">
+                        <p>NAME</p>
+                        <p>#TAG</p>
+                    </div>
                     <div className="container">
                         <img className="icon" src="/6482.png" alt="icon"></img>
-                        <div className="level">99</div>
+                        <div className="level">100</div>
                     </div>
                     <br></br>
                     <br></br>
-                    <div className="soloRank">
-                        <p className="soloRankName">Ranked Solo</p>
+                    <div className="rankBackground">
+                        <p className="rankName">Ranked Solo</p>
                         <br></br>
-                        <div className="soloRankInfo">
-                            <img className="soloRankImage" src="/6482.png"></img>
-                            <p>Emerald</p>
-                            <p>99</p>
-                        </div>
+                        <img className="rankImage" src="/emerald.png" alt="solo duo rank"></img>
+                        <p className="rank">Emerald</p>
+                        <p className="LP">99 LP</p>
                     </div>
                     <br></br>
                     <br></br>
-                    <div className="flexRank"> 
-                        <p className="flexRankName">Ranked Flex</p>
+                    <div className="rankBackground"> 
+                        <p className="rankName">Ranked Flex</p>
                         <br></br>
-                        <div className="flexRankInfo">
-                            <img className="flexRankImage" src="/6482.png"></img>
-                            <p>Emerald</p>
-                            <p>99</p>
-                        </div>
+                        <img className="rankImage" src="/emerald.png" alt="flex rank"></img>
+                        <p className="rank">Diamond</p>
+                        <p className="LP">12 LP</p>
                     </div>
                 </div>
             </div>  
