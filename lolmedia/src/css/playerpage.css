@@ -44,8 +44,16 @@ nav ul li {
     display: flex;
 }
 
-.playerInfo .username p {
-    font-size: 120%;
+.playerInfo .username .name {
+    font-size: 140%;
+    margin-right: -10px;
+}
+
+.playerInfo .username .tag {
+    color: lightgray;
+    font-size: 110%;
+    position: relative;
+    margin-top: 4px;
 }
 
 .container {
@@ -79,7 +87,7 @@ nav ul li {
     border-radius: 3px;
     color: white;
     width: 270px;
-    height: 120px;
+    height: 110px;
 }
 
 .playerInfo .rankName {
@@ -101,6 +109,6 @@ nav ul li {
 .playerInfo .rankImage {
     width: 68px;
     position: absolute;
-    margin-bottom: 30px;
     margin-left: 10px;
+    margin-top: -16px;
 }
