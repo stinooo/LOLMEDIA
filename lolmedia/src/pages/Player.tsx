@@ -9,7 +9,7 @@ function Player() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch(`http://127.0.0.1:7000/geticon?name=${name}&tag=${tag}&region=${server}`);
+                const response = await fetch(`http://127.0.0.1:7000/get-playerpage?name=${name}&tag=${tag}&region=${server}`);
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
                 }

@@ -37,29 +37,46 @@ async def getStatsAccount(name : str, tag : str):
     puuidJson = puuidRQ.json()
     return puuidJson
 
-@app.get("/geticon")
-async def getStatsAccount(name : str, tag : str, region : str):
 
-    #Check region
+@app.get("/get-playerpage")
+async def getStatsAccount(name : str, tag : str, region : str):
+    # Check region
     region = region.lower()
     validRegions = ["br1","eun1","euw1","jp1","kr","la1","la2","na1","oc1","ph2","ru","sg2","th2","tr1","tw2","vn"]
     if region not in validRegions:
         return {"success" : "false"}
     
-    #Get PUUID from Account-V1
+    # Fetch puuid
     puuidRQ = requests.get("https://europe.api.riotgames.com/riot/account/v1/accounts/by-riot-id/"
-                           +name+"/" + tag + "?api_key="+ API_KEY)
+                           + name + "/" + tag + "?api_key=" + API_KEY)
     if not puuidRQ.status_code == 200:
         return {"success" : "false"}
-    puuid = puuidRQ.json()["puuid"]
-
-    #get icon,level, and name from summonerV4 
+    puuid_data = puuidRQ.json()
+    # need to get PUUID out for summoner data
+    # Fetch summoner data
     summonerRQ = requests.get("https://" + region + ".api.riotgames.com/lol/summoner/v4/summoners/by-puuid/"
-                              + puuid + "?api_key=" + API_KEY)
+                              + puuid_data["puuid"] + "?api_key=" + API_KEY)
     if not summonerRQ.status_code == 200:
         return {"success" : "false"}
-    summonerJson = summonerRQ.json()
-    return summonerJson
+    summoner_data = summonerRQ.json()
+  
+
+    combined_data = {**puuid_data, **summoner_data}
+    #need to get the id out for ranked stats
+    rankedRQ = requests.get('https://' + region + ".api.riotgames.com/lol/league/v4/entries/by-summoner/" 
+                            + "K86YtNrfF8GXSNND0c-LdvmJCfs9dbigBigb0KzfyyhIOSIY" + "?api_key=" + API_KEY)
+    if not rankedRQ.status_code == 200:
+        return {"success" : "false"}
+    ranked_data = rankedRQ.json()
+    solo = ranked_data[0]
+    flex = ranked_data[1]
+    big_dict = {}
+    for key, value in ranked_data[1].items():
+        big_dict[f"1{key}"] = value
+
+    all = {**combined_data,**ranked_data[0],**big_dict}
+    return all
+
 
 
 
@@ -94,6 +111,15 @@ async def getStatsAccount(name : str, tag : str, region : str):
 
     #Return JSON
     return accountDataJson
+
+
+
+    
+
+
+
+
+
 
 if __name__ == "__main__":
     uvicorn.run("main:app", host="127.0.0.1", port=7000, log_level="info") #local development

@@ -9,7 +9,7 @@ export const SearchBar = () => {
     const handleKeyPress = (e) => {
         if (e.key === 'Enter') {
             const [name, tag] = input.split('#').map(item => item.trim()); // Split input by '#' and trim whitespace
-            fetchData(name, tag, server); // Pass server to fetchData function
+            fetchData(name, tag, server);
         }
     };
     
