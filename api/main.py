@@ -1,5 +1,5 @@
 #Library import
-from fastapi import FastAPI, Response
+from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 import requests
 import uvicorn
@@ -50,7 +50,7 @@ async def getStatsAccount(name : str, tag : str, region : str):
     puuidRQ = requests.get("https://europe.api.riotgames.com/riot/account/v1/accounts/by-riot-id/"
                            + name + "/" + tag + "?api_key=" + API_KEY)
     if not puuidRQ.status_code == 200:
-        return {"success" : "false"}
+        raise HTTPException(status_code=puuidRQ.status_code)
     puuid_data = puuidRQ.json()
     # need to get PUUID out for summoner data
     
@@ -69,13 +69,7 @@ async def getStatsAccount(name : str, tag : str, region : str):
     if not rankedRQ.status_code == 200:
         return {"success" : "false"}
     ranked_data = rankedRQ.json()
-    # solo = ranked_data[0]
-    # flex = ranked_data[1]
-    # big_dict = {}
-    # for key, value in ranked_data[1].items():
-    #     big_dict[f"1{key}"] = value
 
-    # all = {**combined_data,**ranked_data[0],**big_dict}
     return [ranked_data, summoner_data]
 
 
