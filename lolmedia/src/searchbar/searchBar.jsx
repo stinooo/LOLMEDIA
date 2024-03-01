@@ -14,7 +14,7 @@ export const SearchBar = () => {
     };
     
     const fetchData = (name, tag, server) => {
-        fetch("http://127.0.0.1:7000/geticon?name=" + name + "&tag=" + tag + "&region=" + server)
+        fetch("http://127.0.0.1:7000/get-validuser?name=" + name + "&tag=" + tag + "&region=" + server)
             .then((response) => {
                 if (!response.ok) {
                     throw new Error('Network response was not ok');

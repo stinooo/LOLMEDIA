@@ -13,8 +13,11 @@ function Player() {
 
             const data = await response.json();
             if (!data["success"]) setPlayerData(data);
+            if(!data["success"]){
+            setPlayerData(data); }
             console.log("UseEffect done");
-            // console.log(data);
+            console.log(data);
+            
         } catch (error) {
             console.error('There was a problem with the fetch operation:', error);
         }
@@ -49,7 +52,7 @@ function Player() {
                     </div>
                     <div className="container">
                         <img className="icon" src="/6482.png" alt="icon"></img>
-                        <div className="level">100</div>
+                        <div className="level">{playerData ? playerData[1]["summonerLevel"] : "notfound"}</div>
                     </div>
                     <br></br>
                     <br></br>
