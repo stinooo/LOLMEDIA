@@ -53,6 +53,7 @@ async def getStatsAccount(name : str, tag : str, region : str):
         return {"success" : "false"}
     puuid_data = puuidRQ.json()
     # need to get PUUID out for summoner data
+    
     # Fetch summoner data
     summonerRQ = requests.get("https://" + region + ".api.riotgames.com/lol/summoner/v4/summoners/by-puuid/"
                               + puuid_data["puuid"] + "?api_key=" + API_KEY)
@@ -61,21 +62,21 @@ async def getStatsAccount(name : str, tag : str, region : str):
     summoner_data = summonerRQ.json()
   
 
-    combined_data = {**puuid_data, **summoner_data}
+    # combined_data = {**puuid_data, **summoner_data}
     #need to get the id out for ranked stats
     rankedRQ = requests.get('https://' + region + ".api.riotgames.com/lol/league/v4/entries/by-summoner/" 
                             + "K86YtNrfF8GXSNND0c-LdvmJCfs9dbigBigb0KzfyyhIOSIY" + "?api_key=" + API_KEY)
     if not rankedRQ.status_code == 200:
         return {"success" : "false"}
     ranked_data = rankedRQ.json()
-    solo = ranked_data[0]
-    flex = ranked_data[1]
-    big_dict = {}
-    for key, value in ranked_data[1].items():
-        big_dict[f"1{key}"] = value
+    # solo = ranked_data[0]
+    # flex = ranked_data[1]
+    # big_dict = {}
+    # for key, value in ranked_data[1].items():
+    #     big_dict[f"1{key}"] = value
 
-    all = {**combined_data,**ranked_data[0],**big_dict}
-    return all
+    # all = {**combined_data,**ranked_data[0],**big_dict}
+    return [ranked_data, summoner_data]
 
 
 
