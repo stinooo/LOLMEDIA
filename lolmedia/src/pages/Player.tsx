@@ -12,7 +12,7 @@ function Player() {
             if (!response.ok) throw new Error('Network response was not ok');
 
             const data = await response.json();
-            setPlayerData(data);
+            if (!data["success"]) setPlayerData(data);
             console.log("UseEffect done");
             // console.log(data);
         } catch (error) {
@@ -58,7 +58,7 @@ function Player() {
                         <br></br>
                         <img className="rankImage" src="/emerald.png" alt="solo duo rank"></img>
                         <p className="rank">Emerald</p>
-                        <p className="LP">{playerData ? playerData[0][1]["leaguePoints"] : null}</p>
+                        <p className="LP">{playerData ? playerData[0][1]["leaguePoints"] : null} LP</p>
                     </div>
                     <br></br>
                     <br></br>

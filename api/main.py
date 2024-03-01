@@ -44,13 +44,13 @@ async def getStatsAccount(name : str, tag : str, region : str):
     region = region.lower()
     validRegions = ["br1","eun1","euw1","jp1","kr","la1","la2","na1","oc1","ph2","ru","sg2","th2","tr1","tw2","vn"]
     if region not in validRegions:
-        return {"success" : "false"}
+        raise HTTPException(status_code=400)
     
     # Fetch puuid
     puuidRQ = requests.get("https://europe.api.riotgames.com/riot/account/v1/accounts/by-riot-id/"
                            + name + "/" + tag + "?api_key=" + API_KEY)
     if not puuidRQ.status_code == 200:
-        raise HTTPException(status_code=puuidRQ.status_code)
+        raise HTTPException(status_code=puuidRQ.status_code, detail="puuidRQ")
     puuid_data = puuidRQ.json()
     # need to get PUUID out for summoner data
     
@@ -58,16 +58,15 @@ async def getStatsAccount(name : str, tag : str, region : str):
     summonerRQ = requests.get("https://" + region + ".api.riotgames.com/lol/summoner/v4/summoners/by-puuid/"
                               + puuid_data["puuid"] + "?api_key=" + API_KEY)
     if not summonerRQ.status_code == 200:
-        return {"success" : "false"}
+        raise HTTPException(status_code=summonerRQ.status_code, detail="summonerRQ")
     summoner_data = summonerRQ.json()
   
-
     # combined_data = {**puuid_data, **summoner_data}
     #need to get the id out for ranked stats
     rankedRQ = requests.get('https://' + region + ".api.riotgames.com/lol/league/v4/entries/by-summoner/" 
                             + "K86YtNrfF8GXSNND0c-LdvmJCfs9dbigBigb0KzfyyhIOSIY" + "?api_key=" + API_KEY)
     if not rankedRQ.status_code == 200:
-        return {"success" : "false"}
+        raise HTTPException(status_code=rankedRQ.status_code, detail="RankedRQ")
     ranked_data = rankedRQ.json()
 
     return [ranked_data, summoner_data]
