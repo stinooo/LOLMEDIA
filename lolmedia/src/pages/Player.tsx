@@ -44,8 +44,8 @@ function Player() {
                     <br></br>
                     <br></br>
                     <div className="username">
-                        <p>NAME</p>
-                        <p>#TAG</p>
+                        <p className="name">NAME</p>
+                        <p className="tag">#TAG</p>
                     </div>
                     <div className="container">
                         <img className="icon" src="/6482.png" alt="icon"></img>
