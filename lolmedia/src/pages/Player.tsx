@@ -12,9 +12,11 @@ function Player() {
             if (!response.ok) throw new Error('Network response was not ok');
 
             const data = await response.json();
-            setPlayerData(data);
+            if(!data["success"]){
+            setPlayerData(data); }
             console.log("UseEffect done");
-            // console.log(data);
+            console.log(data);
+            
         } catch (error) {
             console.error('There was a problem with the fetch operation:', error);
         }
@@ -49,7 +51,7 @@ function Player() {
                     </div>
                     <div className="container">
                         <img className="icon" src="/6482.png" alt="icon"></img>
-                        <div className="level">100</div>
+                        <div className="level">{playerData ? playerData[1]["summonerLevel"] : "notfound"}</div>
                     </div>
                     <br></br>
                     <br></br>
@@ -58,7 +60,7 @@ function Player() {
                         <br></br>
                         <img className="rankImage" src="/emerald.png" alt="solo duo rank"></img>
                         <p className="rank">Emerald</p>
-                        <p className="LP">{playerData ? playerData[0][1]["leaguePoints"] : null}</p>
+                        <p className="LP">{playerData ? playerData[0][1]["leaguePoints"] : "notfound"}</p>
                     </div>
                     <br></br>
                     <br></br>
