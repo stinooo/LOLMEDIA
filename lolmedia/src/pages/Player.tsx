@@ -29,6 +29,19 @@ function Player() {
 
     // if (playerData) console.log(playerData[0]["leagueId"])
     if (playerData) console.log(playerData[0][1]["leaguePoints"])
+    
+    //SOLOQUEUE winrate calculation
+    const winsSOLO = playerData ? playerData[0][1].wins : 0;
+    const lossesSOLO = playerData ? playerData[0][1].losses : 0;
+    const totalGamesSOLO = winsSOLO + lossesSOLO;
+    const winPercentageSOLO = totalGamesSOLO > 0 ? Math.round((winsSOLO / totalGamesSOLO) * 100) : 0;
+    
+    //FLEXQUEUE winrate calculation
+    const winsFLEX = playerData ? playerData[0][0].wins : 0;
+    const lossesFLEX = playerData ? playerData[0][0].losses : 0;
+    const totalGamesFLEX = winsFLEX + lossesFLEX;
+    const winPercentageFLEX = totalGamesFLEX > 0 ? Math.round((winsFLEX / totalGamesFLEX) * 100) : 0;
+
 
     return (
         <div>
@@ -47,8 +60,8 @@ function Player() {
                     <br></br>
                     <br></br>
                     <div className="username">
-                        <p className="name">NAME</p>
-                        <p className="tag">#TAG</p>
+                        <p className="name">{playerData ? playerData[2]["gameName"] : "notfound"} </p>
+                        <p className="tag"> #{playerData ? playerData[2]["tagLine"] : "notfound"}</p>
                     </div>
                     <div className="container">
                         <img className="icon" src="/6482.png" alt="icon"></img>
@@ -60,8 +73,10 @@ function Player() {
                         <p className="rankName">Ranked Solo</p>
                         <br></br>
                         <img className="rankImage" src="/emerald.png" alt="solo duo rank"></img>
-                        <p className="rank">Emerald</p>
-                        <p className="LP">{playerData ? playerData[0][1]["leaguePoints"] : null} LP</p>
+                        <p className="rank">{playerData ? playerData[0][1]["tier"]: "not found"} {playerData ? playerData[0][1]["rank"]: "not found"}</p>
+                        <p className="LP">{playerData ? playerData[0][1]["leaguePoints"] : null} LP
+                        <br />{playerData ? playerData[0][1]["wins"]: "not found"}W / 
+                         {playerData ? playerData[0][1]["losses"]:"not found"}L {winPercentageSOLO}%</p>
                     </div>
                     <br></br>
                     <br></br>
@@ -69,9 +84,11 @@ function Player() {
                         <p className="rankName">Ranked Flex</p>
                         <br></br>
                         <img className="rankImage" src="/emerald.png" alt="flex rank"></img>
-                        <p className="rank">Diamond</p>
-                        <p className="LP">12 LP</p>
-                    </div>
+                        <p className="rank">{playerData ? playerData[0][0]["tier"]: "not found"} {playerData ? playerData[0][1]["rank"]: "not found"}</p>
+                        <p className="LP">{playerData ? playerData[0][0]["leaguePoints"] : null}
+                        <br />{playerData ? playerData[0][1]["wins"]: "not found"}W / 
+                        {playerData ? playerData[0][1]["losses"]:"not found"}L {winPercentageFLEX}%</p>
+                    </div>  
                 </div>
             </div>
         </div>)
