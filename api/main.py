@@ -103,29 +103,17 @@ async def getStatsAccount(name : str, tag : str, region : str):
     return [ranked_data, summoner_data, puuid_data, match_data]
 
 @app.get("/get-match")
-async def getMatchData(name : str, tag : str, region : str):
+async def getMatchData(MatchID : str):
     # Check region
-    region = region.lower()
-    validRegions = ["br1","eun1","euw1","jp1","kr","la1","la2","na1","oc1","ph2","ru","sg2","th2","tr1","tw2","vn"]
-    if region not in validRegions:
-        return {"success" : "false"}
-    
-    # Fetch puuid
-    puuidRQ = requests.get("https://europe.api.riotgames.com/riot/account/v1/accounts/by-riot-id/"
-                           + name + "/" + tag + "?api_key=" + API_KEY)
-    if not puuidRQ.status_code == 200:
-        raise HTTPException(status_code=puuidRQ.status_code)
-    puuid_data = puuidRQ.json()
-    
-    matchRQ = requests.get("https://europe.api.riotgames.com/lol/match/v5/matches/by-puuid/" + puuid_data["puuid"] + "/ids?start=0&count=5&api_key=" + API_KEY)
+   
+    matchRQ = requests.get("https://europe.api.riotgames.com/lol/match/v5/matches/" + MatchID +"?api_key=" + API_KEY)
     if not matchRQ.status_code == 200:
         return {"success" : "false"}
     match_data = matchRQ.json()
     
-    matchRQ = requests.get("https://europe.api.riotgames.com/lol/match/v5/matches/" + match_data[1] + "?api_key=" + API_KEY)
-    if not matchRQ.status_code == 200:
-        return {"success" : "false"}
-    match_data = matchRQ.json()
+
+
+
     return match_data
 
 

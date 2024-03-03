@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link, useParams } from 'react-router-dom';
 import '../css/playerpage.css';
+import { History } from "../Matchhistory/history";
 
 function Player() {
     const { server, name, tag } = useParams();
@@ -89,7 +90,7 @@ function Player() {
                         <br />{playerData ? playerData[0][1]["wins"]: "not found"}W / 
                         {playerData ? playerData[0][1]["losses"]:"not found"}L {winPercentageFLEX}%</p>
                     </div>  
-                </div>
+                </div> <History MatchID={playerData ? playerData[3][0] : "not found"} />
             </div>
         </div>)
 }
