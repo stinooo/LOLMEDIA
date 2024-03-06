@@ -5,7 +5,7 @@ import reportWebVitals from './reportWebVitals';
 
 import App from './pages/App';
 import Player from './pages/Player';
-import Esports from './pages/Esports';
+import Leaderboard from './pages/Leaderboard';
 
 
 import { BrowserRouter, Route, Routes } from "react-router-dom";
@@ -19,7 +19,7 @@ root.render(
         <Routes>
           <Route path="/" element={<App />} />
           <Route path="/player/:server/:name/:tag" element={<Player />} />
-          <Route path={"/Esports"} element={<Esports />} />
+          <Route path="/leaderboard" element={<Leaderboard />} />
         </Routes>
       </BrowserRouter>
   </React.StrictMode>

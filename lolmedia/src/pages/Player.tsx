@@ -50,7 +50,7 @@ function Player() {
                 <h1><Link className='lol-topleft' to="/">League Of Legends</Link></h1>
                 <nav>
                     <ul>
-                        <li><Link to="/Esports">Esports</Link></li>
+                        <li><Link to="/leaderboard">Leaderboard</Link></li>
                         <li><Link to="/Player/euw1/thomasoke/EUW">Players</Link></li>
                         <li><Link to="#">Stats</Link></li>
                     </ul>
@@ -86,13 +86,14 @@ function Player() {
                         <br></br>
                         <img className="rankImage" src="/emerald.png" alt="flex rank"></img>
                         <p className="rank">{playerData ? playerData[0][0]["tier"]: "not found"} {playerData ? playerData[0][1]["rank"]: "not found"}</p>
-                        <p className="LP">{playerData ? playerData[0][0]["leaguePoints"] : null}
+                        <p className="LP">{playerData ? playerData[0][0]["leaguePoints"] : null} LP
                         <br />{playerData ? playerData[0][1]["wins"]: "not found"}W / 
                         {playerData ? playerData[0][1]["losses"]:"not found"}L {winPercentageFLEX}%</p>
                     </div>  
                 </div> <History MatchID={playerData ? playerData[3][0] : "not found"} />
             </div>
-        </div>)
+        </div>
+    )
 }
 
 export default Player;

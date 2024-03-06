@@ -1,0 +1,76 @@
+/* Navigation bar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 10vh;
+    
+    color: white;
+    padding: 0 40px;
+  }
+  
+  .navbar h1 {
+    margin: 0;
+  }
+  
+  .navbar nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .navbar nav ul li {
+    display: inline-block;
+    margin: 0 20px;
+  }
+  
+  .navbar nav ul li a {
+    text-decoration: none;
+    font-size: 1.25rem;
+    padding: 5px 0;
+    border: 2px solid transparent;
+    filter: drop-shadow(2px 2px 4px transparent);
+    color: white; /* Adjust text color */
+  }
+  
+  .navbar nav ul li a:hover {
+    transition: 0.5s;
+    color: #940594; /* Lighter shade of purple */
+  }
+  
+  /* Player Content */
+  .player {
+    margin-top: 20px;
+  }
+  
+  .playerContent {  
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  
+  .drop {
+    padding: 8px 12px;
+    font-size: 16px;
+    border: 2px solid #4b0082; /* Purple */
+    border-radius: 4px;
+    background-color: white;
+    color: #4b0082; /* Purple */
+    margin-bottom: 20px; /* Add margin to create space between dropdown and players */
+  }
+  
+  
+  /* Leaderboard */
+  .leaderboard-item {
+    border: 2px solid #4b0082; /* Purple */
+    border-radius: 8px;
+    margin-bottom: 20px;
+    padding: 10px;
+  }
+  
+  .leaderboard-item p {
+    margin: 0;
+  }
+  
+
+  

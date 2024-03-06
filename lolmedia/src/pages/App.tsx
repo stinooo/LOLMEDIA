@@ -11,7 +11,7 @@ function App() {
               <nav>
                   <ul>
                     <li></li>
-                    <li><Link to="/Esports">Esports</Link></li>
+                    <li><Link to="/Leaderboard">Leaderboard</Link></li>
                     <li><Link to="/Player/euw1/pugo/hihih">Players</Link></li>
                     <li><Link to="#">Stats</Link></li>
                   </ul>

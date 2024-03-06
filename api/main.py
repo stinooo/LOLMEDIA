@@ -62,7 +62,30 @@ async def getStatsAccount(name : str, tag : str):
     puuidJson = puuidRQ.json()
     return puuidJson
 
+#Api setup
+@app.get("/get-Leaderboard")
+async def getLeaderboard(region : str):
+    PAGES = "1"
+    # Check region
+    region = region.lower()
+    validRegions = ["br1","eun1","euw1","jp1","kr","la1","la2","na1","oc1","ph2","ru","sg2","th2","tr1","tw2","vn"]
+    if region not in validRegions:
+        return {"success" : "false"}
+    
+    # Fetch leaderboard data
+    leaderboardRQ = requests.get("https://" + region + ".api.riotgames.com/lol/league-exp/v4/entries/RANKED_SOLO_5x5/CHALLENGER/I?page=" + PAGES +"&api_key=" + API_KEY)
+    if not leaderboardRQ.status_code == 200:
+        return {"success" : "false"}
+    leaderboard_data = leaderboardRQ.json()
+    return leaderboard_data
 
+
+
+
+
+
+
+#Api setup
 @app.get("/get-playerpage")
 async def getStatsAccount(name : str, tag : str, region : str):
     # Check region
