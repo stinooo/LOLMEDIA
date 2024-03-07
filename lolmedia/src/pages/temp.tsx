@@ -4,14 +4,13 @@ import '../css/temp.css';
 
 function Temp() {
     const { server, summenerID } = useParams();
-    const [ setPlayerData] = useState<any>(null);
+    const [playerdata, setPlayerData] = useState<any>(null);
 
     const fetchData = async () => {
         try {
             const response = await fetch(`http://127.0.0.1:7000/get-player-from-summernerID ?summonerID=${summenerID}&region=${server}`);
             const data = await response.json();
             setPlayerData(data);
-            window.location.href = `/Player/${server}/${data[0]}/${data[1]}`;
         } catch (error) {
             console.error('Error fetching player data:', error);
         }
@@ -21,9 +20,15 @@ function Temp() {
         fetchData();
     }, []); 
 
+    useEffect(() => {
+        if (playerdata) {
+            window.location.href = `/Player/${server}/${playerdata[0]}/${playerdata[1]}`;
+        }
+    }, [playerdata, server]);
+
     return (
         <div>
-            hello 
+            {playerdata ? playerdata[0] : "Loading..."}
         </div>
     );
 }
