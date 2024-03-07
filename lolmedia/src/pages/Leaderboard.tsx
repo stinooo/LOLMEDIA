@@ -1,5 +1,5 @@
 import '../css/Leaderboardpage.css';
-import { Link, useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import React, { useState, useEffect } from "react";
 import { Leaderboard } from "../Leaderboardcom/Leaderboard";
 
@@ -20,7 +20,6 @@ interface LeaderData {
 }
 
 const Leaderboardpage: React.FC = () => {
-  const [loading, setLoading] = useState(true);
   const [leaderboardData, setLeaderboardData] = useState<LeaderData[]>([]);
   const [server, setServer] = useState<string>("euw1");
 
@@ -33,7 +32,7 @@ const Leaderboardpage: React.FC = () => {
         }
         const data: LeaderData[] = await response.json();
         setLeaderboardData(data);
-        setLoading(false);
+        console.log(data);
       } catch (error) {
         console.error('There was a problem with the fetch operation:', error);
       }
@@ -63,7 +62,7 @@ const Leaderboardpage: React.FC = () => {
               <option value="euw1">EUW</option>
               <option value="na1">NA</option>
               <option value="eune1">EUNE</option>
-              <option value="kr1">KR</option>
+              <option value="kr">KR</option>
             </select></h2>
           <div>
             
@@ -74,7 +73,7 @@ const Leaderboardpage: React.FC = () => {
             <br />
           <div>
             {leaderboardData.map((leader, index) => (
-              <Leaderboard key={index} leader={leader} />
+              <Leaderboard key={index} leader={leader} region={server} />
             ))}
           </div>
         </div>

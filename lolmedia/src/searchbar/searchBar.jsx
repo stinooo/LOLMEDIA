@@ -52,7 +52,7 @@ export const SearchBar = () => {
                         <option value="euw1">EUW</option>
                         <option value="na1">NA</option>
                         <option value="eune1">EUNE</option>
-                        <option value="kr1">KR</option>
+                        <option value="kr">KR</option>
                     </select>
                 </form>
             </div>

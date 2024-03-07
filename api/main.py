@@ -80,6 +80,28 @@ async def getLeaderboard(region : str):
     return leaderboard_data
 
 
+#Api setup
+@app.get("/get-player-from-summernerID ")
+async def getStatsAccount(summonerID : str, region : str):
+    # Check region
+    region = region.lower()
+    validRegions = ["br1","eun1","euw1","jp1","kr","la1","la2","na1","oc1","ph2","ru","sg2","th2","tr1","tw2","vn"]
+    if region not in validRegions:
+        return {"success" : "false"}
+    
+    # Fetch SummonerId 
+    SummonerIdRQ  = requests.get("https://" + region + ".api.riotgames.com/lol/summoner/v4/summoners/" + summonerID + "?api_key="+ API_KEY)
+    if not SummonerIdRQ.status_code == 200:
+        return {"success" : "false"}
+    SummonerIdDate = SummonerIdRQ.json()
+
+    # Fetch NAME AND TAG
+    NameTagRQ = requests.get("https://europe.api.riotgames.com/riot/account/v1/accounts/by-puuid/" + SummonerIdDate["puuid"] + "?api_key="+ API_KEY)
+    if not NameTagRQ.status_code == 200:
+        return {"success" : "false"}
+    NameTagData = NameTagRQ.json()
+
+    return  NameTagData["gameName"], NameTagData["tagLine"]
 
 
 
