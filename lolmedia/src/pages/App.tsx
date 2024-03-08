@@ -1,7 +1,7 @@
 import React from 'react';
 import '../css/homepage.css';
-import { SearchBar } from '../searchbar/searchBar.jsx';
 import { Link } from 'react-router-dom';
+import {SearchBar} from "./comp/searchbar/searchBar";
 
 function App() {
   return (

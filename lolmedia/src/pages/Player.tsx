@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Link, useParams } from 'react-router-dom';
 import '../css/playerpage.css';
-import { History } from "../Matchhistory/history";
+import { History } from "./comp/Matchhistory/history";
+import { Mastery } from "./comp/playmast/Playerpagemastery";
 
 function Player() {
     const { server, name, tag } = useParams();
@@ -58,8 +59,9 @@ function Player() {
             </div>
             <div className="player">
                 <div className="playerInfo">
+                    <br></br>   
                     <br></br>
-                    <br></br>
+                     <Mastery puuid={playerData ? playerData[2]["puuid"] : "notfound"} region={server} />
                     <div className="username">
                         <p className="name">{playerData ? playerData[2]["gameName"] : "notfound"} </p>
                         <p className="tag"> #{playerData ? playerData[2]["tagLine"] : "notfound"}</p>
@@ -90,8 +92,8 @@ function Player() {
                         <br />{playerData ? playerData[0][1]["wins"]: "not found"}W / 
                         {playerData ? playerData[0][1]["losses"]:"not found"}L {winPercentageFLEX}%</p>
                     </div>  
-                </div> <History MatchID={playerData ? playerData[3][0] : "not found"} />
-            </div>
+                </div> <History MatchID={playerData ? playerData[3][0] : "not found"} />  
+            </div> 
         </div>
     )
 }

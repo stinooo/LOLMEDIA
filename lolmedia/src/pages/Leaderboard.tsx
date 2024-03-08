@@ -1,7 +1,7 @@
 import '../css/Leaderboardpage.css';
 import { Link } from 'react-router-dom';
 import React, { useState, useEffect } from "react";
-import { Leaderboard } from "../Leaderboardcom/Leaderboard";
+import { Leaderboard } from "./comp/Leaderboardcom/Leaderboard"
 
 interface LeaderData {
   leagueId: string;

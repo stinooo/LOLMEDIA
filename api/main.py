@@ -140,7 +140,7 @@ async def getStatsAccount(name : str, tag : str, region : str):
     ranked_data = rankedRQ.json()
 
     #history data match keys
-    matchRQ = requests.get("https://europe.api.riotgames.com/lol/match/v5/matches/by-puuid/" + puuid_data["puuid"] + "/ids?start=0&count=5&api_key=" + API_KEY)
+    matchRQ = requests.get("https://europe.api.riotgames.com/lol/match/v5/matches/by-puuid/" + puuid_data["puuid"] + "/ids?start=0&count=10&api_key=" + API_KEY)
     if not matchRQ.status_code == 200:
         return {"success" : "false"}
     match_data = matchRQ.json()
@@ -155,13 +155,24 @@ async def getMatchData(MatchID : str):
     if not matchRQ.status_code == 200:
         return {"success" : "false"}
     match_data = matchRQ.json()
-    
-
-
 
     return match_data
 
 
+@app.get("/get-Top3mastary")
+async def getTop3Mastary(puuid : str, region : str):
+    # Check region
+    region = region.lower()
+    validRegions = ["br1","eun1","euw1","jp1","kr","la1","la2","na1","oc1","ph2","ru","sg2","th2","tr1","tw2","vn"]
+    if region not in validRegions:
+        return {"success" : "false"}
+    
+    # Fetch puuid
+    Mastery = requests.get("https://euw1.api.riotgames.com/lol/champion-mastery/v4/champion-masteries/by-puuid/" + puuid + "/top?count=3&api_key=" + API_KEY)
+    if not Mastery.status_code == 200:
+        return {"success" : "false"}
+    Mastery_data = Mastery.json()
+    return Mastery_data
 
     
 
