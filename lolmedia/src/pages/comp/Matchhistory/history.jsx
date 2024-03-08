@@ -33,7 +33,7 @@ export const History = ({ MatchID }) => {
     };
 
     return (
-        <div>
+        <div className="history-container">
             {errorMessage && <div className="error-message">{errorMessage}</div>}
             {matchData && (
                 <div>

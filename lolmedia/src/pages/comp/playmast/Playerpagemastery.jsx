@@ -20,7 +20,7 @@ export const Mastery = ({ puuid, region }) => {
         };
 
         fetchMasteryData();
-    }, []);
+    }, [puuid, region]);
 
     return (
         <div className="mastery-container">
