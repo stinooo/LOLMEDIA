@@ -67,7 +67,7 @@ function Player() {
                             <p className="tag"> #{playerData ? playerData[2]["tagLine"] : "notfound"}</p>
                         </div>
                         <div className="container">
-                            <img className="icon" src={`http://10.67.42.13/profileicon/${playerData ? playerData[1]["profileIconId"] : "notfound"}.png`} alt="icon"></img>
+                            <img className="icon" src={`http://192.168.181/profileicon/${playerData ? playerData[1]["profileIconId"] : "notfound"}.png`} alt={`icon${playerData ? playerData[1]["profileIconId"] : "notfound"}`}></img>
                             <div className="level">{playerData ? playerData[1]["summonerLevel"] : "notfound"}</div>
                         </div>
                     </div>
