@@ -19,7 +19,7 @@ export const History = ({ MatchID }) => {
             })
             .then((json) => {
                 if (json.success === "false") {
-                    setErrorMessage("Match not found"); // Set error message if match is not found
+                    setErrorMessage(""); // Set error message if match is not found
                     setMatchData(null); // Clear match data
                 } else {
                     setMatchData(json); // Set match data if found
@@ -37,7 +37,8 @@ export const History = ({ MatchID }) => {
             {errorMessage && <div className="error-message">{errorMessage}</div>}
             {matchData && (
                 <div>
-                    TEST
+                    <img src="https://localhost/champion/Aatrox.png" alt="" />
+                    <img src="https://localhost/item/1001.png" alt="" />
                 </div>
             )}
         </div>

@@ -82,8 +82,6 @@ function Player() {
                         <br />{playerData ? playerData[0][1]["wins"]: "not found"}W / 
                          {playerData ? playerData[0][1]["losses"]:"not found"}L {winPercentageSOLO}%</p>
                     </div>
-                    <br></br>
-                    <br></br>
                     <div className="rankBackground">
                         <p className="rankName">Ranked Flex</p>
                         <br></br>
