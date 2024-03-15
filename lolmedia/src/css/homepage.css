@@ -6,15 +6,16 @@
 }
 
 body {
-    background: linear-gradient(35deg, rgb(61, 1, 61), rgb(0, 0, 133)) ;
+    background: linear-gradient(35deg, rgb(61, 1, 61), rgb(0, 0, 133));
     height: 100vh;
     width: 100%;
 }
-  
-  /* Change the background to a different color when scrolled down */
-  body.scrolled {
-    background: rgb(10, 10, 50); /* Adjust the color values to your preference */
-  }
+
+/* Change the background to a different color when scrolled down */
+body.scrolled {
+    background: rgb(10, 10, 50);
+    /* Adjust the color values to your preference */
+}
 
 /*Navigation bar*/
 .navbar {
@@ -45,6 +46,7 @@ nav ul li {
     transition: 0.5s;
     color: rgb(148, 5, 148);
 }
+
 /*Player Content*/
 
 /*Home Page*/
@@ -88,4 +90,5 @@ nav ul li {
     margin-left: 10%;
     float: left;
 }
+
 /*Home Page*/

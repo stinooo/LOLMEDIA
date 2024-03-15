@@ -58,19 +58,16 @@ const Leaderboardpage: React.FC = () => {
       </div>
       <div className="player">
         <div className="playerContent">
-          <h2>TOP from server  <select className="drop" name="server" id="serverlist" value={server} onChange={handleServerChange}>
-              <option value="euw1">EUW</option>
-              <option value="na1">NA</option>
-              <option value="eune1">EUNE</option>
-              <option value="kr">KR</option>
-            </select></h2>
-          <div>
-            
-            </div>
-            <div></div>
-            <br />
-            <br />
-            <br />
+          <div className="container">
+            <h2 className="leaderboard-name">Leaderboard</h2>
+              <select className="dropLead" name="server" id="serverlist" value={server} onChange={handleServerChange}>
+                <option value="euw1">EUW</option>
+                <option value="na1">NA</option>
+                <option value="eune1">EUNE</option>
+                <option value="kr">KR</option>
+              </select>
+          </div>
+          <br/>
           <div>
             {leaderboardData.map((leader, index) => (
               <Leaderboard key={index} leader={leader} region={server} />

@@ -73,13 +73,13 @@ nav ul li {
     left: 6%;
     transform: translateX(-50%);
     font-size: 18px;
-    color:white;
+    color: white;
     border-style: hidden;
     border-radius: 23%;
     border-width: 2px;
     background-color: rgb(69, 69, 161);
     padding: 0px 4px;
-  }
+}
 
 /*Rank General*/
 
@@ -122,7 +122,7 @@ nav ul li {
     margin-top: 20px;
 }
 
-.History{
+.History {
     display: flex;
     justify-content: center;
     align-items: center;
