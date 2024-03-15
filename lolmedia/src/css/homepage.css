@@ -10,6 +10,11 @@ body {
     height: 100vh;
     width: 100%;
 }
+  
+  /* Change the background to a different color when scrolled down */
+  body.scrolled {
+    background: rgb(10, 10, 50); /* Adjust the color values to your preference */
+  }
 
 /*Navigation bar*/
 .navbar {

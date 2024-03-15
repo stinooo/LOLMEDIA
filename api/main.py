@@ -19,6 +19,22 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+@app.get("/pog test")
+async def getValidUser(name : str, tag : str, region : str):
+    # Check region
+    region = region.lower()
+    validRegions = ["br1","eun1","euw1","jp1","kr","la1","la2","na1","oc1","ph2","ru","sg2","th2","tr1","tw2","vn"]
+    if region not in validRegions:
+        return {"success" : "false"}
+    
+    # Fetch puuid
+    puuidRQ = requests.get("https://europe.api.riotgames.com/riot/account/v1/accounts/by-riot-id/"
+                           + name + "/" + tag + "?api_key=" + API_KEY)
+    if not puuidRQ.status_code == 200:
+        raise HTTPException(status_code=puuidRQ.status_code)
+    puuid_data = puuidRQ.json()
+    return puuid_data
+
 
 @app.get("/get-validuser")
 async def getValidUser(name : str, tag : str, region : str):

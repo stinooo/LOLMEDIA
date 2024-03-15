@@ -47,13 +47,14 @@ function Player() {
 
     return (
         <div>
-            <div className="navbar">
+            <div className="navbar"> 
                 <h1><Link className='lol-topleft' to="/">League Of Legends</Link></h1>
                 <nav>
                     <ul>
                         <li><Link to="/leaderboard">Leaderboard</Link></li>
                         <li><Link to="/Player/euw1/thomasoke/EUW">Players</Link></li>
                         <li><Link to="#">Stats</Link></li>
+                        
                     </ul>
                 </nav>
             </div>
@@ -67,14 +68,15 @@ function Player() {
                             <p className="tag"> #{playerData ? playerData[2]["tagLine"] : "notfound"}</p>
                         </div>
                         <div className="container">
-                            <img className="icon" src={`http://192.168.181/profileicon/${playerData ? playerData[1]["profileIconId"] : "notfound"}.png`} alt={`icon${playerData ? playerData[1]["profileIconId"] : "notfound"}`}></img>
+                            <img className="icon" src={`https://localhost/profileicon/${playerData ? playerData[1]["profileIconId"] : "notfound"}.png`} alt={`icon${playerData ? playerData[1]["profileIconId"] : "notfound"}`}></img>
                             <div className="level">{playerData ? playerData[1]["summonerLevel"] : "notfound"}</div>
                         </div>
                     </div>
                     <div className="rankBackground">
                         <p className="rankName">Ranked Solo</p>
                         <br></br>
-                        <img className="rankImage" src={`http://10.67.42.13/Rankicons/${playerData ? playerData[0][1]["tier"] : "notfound"}.png`} alt="solo duo rank" />
+                        <img className="rankImage" src={`https://localhost/Rankicons/${playerData ? playerData[0][1]["tier"].charAt(0).toUpperCase() + playerData[0][1]["tier"].slice(1).toLowerCase() : "notfound"}.png`} 
+                         alt="solo duo rank"/>
                         <p className="rank">{playerData ? playerData[0][1]["tier"]: "not found"} {playerData ? playerData[0][1]["rank"]: "not found"}</p>
                         <p className="LP">{playerData ? playerData[0][1]["leaguePoints"] : null} LP
                         <br />{playerData ? playerData[0][1]["wins"]: "not found"}W / 
@@ -85,7 +87,8 @@ function Player() {
                     <div className="rankBackground">
                         <p className="rankName">Ranked Flex</p>
                         <br></br>
-                        <img className="rankImage" src={`http://10.67.42.13/Rankicons/${playerData ? playerData[0][0]["tier"] : "notfound"}.png`} alt="FLEX rank" />
+                        <img className="rankImage"src={`https://localhost/Rankicons/${playerData ? playerData[0][0]["tier"].charAt(0).toUpperCase() + playerData[0][0]["tier"].slice(1).toLowerCase() : "notfound"}.png`} 
+                            alt="Flex rank" />
                         <p className="rank">{playerData ? playerData[0][0]["tier"]: "not found"} {playerData ? playerData[0][0]["rank"]: "not found"}</p>
                         <p className="LP">{playerData ? playerData[0][0]["leaguePoints"] : null} LP
                         <br />{playerData ? playerData[0][1]["wins"]: "not found"}W / 
