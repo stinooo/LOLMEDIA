@@ -77,8 +77,8 @@ function Player() {
                         <br></br>
                         <img className="rankImage" src={`https://localhost/Rankicons/${playerData ? playerData[0][1]["tier"].charAt(0).toUpperCase() + playerData[0][1]["tier"].slice(1).toLowerCase() : "notfound"}.png`} 
                          alt="solo duo rank"/>
-                        <p className="rank">{playerData ? playerData[0][1]["tier"]: "not found"} {playerData ? playerData[0][1]["rank"]: "not found"}</p>
-                        <p className="LP">{playerData ? playerData[0][1]["leaguePoints"] : null} LP
+                        <p className="rank">{playerData ? playerData[0][1]["tier"]: "unranked"} {playerData ? playerData[0][1]["rank"]: ""}</p>
+                        <p className="LP">{playerData ? playerData[0][1]["leaguePoints"]: "???" } LP
                         <br />{playerData ? playerData[0][1]["wins"]: "not found"}W / 
                          {playerData ? playerData[0][1]["losses"]:"not found"}L {winPercentageSOLO}%</p>
                     </div>
@@ -89,10 +89,10 @@ function Player() {
                         <br></br>
                         <img className="rankImage"src={`https://localhost/Rankicons/${playerData ? playerData[0][0]["tier"].charAt(0).toUpperCase() + playerData[0][0]["tier"].slice(1).toLowerCase() : "notfound"}.png`} 
                             alt="Flex rank" />
-                        <p className="rank">{playerData ? playerData[0][0]["tier"]: "not found"} {playerData ? playerData[0][0]["rank"]: "not found"}</p>
-                        <p className="LP">{playerData ? playerData[0][0]["leaguePoints"] : null} LP
-                        <br />{playerData ? playerData[0][1]["wins"]: "not found"}W / 
-                        {playerData ? playerData[0][1]["losses"]:"not found"}L {winPercentageFLEX}%</p>
+                        <p className="rank">{playerData ? playerData[0][0]["tier"]: "unranked"} {playerData ? playerData[0][0]["rank"]: ""}</p>
+                        <p className="LP">{playerData ? playerData[0][0]["leaguePoints"] : "????"} LP
+                        <br />{playerData ? playerData[0][0]["wins"]: "not found"}W / 
+                        {playerData ? playerData[0][0]["losses"]:"not found"}L {winPercentageFLEX}%</p>
                     </div>  
                 </div> 
             </div> 

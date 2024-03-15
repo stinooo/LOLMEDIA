@@ -130,14 +130,42 @@ async def getStatsAccount(name : str, tag : str, region : str):
     if not summonerRQ.status_code == 200:
         raise HTTPException(status_code=summonerRQ.status_code, detail="summonerRQ")
     summoner_data = summonerRQ.json()
-  
-    # combined_data = {**puuid_data, **summoner_data}
+    
+
     #need to get the id out for ranked stats
-    rankedRQ = requests.get('https://' + region + ".api.riotgames.com/lol/league/v4/entries/by-summoner/" 
-                            + "K86YtNrfF8GXSNND0c-LdvmJCfs9dbigBigb0KzfyyhIOSIY" + "?api_key=" + API_KEY)
+    rankedRQ = requests.get("https://" + region + ".api.riotgames.com/lol/league/v4/entries/by-summoner/" 
+                            + summoner_data["id"] + "?api_key=" + API_KEY)
     if not rankedRQ.status_code == 200:
         raise HTTPException(status_code=rankedRQ.status_code, detail="RankedRQ")
     ranked_data = rankedRQ.json()
+    
+    fake_data_unranked = {
+        "queueType": "UNRANKED",
+        "tier": "Unranked",
+        "rank": "",
+        "leaguePoints": "?",
+        "wins": "?",
+        "losses": "?",
+        "veteran": False,
+        "inactive": False,
+        "freshBlood": False,
+        "hotStreak": False
+    }
+
+    if not ranked_data or len(ranked_data) == 0:
+        # If no data is returned, create fake data for both queues
+        ranked_data = [fake_data_unranked.copy(), fake_data_unranked.copy()]
+    elif len(ranked_data) == 1:
+        # If only one queue is returned, insert fake data for the missing queue
+        if ranked_data[0]["queueType"] == "RANKED_SOLO_5x5":
+            ranked_data.insert(0, fake_data_unranked.copy())
+        else:
+            ranked_data.append(fake_data_unranked.copy())
+    elif len(ranked_data) == 2:
+        # If both queues are returned, ensure flex queue is in index 0
+        if ranked_data[0]["queueType"] != "RANKED_FLEX_SR":
+            ranked_data[0], ranked_data[1] = ranked_data[1], ranked_data[0]
+
 
     #history data match keys
     matchRQ = requests.get("https://europe.api.riotgames.com/lol/match/v5/matches/by-puuid/" + puuid_data["puuid"] + "/ids?start=0&count=10&api_key=" + API_KEY)
@@ -146,7 +174,7 @@ async def getStatsAccount(name : str, tag : str, region : str):
     match_data = matchRQ.json()
 
     return [ranked_data, summoner_data, puuid_data, match_data]
-
+#
 @app.get("/get-match")
 async def getMatchData(MatchID : str):
     # Check region
@@ -173,6 +201,17 @@ async def getTop3Mastary(puuid : str, region : str):
         return {"success" : "false"}
     Mastery_data = Mastery.json()
     return Mastery_data
+
+
+@app.get("/get-test")
+async def getTest(puuid : str, region : str):
+    #need to get the id out for ranked stats
+    rankedRQ = requests.get("https://" + region + ".api.riotgames.com/lol/league/v4/entries/by-summoner/" 
+                            + puuid + "?api_key=" + API_KEY)
+    if not rankedRQ.status_code == 200:
+        raise HTTPException(status_code=rankedRQ.status_code, detail="RankedRQ")
+    ranked_data = rankedRQ.json()
+    return ranked_data
 
     
 
