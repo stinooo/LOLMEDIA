@@ -15,11 +15,12 @@ function Player() {
 
             const data = await response.json();
             if (!data["success"]) setPlayerData(data);
-            if(!data["success"]){
-            setPlayerData(data); }
+            if (!data["success"]) {
+                setPlayerData(data);
+            }
             console.log("UseEffect done");
             console.log(data);
-            
+
         } catch (error) {
             console.error('There was a problem with the fetch operation:', error);
         }
@@ -31,13 +32,13 @@ function Player() {
 
     // if (playerData) console.log(playerData[0]["leagueId"])
     if (playerData) console.log(playerData[0][1]["leaguePoints"])
-    
+
     //SOLOQUEUE winrate calculation
     const winsSOLO = playerData ? playerData[0][1].wins : 0;
     const lossesSOLO = playerData ? playerData[0][1].losses : 0;
     const totalGamesSOLO = winsSOLO + lossesSOLO;
     const winPercentageSOLO = totalGamesSOLO > 0 ? Math.round((winsSOLO / totalGamesSOLO) * 100) : 0;
-    
+
     //FLEXQUEUE winrate calculation
     const winsFLEX = playerData ? playerData[0][0].wins : 0;
     const lossesFLEX = playerData ? playerData[0][0].losses : 0;
@@ -47,21 +48,21 @@ function Player() {
 
     return (
         <div>
-            <div className="navbar"> 
+            <div className="navbar">
                 <h1><Link className='lol-topleft' to="/">League Of Legends</Link></h1>
                 <nav>
                     <ul>
                         <li><Link to="/leaderboard">Leaderboard</Link></li>
                         <li><Link to="/Player/euw1/thomasoke/EUW">Players</Link></li>
                         <li><Link to="#">Stats</Link></li>
-                        
                     </ul>
                 </nav>
             </div>
             <div className="player">
-                <div className="playerInfo"> 
-                    <div className="Mastery"> <Mastery puuid={playerData ? playerData[2]["puuid"] : "notfound"} region={server} tag={tag} name={name} /></div> 
-                    <div className="History"> <History MatchID={playerData ? playerData[3][0] : "not found"} />  </div>
+                <div className="Mastery">
+                    <Mastery puuid={playerData ? playerData[2]["puuid"] : "notfound"} region={server} tag={tag} name={name} />
+                </div>
+                <div className="playerInfo">
                     <div className="iconlevel">
                         <div className="username">
                             <p className="name">{playerData ? playerData[2]["gameName"] : "notfound"} </p>
@@ -75,25 +76,26 @@ function Player() {
                     <div className="rankBackground">
                         <p className="rankName">Ranked Solo</p>
                         <br></br>
-                        <img className="rankImage" src={`https://localhost/Rankicons/${playerData ? playerData[0][1]["tier"].charAt(0).toUpperCase() + playerData[0][1]["tier"].slice(1).toLowerCase() : "notfound"}.png`} 
-                         alt="solo duo rank"/>
-                        <p className="rank">{playerData ? playerData[0][1]["tier"]: "unranked"} {playerData ? playerData[0][1]["rank"]: ""}</p>
-                        <p className="LP">{playerData ? playerData[0][1]["leaguePoints"]: "???" } LP
-                        <br />{playerData ? playerData[0][1]["wins"]: "not found"}W / 
-                         {playerData ? playerData[0][1]["losses"]:"not found"}L {winPercentageSOLO}%</p>
+                        <img className="rankImage" src={`https://localhost/Rankicons/${playerData ? playerData[0][1]["tier"].charAt(0).toUpperCase() + playerData[0][1]["tier"].slice(1).toLowerCase() : "notfound"}.png`}
+                            alt="solo duo rank" />
+                        <p className="rank">{playerData ? playerData[0][1]["tier"] : "unranked"} {playerData ? playerData[0][1]["rank"] : ""}</p>
+                        <p className="LP">{playerData ? playerData[0][1]["leaguePoints"] : "???"} LP
+                            <br />{playerData ? playerData[0][1]["wins"] : "not found"}W /
+                            {playerData ? playerData[0][1]["losses"] : "not found"}L {winPercentageSOLO}%</p>
                     </div>
                     <div className="rankBackground">
                         <p className="rankName">Ranked Flex</p>
                         <br></br>
-                        <img className="rankImage"src={`https://localhost/Rankicons/${playerData ? playerData[0][0]["tier"].charAt(0).toUpperCase() + playerData[0][0]["tier"].slice(1).toLowerCase() : "notfound"}.png`} 
+                        <img className="rankImage" src={`https://localhost/Rankicons/${playerData ? playerData[0][0]["tier"].charAt(0).toUpperCase() + playerData[0][0]["tier"].slice(1).toLowerCase() : "notfound"}.png`}
                             alt="Flex rank" />
-                        <p className="rank">{playerData ? playerData[0][0]["tier"]: "unranked"} {playerData ? playerData[0][0]["rank"]: ""}</p>
+                        <p className="rank">{playerData ? playerData[0][0]["tier"] : "unranked"} {playerData ? playerData[0][0]["rank"] : ""}</p>
                         <p className="LP">{playerData ? playerData[0][0]["leaguePoints"] : "????"} LP
-                        <br />{playerData ? playerData[0][0]["wins"]: "not found"}W / 
-                        {playerData ? playerData[0][0]["losses"]:"not found"}L {winPercentageFLEX}%</p>
-                    </div>  
-                </div> 
-            </div> 
+                            <br />{playerData ? playerData[0][0]["wins"] : "not found"}W /
+                            {playerData ? playerData[0][0]["losses"] : "not found"}L {winPercentageFLEX}%</p>
+                    </div>
+                    <div className="History"> <History MatchID={playerData ? playerData[3][0] : "not found"} />  </div>
+                </div>
+            </div>
         </div>
     )
 }

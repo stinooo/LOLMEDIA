@@ -1,4 +1,4 @@
-import React  from "react";
+import React from "react";
 import "./Leaderboard.css";
 import { Link } from "react-router-dom";
 
@@ -9,12 +9,12 @@ export const Leaderboard = ({ leader, region }) => {
     // Display leaderboard information
     <div className="leaderboard-container">
       <div className="player-info">
-        
+
         <p className="leaderboard-info player-name">
-          <Link 
+          <Link
             to={`/temp/${region}/${leader.summonerId}`}> <p>{leader.summonerName}</p>
           </Link>
-        </p>  
+        </p>
         <p className="leaderboard-info lp"> LP: {leader.leaguePoints}</p>
       </div>
       <div className="player-info">

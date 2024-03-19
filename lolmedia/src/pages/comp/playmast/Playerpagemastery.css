@@ -1,21 +1,24 @@
 .mastery-container {
-    border: 2px solid white;
+    border: 2px solid none;
     border-radius: 10px;
     padding: 10px;
     width: fit-content;
-    margin: auto;
-    display: flex; /* Display flex to arrange items horizontally */
+    display: flex;
+    background: linear-gradient(70deg, rgb(118, 122, 225), rgb(11, 0, 133)) no-repeat;;
+    /* Display flex to arrange items horizontally */
 }
 
 .mastery-info {
     text-align: center;
     border-radius: 10px;
     padding: 10px;
-    margin-right: 10px; /* Add margin for spacing between blocks */
+    margin-right: 10px;
+    /* Add margin for spacing between blocks */
 }
 
 .mastery-info:last-child {
-    margin-right: 0; /* Remove margin from last block */
+    margin-right: 0;
+    /* Remove margin from last block */
 }
 
 .mastery-info img {
@@ -31,8 +34,6 @@
     color: white;
 }
 
-.linkmast{
-    color: rgb(96, 96, 197);
-    align-self: top;
-    scale: 80%;
+.linkmast {
+    color: lightgray;
 }
