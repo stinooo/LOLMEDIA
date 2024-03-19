@@ -2,7 +2,7 @@ import React  from "react";
 import "./Leaderboard.css";
 import { Link } from "react-router-dom";
 
-export const Leaderboard = ({ key, leader, region }) => {
+export const Leaderboard = ({ leader, region }) => {
   // Calculate winrate
   const winrate = Math.round((leader.wins / (leader.wins + leader.losses)) * 100);
   return (

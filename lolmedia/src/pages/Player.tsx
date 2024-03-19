@@ -60,7 +60,7 @@ function Player() {
             </div>
             <div className="player">
                 <div className="playerInfo"> 
-                    <div className="Mastery"> <Mastery puuid={playerData ? playerData[2]["puuid"] : "notfound"} region={server} /></div> 
+                    <div className="Mastery"> <Mastery puuid={playerData ? playerData[2]["puuid"] : "notfound"} region={server} tag={tag} name={name} /></div> 
                     <div className="History"> <History MatchID={playerData ? playerData[3][0] : "not found"} />  </div>
                     <div className="iconlevel">
                         <div className="username">

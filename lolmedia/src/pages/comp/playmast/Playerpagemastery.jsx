@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from "react";
 import "./Playerpagemastery.css";
+import championNameKeyMap from './ChampIDtoChampName/champion_name_key_map.json';
+import { Link } from 'react-router-dom';
 
-export const Mastery = ({ puuid, region }) => {
+
+export const Mastery = ({ puuid, region, tag, name }) => {
     const [masteryData, setMasteryData] = useState([]);
 
     useEffect(() => {
@@ -21,21 +24,32 @@ export const Mastery = ({ puuid, region }) => {
 
         fetchMasteryData();
     }, [puuid, region]);
+    const championId = masteryData[0]?.championId; 
+    const championName = championNameKeyMap[championId];
+    const championId1 = masteryData[1]?.championId;
+    const championName1 = championNameKeyMap[championId1];
+    const championId2 = masteryData[2]?.championId;
+    const championName2 = championNameKeyMap[championId2];
 
     return (
         <div className="mastery-container">
             <div className="mastery-info">
-                <p>Champion ID: {masteryData[0]?.championId}</p>
-                <p>Masterypoints: {masteryData[0]?.championPoints}</p>
+                <div>{championName}</div>
+                <img src={`https://localhost/champion/${championName}.png`} alt={championName} />
+                <p>Points: {masteryData[0]?.championPoints.toLocaleString('en-US').replace(/,/g, ' ')}</p>
+
             </div>
             <div className="mastery-info">
-                <p>Champion ID: {masteryData[1]?.championId}</p>
-                <p>Masterypoints: {masteryData[1]?.championPoints}</p>
+                <div>{championName1}</div>
+                <img src={`https://localhost/champion/${championName1}.png`} alt={championName1} />                
+                <p>Points: {masteryData[1]?.championPoints.toLocaleString('en-US').replace(/,/g, ' ')}</p>
             </div>
             <div className="mastery-info">
-                <p>Champion ID: {masteryData[2]?.championId}</p>
-                <p>Masterypoints: {masteryData[2]?.championPoints}</p>
+                <div>{championName2}</div>
+                <img src={`https://localhost/champion/${championName2}.png`} alt={championName2} />
+                <p>Points: {masteryData[2]?.championPoints.toLocaleString('en-US').replace(/,/g, ' ')}</p>
             </div>
+            <Link to = {`/Mastery/${region}/${name}/${tag}`} className="linkmast">See more..</Link>
         </div>
     );
 };

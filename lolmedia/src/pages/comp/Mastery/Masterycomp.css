@@ -1,0 +1,26 @@
+/* Masterycomp.css */
+
+.Mastery-comp-alg {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 20px;
+    background-color: #f9f9f9;
+  }
+  
+  .Mastery-comp-alg img {
+    max-width: 100px; /* Adjust image width as needed */
+    height: auto;
+    display: block;
+    margin: 0 auto 10px; /* Center the image and add some margin below */
+  }
+  
+  .Mastery-comp-alg div,
+  .Mastery-comp-alg p {
+    text-align: center; /* Center text */
+  }
+  
+  .Mastery-comp-alg p {
+    margin: 0; /* Remove default margin for paragraphs */
+  }
+  
