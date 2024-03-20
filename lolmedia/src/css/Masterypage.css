@@ -1,0 +1,12 @@
+body {
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+
+.Mastery {
+    align-items: center;
+    display: flex;
+    grid-column: auto;
+  }
+  

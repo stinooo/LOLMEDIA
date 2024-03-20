@@ -6,13 +6,13 @@
   padding: 15px;
   margin-bottom: 20px;
   display: flex;
-  justify-content: space-between;
-  /* Spread out elements horizontally */
+  
+
 }
 
 .player-info {
   flex: 1;
-  /* Take up equal space horizontally */
+ 
 }
 
 .leaderboard-info {
@@ -30,11 +30,4 @@
   font-size: 14px;
   color: #007bff;
   /* Blue color for winrate */
-}
-
-/* Add spacing between elements */
-.player-name,
-.lp,
-.win-loss {
-  margin-bottom: 5px;
 }

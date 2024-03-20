@@ -1,31 +1,30 @@
-import '../css/Masterypage.css';
 import React, { useState, useEffect } from "react";
 import { Link, useParams } from 'react-router-dom';
-import { Masterycomp } from './comp/Mastery/Masterycomp';
+import Masterycomp from './comp/Mastery/Masterycomp'; // Import the Masterycomp component
 
-function Masterypage() {
+const Masterypage: React.FC = () => {
     const { server, name, tag } = useParams();
-    const [masteryData, setMasteryData] = useState([]);
+    const [masteryData, setMasteryData] = useState<any[]>([]); // Use 'any' type if the structure of the data is not known
 
-    const fetchData = async () => {
-        try {
-            const response = await fetch(`http://127.0.0.1:7000/get-Masterychampions?name=${name}&tag=${tag}&region=${server}`);
-            if (!response.ok) throw new Error('Network response was not ok');
-
-            const data = await response.json();
-            if (data.success) {
-                setMasteryData(data); 
-            }
-            console.log("UseEffect done");
-            console.log(data);
-            
-        } catch (error) {
-            console.error('There was a problem with the fetch operation:', error);
-        }
-    };
-    
     useEffect(() => {
-        fetchData();
+        const fetchData = async () => {
+            try {
+                const response = await fetch(`http://127.0.0.1:7000/get-Masterychampions?name=${name}&tag=${tag}&region=${server}`);
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                } 
+
+                const data = await response.json();
+                setMasteryData(data); 
+                console.log(data);
+                
+            } catch (error) {
+                console.error('There was a problem with the fetch operation:', error);
+            }
+        };
+        
+        fetchData(); // Call fetchData within useEffect
+
     }, [name, tag, server]);
 
     return (
@@ -41,8 +40,10 @@ function Masterypage() {
                 </nav>
             </div>
             <div className="Mastery">
-                {masteryData.map((masteryData, index) => (
-                <Masterycomp key={index} masteryData={masteryData} />
+                {masteryData.map((mastery) => (
+                <div>
+                    <Masterycomp mastery={mastery} />
+                </div>
                 ))}
             </div>
         </div>
