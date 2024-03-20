@@ -5,9 +5,8 @@ import requests
 import uvicorn
 import json
 from credentials import API_KEY
-
 #fastAPI app definition
-app = FastAPI()
+app= FastAPI()
 
 #setup cors rules
 origins = ["http://localhost:3000"] #local development hha funny #origins = ["*"] #deployment code - Replace with domain
@@ -73,7 +72,8 @@ async def getLeaderboard(region : str):
         return {"success" : "false"}
     
     # Fetch leaderboard data
-    leaderboardRQ = requests.get("https://" + region + ".api.riotgames.com/lol/league-exp/v4/entries/RANKED_SOLO_5x5/CHALLENGER/I?page=" + PAGES +"&api_key=" + API_KEY)
+    leaderboardRQ = requests.get("https://" + region + ".api.riotgames.com/lol/league-exp/v4/entries/RANKED_SOLO_5x5/CHALLENGER/I?page="
+     + PAGES +"&api_key=" + API_KEY)
     if not leaderboardRQ.status_code == 200:
         return {"success" : "false"}
     leaderboard_data = leaderboardRQ.json()
@@ -90,13 +90,15 @@ async def getStatsAccount(summonerID : str, region : str):
         return {"success" : "false"}
     
     # Fetch SummonerId 
-    SummonerIdRQ  = requests.get("https://" + region + ".api.riotgames.com/lol/summoner/v4/summoners/" + summonerID + "?api_key="+ API_KEY)
+    SummonerIdRQ  = requests.get("https://" + region + ".api.riotgames.com/lol/summoner/v4/summoners/"
+                                  + summonerID + "?api_key="+ API_KEY)
     if not SummonerIdRQ.status_code == 200:
         return {"success" : "false"}
     SummonerIdDate = SummonerIdRQ.json()
 
     # Fetch NAME AND TAG
-    NameTagRQ = requests.get("https://europe.api.riotgames.com/riot/account/v1/accounts/by-puuid/" + SummonerIdDate["puuid"] + "?api_key="+ API_KEY)
+    NameTagRQ = requests.get("https://europe.api.riotgames.com/riot/account/v1/accounts/by-puuid/"
+                              + SummonerIdDate["puuid"] + "?api_key="+ API_KEY)
     if not NameTagRQ.status_code == 200:
         return {"success" : "false"}
     NameTagData = NameTagRQ.json()
