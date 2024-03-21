@@ -10,7 +10,7 @@ export const Masterycomp = ({ mastery }) => {
         <div className="Mastery-comp-alg">
             <div className="champname">{championName}</div>
             <img className="img" src={`https://localhost/champion/${championName}.png`} alt={championName} />
-            <div>{mastery.championPoints}</div>
+            <div>points:{mastery.championPoints.toLocaleString('en-US').replace(/,/g, ' ')}</div>
         </div>
     );
 };
