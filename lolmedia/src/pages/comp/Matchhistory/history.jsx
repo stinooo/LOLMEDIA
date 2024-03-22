@@ -37,14 +37,47 @@ export const History = ({ MatchID }) => {
             {errorMessage && <div className="error-message">{errorMessage}</div>}
             {matchData && (
                 <div className="history-container">
-                    <div className="historyText">
-                        <p>Ranked Solo</p>
-                        <p>20:15</p>
+                    <div className="groupOne">
+                        <div className="historyText">
+                            <p>Ranked Solo</p>
+                            <p>20:15</p>
+                        </div>
+                        <div className="iconSpells">
+                            <img className="characterIcon" src="https://localhost/champion/Aatrox.png" alt="champIcon" />
+                            <div className="spells">
+                                <img src="https://localhost/Spels/SummonerFlash.png" alt="spell1" />
+                                <img src="https://localhost/Spels/SummonerHaste.png" alt="spell2" />
+                            </div>
+                            <div>
+                                <p>KDA</p>
+                                <p>CS</p>
+                            </div>
+                        </div>
+                        <div className="playerItems">
+                                <img src="https://localhost/item/3031.png" alt="item1" />
+                                <img src="https://localhost/item/3031.png" alt="item2" />
+                                <img src="https://localhost/item/3031.png" alt="item3" />
+                                <img src="https://localhost/item/3031.png" alt="item4" />
+                                <img src="https://localhost/item/3031.png" alt="item5" />
+                                <img src="https://localhost/item/3031.png" alt="item6" />
+                                <img src="https://localhost/item/3340.png" alt="ward" />
+                        </div>
                     </div>
-                    <img className="characterIcon" src="https://localhost/champion/Aatrox.png" alt="" />
-                    <div className="spells">
-                        <img src="https://localhost/item/1001.png" alt="" />
-                        <img src="https://localhost/item/1001.png" alt="" />
+                    <div className="groupTwo">
+                        <div className="firstFive">
+                            <p>player 1</p>
+                            <p>player 2</p>
+                            <p>player 3</p>
+                            <p>player 4</p>
+                            <p>player 5</p>
+                        </div>
+                        <div className="lastFive">
+                            <p>player 6</p>
+                            <p>player 7</p>
+                            <p>player 8</p>
+                            <p>player 9</p>
+                            <p>player 10</p>
+                        </div>
                     </div>
                 </div>
             )}
