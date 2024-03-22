@@ -59,8 +59,11 @@ function Player() {
                 </nav>
             </div>
             <div className="player">
-                <div className="Mastery">
+                <div className="mastery">
                     <Mastery puuid={playerData ? playerData[2]["puuid"] : "notfound"} region={server} tag={tag} name={name} />
+                </div>
+                <div className="history">
+                    <History MatchID={playerData ? playerData[3][0] : "not found"} />
                 </div>
                 <div className="playerInfo">
                     <div className="iconlevel">
@@ -73,7 +76,7 @@ function Player() {
                             <div className="level">{playerData ? playerData[1]["summonerLevel"] : "notfound"}</div>
                         </div>
                     </div>
-                    <div className="rankBackground">
+                    <div className="rankBackground item">
                         <p className="rankName">Ranked Solo</p>
                         <br></br>
                         <img className="rankImage" src={`https://localhost/Rankicons/${playerData ? playerData[0][1]["tier"].charAt(0).toUpperCase() + playerData[0][1]["tier"].slice(1).toLowerCase() : "notfound"}.png`}
@@ -83,7 +86,7 @@ function Player() {
                             <br />{playerData ? playerData[0][1]["wins"] : "not found"}W /
                             {playerData ? playerData[0][1]["losses"] : "not found"}L {winPercentageSOLO}%</p>
                     </div>
-                    <div className="rankBackground">
+                    <div className="rankBackground item">
                         <p className="rankName">Ranked Flex</p>
                         <br></br>
                         <img className="rankImage" src={`https://localhost/Rankicons/${playerData ? playerData[0][0]["tier"].charAt(0).toUpperCase() + playerData[0][0]["tier"].slice(1).toLowerCase() : "notfound"}.png`}
@@ -93,7 +96,6 @@ function Player() {
                             <br />{playerData ? playerData[0][0]["wins"] : "not found"}W /
                             {playerData ? playerData[0][0]["losses"] : "not found"}L {winPercentageFLEX}%</p>
                     </div>
-                    <div className="History"> <History MatchID={playerData ? playerData[3][0] : "not found"} />  </div>
                 </div>
             </div>
         </div>

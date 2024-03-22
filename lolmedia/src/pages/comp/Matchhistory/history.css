@@ -1,8 +1,31 @@
 .history-container {
-    background: linear-gradient(35deg, rgb(170, 221, 163), rgb(5, 178, 51));
+    background: rgb(88, 160, 88);
     border: 2px solid none;
     border-radius: 10px;
     padding: 10px;
-    width: fit-content;
+    width: auto;
     display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.history-container .historyText {
+    display: flex;
+    flex-direction: row;
+}
+
+.history-container .historyText p {
+    color: white;
+    padding: 0px 15px 0px 0px;
+}
+
+.history-container .characterIcon img {
+    width: 110px;
+    height: 120px;
+}
+
+.history-container .spells {
+    display: flex;
+    flex-direction: column;
+    margin-right: 2px;
 }

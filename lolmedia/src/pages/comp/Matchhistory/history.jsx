@@ -33,12 +33,19 @@ export const History = ({ MatchID }) => {
     };
 
     return (
-        <div className="history-container">
+        <div className="historyMain">
             {errorMessage && <div className="error-message">{errorMessage}</div>}
             {matchData && (
-                <div>
-                    <img src="https://localhost/champion/Aatrox.png" alt="" />
-                    <img src="https://localhost/item/1001.png" alt="" />
+                <div className="history-container">
+                    <div className="historyText">
+                        <p>Ranked Solo</p>
+                        <p>20:15</p>
+                    </div>
+                    <img className="characterIcon" src="https://localhost/champion/Aatrox.png" alt="" />
+                    <div className="spells">
+                        <img src="https://localhost/item/1001.png" alt="" />
+                        <img src="https://localhost/item/1001.png" alt="" />
+                    </div>
                 </div>
             )}
         </div>
