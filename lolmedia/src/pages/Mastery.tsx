@@ -26,7 +26,6 @@ const Masterypage: React.FC = () => {
         fetchData(); // Call fetchData within useEffect
 
     }, [name, tag, server]);
-
     return (
         <div>
             <div className="navbar"> 
