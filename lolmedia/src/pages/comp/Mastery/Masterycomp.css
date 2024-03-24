@@ -1,7 +1,14 @@
-.Mastery-comp-alg {
+.mastery-comp-alg {
   border: 1px solid #ddd;
   border-radius: 5px;
   padding: 15px;
   margin-bottom: 20px;
-  display: inline-grid;
+  width: fit-content;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.mastery-comp-alg img {
+  border-radius: 10px;
 }

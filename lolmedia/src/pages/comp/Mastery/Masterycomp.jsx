@@ -3,14 +3,14 @@ import "./Masterycomp.css";
 import championNameKeyMap from "../playmast/ChampIDtoChampName/champion_name_key_map.json"
 
 export const Masterycomp = ({ mastery }) => {
-    const championId = mastery.championId; 
+    const championId = mastery.championId;
     const championName = championNameKeyMap[championId];
 
     return (
-        <div className="Mastery-comp-alg">
-            <div className="champname">{championName}</div>
+        <div className="mastery-comp-alg">
+            <p>{championName}</p>
             <img className="img" src={`https://localhost/champion/${championName}.png`} alt={championName} />
-            <div>points:{mastery.championPoints.toLocaleString('en-US').replace(/,/g, ' ')}</div>
+            <p>Points: {mastery.championPoints.toLocaleString('en-US').replace(/,/g, ' ')}</p>
         </div>
     );
 };

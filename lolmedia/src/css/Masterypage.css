@@ -3,10 +3,9 @@ body {
   background-size: cover;
 }
 
-
 .Mastery {
-    align-items: center;
-    display: flex;
-    grid-column: auto;
-  }
-  
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  padding: 5px;
+}
