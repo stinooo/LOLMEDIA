@@ -1,31 +1,126 @@
+/* Match History */
+
 .history-container {
     background: rgb(88, 160, 88);
     border: 2px solid none;
     border-radius: 10px;
-    padding: 10px;
+    padding: 10px 10px 5px 10px;
     width: auto;
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap;
 }
+
+/* Groups */
+
+.history-container .groupOne {
+    display: flex;
+    flex-direction: column;
+    width: 350px;
+}
+
+.history-container .groupTwo {
+    display: flex;
+    flex-direction: row;
+    width: 240px;
+}
+
+/* Match History Text*/
 
 .history-container .historyText {
     display: flex;
     flex-direction: row;
+    padding: 0px 0px 5px 0px;
+}
+
+.history-container .historyText .winLoss p{
+    padding: 0px 0px 0px 28px;
 }
 
 .history-container .historyText p {
     color: white;
-    padding: 0px 15px 0px 0px;
+    padding: 0px 21px 0px 0px;
 }
 
-.history-container .characterIcon img {
-    width: 110px;
-    height: 120px;
+/* Champ Icon */
+
+.history-container .characterIcon {
+    width: 100px;
+    height: 100px;
 }
+
+/* Spells */
 
 .history-container .spells {
     display: flex;
     flex-direction: column;
-    margin-right: 2px;
+    margin-left: 2px;
+}
+
+.history-container .spells img {
+    height: 50px;
+}
+
+.history-container .iconSpells {
+    display: flex;
+    flex-direction: row;
+}
+
+/* Player Stats */
+
+.history-container .playerStats {
+    margin-left: 50px;
+    margin-top: 10px;
+}
+
+.history-container .playerStats p {
+    padding: 5px 0px 0px 0px;
+}
+
+/* Items */
+
+.history-container .playerItems {
+    display: flex;
+    flex-direction: row;
+}
+
+.history-container .playerItems img {
+    display: flex;
+    flex-direction: row;
+    width: 40px;
+    padding: 6px 3px 0px 0px;
+}
+
+/* Players From Match */
+
+.history-container .firstFive,
+.lastFive {
+    display: flex;
+    flex-direction: column;
+}
+
+.history-container .firstFive img,
+.lastFive img {
+    width: 25px;
+    height: 25px;
+}
+
+.history-container .firstFive p,
+.lastFive p,
+.firstFive img,
+.lastFive img {
+    padding: 5px 5px;
+}
+
+.history-container .playerOne,
+.playerTwo,
+.playerThree,
+.playerFour,
+.playerFive,
+.playerSix,
+.playerSeven,
+.playerEight,
+.playerNine,
+.playerTen {
+    display: flex;
+    flex-direction: row;
 }

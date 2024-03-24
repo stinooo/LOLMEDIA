@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link, useParams } from 'react-router-dom';
+import "../css/Masterypage.css";
 import Masterycomp from './comp/Mastery/Masterycomp'; // Import the Masterycomp component
 
 const Masterypage: React.FC = () => {
@@ -12,23 +13,23 @@ const Masterypage: React.FC = () => {
                 const response = await fetch(`http://127.0.0.1:7000/get-Masterychampions?name=${name}&tag=${tag}&region=${server}`);
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
-                } 
+                }
 
                 const data = await response.json();
-                setMasteryData(data); 
+                setMasteryData(data);
                 console.log(data);
-                
+
             } catch (error) {
                 console.error('There was a problem with the fetch operation:', error);
             }
         };
-        
+
         fetchData(); // Call fetchData within useEffect
 
     }, [name, tag, server]);
     return (
         <div>
-            <div className="navbar"> 
+            <div className="navbar">
                 <h1><Link className='lol-topleft' to="/">League Of Legends</Link></h1>
                 <nav>
                     <ul>
@@ -40,9 +41,7 @@ const Masterypage: React.FC = () => {
             </div>
             <div className="Mastery">
                 {masteryData.map((mastery) => (
-                <div>
                     <Masterycomp mastery={mastery} />
-                </div>
                 ))}
             </div>
         </div>
