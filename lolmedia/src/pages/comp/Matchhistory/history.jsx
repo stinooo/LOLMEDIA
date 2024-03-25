@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import "./history.css";
 
-export const History = ({ MatchID }) => {
+
+export const History = ({ MatchID ,region, tag, name }) => {
     const [errorMessage, setErrorMessage] = useState("");
     const [matchData, setMatchData] = useState(null);
 
@@ -9,7 +11,7 @@ export const History = ({ MatchID }) => {
         fetchData(MatchID);
     }, [MatchID]);
 
-    const fetchData = (MatchID) => {
+    const fetchData = (MatchID ) => {
         fetch("http://127.0.0.1:7000/get-match?MatchID=" + MatchID)
             .then((response) => {
                 if (!response.ok) {
@@ -30,6 +32,10 @@ export const History = ({ MatchID }) => {
                 setErrorMessage("Error fetching match data");
                 setMatchData(null);
             });
+    };
+    const data = name + "#" + tag;
+    const truncateString = (str, maxLen) => {
+        return str.length > maxLen ? str.substring(0, maxLen) + "..." : str;
     };
 
     return (
@@ -70,46 +76,89 @@ export const History = ({ MatchID }) => {
                     <div className="groupTwo">
                         <div className="firstFive">
                             <div className="playerOne">
-                                <img src="https://localhost/champion/Aatrox.png" alt="player1"></img>
-                                <p>player 1</p>
-                            </div>
+                                <img src={`https://localhost/champion/${matchData ? matchData.info.participants[0].championName: ""}.png`} alt=""></img>
+                                <p>
+                                    <Link
+                                     to={`/Player/${region}/${matchData ? matchData.info.participants[0].riotIdGameName :"" }/${matchData ? matchData.info.participants[0].riotIdTagline :"" }`}>
+                                         <p>{truncateString(matchData ? matchData.info.participants[0].riotIdGameName : "", 7)}</p>
+                                    </Link>
+                                </p>
+                            </div>  
                             <div className="playerTwo">
-                                <img src="https://localhost/champion/Aatrox.png" alt="player2"></img>
-                                <p>player 2</p>
+                                <img src={`https://localhost/champion/${matchData ? matchData.info.participants[1].championName: ""}.png`} alt="player2"></img>
+                                <p>
+                                    <Link
+                                        to={`/Player/${region}/${matchData ? matchData.info.participants[1].riotIdGameName :"" }/${matchData ? matchData.info.participants[1].riotIdTagline :"" }`}>
+                                            <p>{truncateString(matchData ? matchData.info.participants[1].riotIdGameName : "", 7)}</p>
+                                    </Link>
+                                </p>
                             </div>
                             <div className="playerThree">
-                                <img src="https://localhost/champion/Aatrox.png" alt="player3"></img>
-                                <p>player 3</p>
+                                <img src={`https://localhost/champion/${matchData ? matchData.info.participants[2].championName: ""}.png`}alt="player3"></img>
+                                <p>
+                                    <Link
+                                        to={`/Player/${region}/${matchData ? matchData.info.participants[2].riotIdGameName :"" }/${matchData ? matchData.info.participants[2].riotIdTagline :"" }`}>
+                                            <p>{truncateString(matchData ? matchData.info.participants[2].riotIdGameName : "", 7)}</p>
+                                    </Link></p>
                             </div>
                             <div className="playerFour">
-                                <img src="https://localhost/champion/Aatrox.png" alt="player4"></img>
-                                <p>player 4</p>
+                                <img src={`https://localhost/champion/${matchData ? matchData.info.participants[3].championName: ""}.png`}alt="player4"></img>
+                                <p>
+                                    <Link
+                                        to={`/Player/${region}/${matchData ? matchData.info.participants[3].riotIdGameName :"" }/${matchData ? matchData.info.participants[3].riotIdTagline :"" }`}>
+                                            <p>{truncateString(matchData ? matchData.info.participants[3].riotIdGameName : "", 7)}</p>
+                                    </Link></p>
                             </div>
                             <div className="playerFive">
-                                <img src="https://localhost/champion/Aatrox.png" alt="player5"></img>
-                                <p>player 5</p>
+                                <img src={`https://localhost/champion/${matchData ? matchData.info.participants[4].championName: ""}.png`}alt="player5"></img>
+                                <p>
+                                    <Link
+                                        to={`/Player/${region}/${matchData ? matchData.info.participants[4].riotIdGameName :"" }/${matchData ? matchData.info.participants[4].riotIdTagline :"" }`}>
+                                            <p>{truncateString(matchData ? matchData.info.participants[4].riotIdGameName : "", 7)}</p>
+                                    </Link></p>
                             </div>
                         </div>
                         <div className="lastFive">
                             <div className="playerSix">
-                                <img src="https://localhost/champion/Aatrox.png" alt="player6"></img>
-                                <p>player 6</p>
+                                <img src={`https://localhost/champion/${matchData ? matchData.info.participants[5].championName: ""}.png`}alt="player6"></img>
+                                <p>
+                                    <Link
+                                        to={`/Player/${region}/${matchData ? matchData.info.participants[5].riotIdGameName :"" }/${matchData ? matchData.info.participants[5].riotIdTagline :"" }`}>
+                                            <p>{truncateString(matchData ? matchData.info.participants[5].riotIdGameName : "", 7)}</p>
+                                    </Link></p>
                             </div>
                             <div className="playerSeven">
-                                <img src="https://localhost/champion/Aatrox.png" alt="player7"></img>
-                                <p>player 7</p>
+                                <img src={`https://localhost/champion/${matchData ? matchData.info.participants[6].championName: ""}.png`} alt="player7"></img>
+                                <p>
+                                    <Link
+                                        to={`/Player/${region}/${matchData ? matchData.info.participants[6].riotIdGameName :"" }/${matchData ? matchData.info.participants[6].riotIdTagline :"" }`}>
+                                            <p>{truncateString(matchData ? matchData.info.participants[6].riotIdGameName : "", 7)}</p>
+                                    </Link></p>
                             </div>
                             <div className="playerEight">
-                                <img src="https://localhost/champion/Aatrox.png" alt="player8"></img>
-                                <p>player 8</p>
+                                <img src={`https://localhost/champion/${matchData ? matchData.info.participants[7].championName: ""}.png`} alt="player8"></img>
+                                <p>
+                                    <Link
+                                        to={`/Player/${region}/${matchData ? matchData.info.participants[7].riotIdGameName :"" }/${matchData ? matchData.info.participants[7].riotIdTagline :"" }`}>
+                                            <p>{truncateString(matchData ? matchData.info.participants[7].riotIdGameName : "", 7)}</p>
+                                    </Link></p>
                             </div>
                             <div className="playerNine">
-                                <img src="https://localhost/champion/Aatrox.png" alt="player9"></img>
-                                <p>player 9</p>
+                                <img src={`https://localhost/champion/${matchData ? matchData.info.participants[8].championName: ""}.png`} alt="player9"></img>
+                                <p>
+                                    <Link
+                                        to={`/Player/${region}/${matchData ? matchData.info.participants[8].riotIdGameName :"" }/${matchData ? matchData.info.participants[8].riotIdTagline :"" }`}>
+                                            <p>{truncateString(matchData ? matchData.info.participants[8].riotIdGameName : "", 7)}</p>
+                                    </Link></p>
                             </div>
                             <div className="playerTen">
-                                <img src="https://localhost/champion/Aatrox.png" alt="player10"></img>
-                                <p>player 10</p>
+                                <img src={`https://localhost/champion/${matchData ? matchData.info.participants[9].championName: ""}.png`} alt="player10"></img>
+                                <p>
+                                    <Link
+                                        to={`/Player/${region}/${matchData ? matchData.info.participants[9].riotIdGameName :"" }/${matchData ? matchData.info.participants[9].riotIdTagline :"" }`}>
+                                            <p>{truncateString(matchData ? matchData.info.participants[9].riotIdGameName : "", 7)}</p>
+                                    </Link>
+                                </p>
                             </div>
                         </div>
                     </div>

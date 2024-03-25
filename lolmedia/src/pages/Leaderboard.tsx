@@ -63,8 +63,15 @@ const Leaderboardpage: React.FC = () => {
             <select className="dropLead" name="server" id="serverlist" value={server} onChange={handleServerChange}>
               <option value="euw1">EUW</option>
               <option value="na1">NA</option>
-              <option value="eune1">EUNE</option>
+              <option value="eun1">EUNE</option>
               <option value="kr">KR</option>
+              <option value="jp1">JP</option>
+              <option value="br1">BR</option>
+              <option value="la1">LAN</option>
+              <option value="la2">LAS</option>
+              <option value="oc1">OCE</option>
+              <option value="ru">RU</option>
+              <option value="tr1">TR</option>
             </select>
           </div>
           <br />

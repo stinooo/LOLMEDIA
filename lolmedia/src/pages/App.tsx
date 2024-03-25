@@ -24,7 +24,6 @@ function App() {
                   <p>Search User:</p>
                   <br></br>
                   <SearchBar/>
-                  <div>searchResult</div>
               </div>
           </div>
     </div>

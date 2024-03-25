@@ -3,6 +3,10 @@ import "./Masterycomp.css";
 import championNameKeyMap from "../playmast/ChampIDtoChampName/champion_name_key_map.json"
 
 export const Masterycomp = ({ mastery }) => {
+
+
+
+
     const championId = mastery.championId;
     const championName = championNameKeyMap[championId];
 
