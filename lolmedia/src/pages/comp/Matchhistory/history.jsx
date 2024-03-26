@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import "./history.css";
 
 
-export const History = ({ MatchID ,region, tag, name }) => {
+export const History = ({ MatchID ,region, Puuid}) => {
     const [errorMessage, setErrorMessage] = useState("");
     const [matchData, setMatchData] = useState(null);
 
@@ -33,11 +33,48 @@ export const History = ({ MatchID ,region, tag, name }) => {
                 setMatchData(null);
             });
     };
-    const data = name + "#" + tag;
-    const truncateString = (str, maxLen) => {
-        return str.length > maxLen ? str.substring(0, maxLen) + "..." : str;
-    };
 
+    const truncateString = (str, maxLen) => {
+        return str.length > maxLen ? str.substring(0, maxLen) + ".." : str;
+    };
+    let x = -1;
+
+    switch (Puuid) {
+        case matchData?.metadata.participants[0]:
+            x = 0;
+            break;
+        case matchData?.metadata.participants[1]:
+            x = 1;
+            break;
+        case matchData?.metadata.participants[2]:
+            x = 2;
+            break;
+        case matchData?.metadata.participants[3]:
+            x = 3;
+            break;
+        case matchData?.metadata.participants[4]:
+            x = 4;
+            break;
+        case matchData?.metadata.participants[5]:
+            x = 5;
+            break;
+        case matchData?.metadata.participants[6]:
+            x = 6;
+            break;
+        case matchData?.metadata.participants[7]:
+            x = 7;
+            break;
+        case matchData?.metadata.participants[8]:
+            x = 8;
+            break;
+        case matchData?.metadata.participants[9]:
+            x = 9;
+            break;
+        default:
+            x = -1; 
+            break;
+    }
+    
     return (
         <div className="historyMain">
             {errorMessage && <div className="error-message">{errorMessage}</div>}
@@ -52,7 +89,7 @@ export const History = ({ MatchID ,region, tag, name }) => {
                             </div>
                         </div>
                         <div className="iconSpells">
-                            <img className="characterIcon" src="https://localhost/champion/Aatrox.png" alt="champIcon" />
+                            <img className="characterIcon" src={`https://localhost/champion/${matchData ? matchData.info.participants[x].championName: ""}.png`} alt="champIcon" />
                             <div className="spells">
                                 <img src="https://localhost/Spels/SummonerFlash.png" alt="spell1" />
                                 <img src="https://localhost/Spels/SummonerHaste.png" alt="spell2" />
@@ -62,7 +99,7 @@ export const History = ({ MatchID ,region, tag, name }) => {
                                 <p>2.0 KDA</p>
                                 <p>120 CS</p>
                             </div>
-                        </div>
+                        </div> 
                         <div className="playerItems">
                             <img src="https://localhost/item/3031.png" alt="item1" />
                             <img src="https://localhost/item/3031.png" alt="item2" />

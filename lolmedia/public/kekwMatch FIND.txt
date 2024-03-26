@@ -1,6 +1,8 @@
 {"riotIdGameName": "bot is sus",
 "riotIdTagline": "EUW"}
 
+<img src={`https://localhost/item/${matchData ? matchData.info.participants[x].items: ""}.png`} alt={matchData ? matchData.info.participants[x].items: ""} />
+
 {
   "metadata": {
     "dataVersion": "2",

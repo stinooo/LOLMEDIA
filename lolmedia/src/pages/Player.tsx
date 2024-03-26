@@ -63,7 +63,7 @@ function Player() {
                     <Mastery puuid={playerData ? playerData[2]["puuid"] : "notfound"} region={server} tag={tag} name={name} />
                 </div>
                 <div className="history">
-                    <History MatchID={playerData ? playerData[3][0] : "not found"} region={server} name={name} tag={tag} />
+                    <History MatchID={playerData ? playerData[3][0] : "not found"} region={server} Puuid={playerData ? playerData[2]["puuid"] : "notfound"} />
                 </div>
                 <div className="playerInfo">
                     <div className="iconlevel">
