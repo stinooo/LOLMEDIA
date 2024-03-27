@@ -198,7 +198,7 @@ async def getTop3Mastary(puuid : str, region : str):
         return {"success" : "false"}
     
     # Fetch puuid
-    Mastery = requests.get("https://euw1.api.riotgames.com/lol/champion-mastery/v4/champion-masteries/by-puuid/" + puuid + "/top?count=3&api_key=" + API_KEY)
+    Mastery = requests.get("https://" + region +".api.riotgames.com/lol/champion-mastery/v4/champion-masteries/by-puuid/" + puuid + "/top?count=3&api_key=" + API_KEY)
     if not Mastery.status_code == 200:
         return {"success" : "false"}
     Mastery_data = Mastery.json()
@@ -219,7 +219,7 @@ async def getMasteryChampions(name : str, tag :str, region : str):
         return {"success" : "false"}
     puuid_data = puuidRQ.json()
     # Fetch data
-    Mastery = requests.get("https://euw1.api.riotgames.com/lol/champion-mastery/v4/champion-masteries/by-puuid/" + puuid_data["puuid"] + "?api_key=" + API_KEY)
+    Mastery = requests.get("https://" + region +".api.riotgames.com/lol/champion-mastery/v4/champion-masteries/by-puuid/" + puuid_data["puuid"] + "?api_key=" + API_KEY)
     if not Mastery.status_code == 200:
         return {"success" : "false"}
     Mastery_data = Mastery.json()
