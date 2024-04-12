@@ -6,7 +6,6 @@ import "./history.css";
 export const History = ({ MatchID ,region, Puuid}) => {
     const [errorMessage, setErrorMessage] = useState("");
     const [matchData, setMatchData] = useState(null);
-
     useEffect(() => {
         fetchData(MatchID);
     }, [MatchID]);
@@ -74,7 +73,42 @@ export const History = ({ MatchID ,region, Puuid}) => {
             x = -1; 
             break;
     }
-    
+    const gameDurationSeconds = matchData ? matchData.info.gameDuration: "";
+    const minutes = Math.floor(gameDurationSeconds / 60);
+    const seconds = gameDurationSeconds % 60;
+
+    // Format minutes and seconds with leading zeros if necessary
+    const formattedMinutes = String(minutes).padStart(2, '0');
+    const formattedSeconds = String(seconds).padStart(2, '0');
+
+    // Construct the formatted string
+    const formattedDuration = `${formattedMinutes}:${formattedSeconds}`;
+
+    const currentTimestamp = Date.now();
+    const providedTimestamp = matchData ? matchData.info.gameEndTimestamp: "";
+    const difference = currentTimestamp - providedTimestamp;
+    const differenceInSeconds = difference / 1000;
+    const differenceInMinutes = differenceInSeconds / 60;
+    const differenceInHours = differenceInMinutes / 60;
+    const differenceInDays = differenceInHours / 24;
+    let timeElapsed;
+    if (differenceInDays >= 1) {
+        if (differenceInDays <= 1.5) {
+            timeElapsed = '1 day ago';
+        } else {
+            timeElapsed = `${Math.floor(differenceInDays)} days ago`;
+        }
+    } else if (differenceInHours >= 1) {
+        const hours = Math.floor(differenceInHours);
+        timeElapsed = `${hours} Hours ago`;
+    } else {
+        const minutes = Math.round(differenceInMinutes);
+        timeElapsed = `${minutes} minutes ago`;
+    }
+
+    const unKDA = matchData ? matchData.info.participants[x].challenges.kda: ""; 
+    const KDA = Math.round(unKDA * 100) / 100;
+
     return (
         <div className="historyMain">
             {errorMessage && <div className="error-message">{errorMessage}</div>}
@@ -82,10 +116,11 @@ export const History = ({ MatchID ,region, Puuid}) => {
                 <div className="history-container">
                     <div className="groupOne">
                         <div className="historyText">
-                            <p>Ranked Solo</p>
-                            <p>20:15</p>
+                            <p>{matchData ? matchData.info.gameMode: ""} </p>
+                            <p>{timeElapsed}</p>
+                            <p>  game {formattedDuration}</p>
                             <div className="winLoss">
-                                <p>Victory</p>
+                                <p>{matchData && matchData.info.participants[x].win? <p>WIN</p>: <p>Lose</p>}</p>
                             </div>
                         </div>
                         <div className="iconSpells">
@@ -95,19 +130,20 @@ export const History = ({ MatchID ,region, Puuid}) => {
                                 <img src="https://localhost/Spels/SummonerHaste.png" alt="spell2" />
                             </div>
                             <div className="playerStats">
-                                <p>1 / 1 / 1</p>
-                                <p>2.0 KDA</p>
-                                <p>120 CS</p>
+                                <p>{matchData ? matchData.info.participants[x].kills: ""} / {matchData ? matchData.info.participants[x].deaths: ""} / {matchData ? matchData.info.participants[x].assists: ""}</p>
+                                <p> {KDA} KDA</p>
+                                <p>{matchData ? matchData.info.participants[x].totalMinionsKilled: ""} CS</p>
+                                <p>{matchData ? matchData.info.participants[x].totalDamageDealtToChampions: ""} DMG</p>
                             </div>
                         </div> 
                         <div className="playerItems">
-                            <img src="https://localhost/item/3031.png" alt="item1" />
-                            <img src="https://localhost/item/3031.png" alt="item2" />
-                            <img src="https://localhost/item/3031.png" alt="item3" />
-                            <img src="https://localhost/item/3031.png" alt="item4" />
-                            <img src="https://localhost/item/3031.png" alt="item5" />
-                            <img src="https://localhost/item/3031.png" alt="item6" />
-                            <img src="https://localhost/item/3340.png" alt="ward" />
+                            <img src={`https://localhost/item/${matchData ? matchData.info.participants[x].item0: "7050"}.png`} alt="" />
+                            <img src={`https://localhost/item/${matchData ? matchData.info.participants[x].item1: "7050"}.png`} alt="" />
+                            <img src={`https://localhost/item/${matchData ? matchData.info.participants[x].item2: "7050"}.png`} alt=""/>
+                            <img src={`https://localhost/item/${matchData ? matchData.info.participants[x].item3: "7050"}.png`} alt="" />
+                            <img src={`https://localhost/item/${matchData ? matchData.info.participants[x].item4: "7050"}.png`} alt="" />
+                            <img src={`https://localhost/item/${matchData ? matchData.info.participants[x].item5: "7050"}.png`} alt="" />
+                            <img src={`https://localhost/item/${matchData ? matchData.info.participants[x].item6: "7050"}.png`} alt= ""/>
                         </div>
                     </div>
                     <div className="groupTwo">
