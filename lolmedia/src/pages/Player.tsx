@@ -3,6 +3,7 @@ import { Link, useParams } from 'react-router-dom';
 import '../css/playerpage.css';
 import { History } from "./comp/Matchhistory/history";
 import { Mastery } from "./comp/playmast/Playerpagemastery";
+import { SearchBar } from "./comp/searchbar/searchBar";
 
 function Player() {
     const { server, name, tag } = useParams();
@@ -52,6 +53,7 @@ function Player() {
                 <h1><Link className='lol-topleft' to="/">League Of Legends</Link></h1>
                 <nav>
                     <ul>
+                        <li><SearchBar /></li>
                         <li><Link to="/leaderboard">Leaderboard</Link></li>
                         <li><Link to="/Player/euw1/thomasoke/EUW">Players</Link></li>
                         <li><Link to="#">Stats</Link></li>
