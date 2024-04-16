@@ -225,6 +225,25 @@ async def getMasteryChampions(name : str, tag :str, region : str):
     Mastery_data = Mastery.json()
     return Mastery_data
 
+@app.get("/get-player-name-leaderboard")
+async def getPlayerNameLeaderboard(region : str , summonerID : str):
+    region = region.lower()
+    validRegions = ["br1","eun1","euw1","jp1","kr","la1","la2","na1","oc1","ph2","ru","sg2","th2","tr1","tw2","vn"]
+    if region not in validRegions:
+        return {"success" : "false"}
+    
+    # Fetch leaderboard data
+    leaderboardRQ = requests.get("https://" + region + ".api.riotgames.com/lol/summoner/v4/summoners/" + summonerID + "?api_key=" + API_KEY)
+    if not leaderboardRQ.status_code == 200:
+        return {"success" : "false"}
+    leaderboard_data = leaderboardRQ.json()
+    #fetch player name
+    playername = requests.get("https://europe.api.riotgames.com/riot/account/v1/accounts/by-puuid/" + leaderboard_data["puuid"] + "?api_key=" + API_KEY)
+    playername_data = playername.json()
+
+    return playername_data
+
+
 
 @app.get("/get-test")
 async def getTest(puuid : str, region : str):

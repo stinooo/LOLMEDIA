@@ -76,7 +76,7 @@ const Leaderboardpage: React.FC = () => {
           </div>
           <br />
           <div>
-            {leaderboardData.map((leader, index) => (
+            {leaderboardData.slice(0, 20).map((leader, index) => (
               <Leaderboard key={index} leader={leader} region={server} />
             ))}
           </div>
