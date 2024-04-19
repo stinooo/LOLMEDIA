@@ -120,7 +120,7 @@ export const History = ({ MatchID ,region, Puuid}) => {
                             <p>{timeElapsed}</p>
                             <p>  game {formattedDuration}</p>
                             <div className="winLoss">
-                                <p>{matchData && matchData.info.participants[x].win? <p>WIN</p>: <p>Lose</p>}</p>
+                                <p>{matchData && matchData.info.participants[x].win? <p>WIN</p>: <p>LOSS</p>}</p>
                             </div>
                         </div>
                         <div className="iconSpells">

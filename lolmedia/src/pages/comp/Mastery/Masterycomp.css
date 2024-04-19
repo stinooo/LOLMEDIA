@@ -1,8 +1,9 @@
 .mastery-comp-alg {
-  border: 1px solid #ddd;
-  border-radius: 5px;
+  border: 10px outset rgb(129, 65, 235);;
+  border-radius: 5%;
   padding: 15px;
   margin-bottom: 20px;
+  margin-right: 1.41%;
   width: fit-content;
   display: flex;
   flex-direction: column;
@@ -11,4 +12,8 @@
 
 .mastery-comp-alg img {
   border-radius: 10px;
+}
+
+.mastery-comp-alg p {
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }

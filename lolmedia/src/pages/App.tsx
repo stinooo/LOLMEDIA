@@ -7,7 +7,7 @@ function App() {
   return (
     <div>
       <div className="navbar">
-              <h1><Link className='lol-topleft' to="/">League Of Legends</Link></h1>
+              <h1><Link className='lol-topleft' to="/">LOLMedia</Link></h1>
               <nav>
                   <ul>
                     <li></li>

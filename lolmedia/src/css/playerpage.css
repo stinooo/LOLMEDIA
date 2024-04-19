@@ -1,39 +1,19 @@
-/*Navigation bar*/
-.navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 10vh;
-}
+/*Search Bar*/
 
-.navbar h1 {
-    margin: 0 40px;
-}
 
-nav ul li {
-    display: inline-block;
-    margin: 0 20px;
-}
-
-.navbar nav ul li a {
-    text-decoration: none;
-    font-size: 1.25rem;
-    padding: 5px 0;
-    border: 2px solid transparent;
-    filter: drop-shadow(2px 2px 4px transparent);
-}
-
-.navbar nav ul li a:hover {
-    transition: 0.5s;
-    color: rgb(148, 5, 148);
-}
 
 /*Player Info*/
 /*Player name, rank, icon and level*/
 
+.playerPage {
+    display: flex;
+    flex-direction: row;
+}
+
 .playerInfo {
     margin-left: 70px;
-    margin-top: -432px;
+    display: flex;
+    flex-direction: column;
 }
 
 .playerInfo p {
@@ -53,33 +33,35 @@ nav ul li {
 .playerInfo .username .tag {
     color: lightgray;
     font-size: 110%;
-    position: relative;
     margin-top: 4px;
 }
 
-.container {
+.playerInfo .IconContainer {
     display: flex;
-    position: relative;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 200px;
 }
 
 .playerInfo .icon {
-    width: 12%;
-    border-radius: 20%
+    width: 200px;
+    border-radius: 20%;
+    border: 3px solid;
+    border-color: rgb(129, 65, 235);
 }
 
 .playerInfo .level {
-    text-align: center;
-    position: absolute;
-    bottom: -6px;
-    left: 6%;
-    transform: translateX(-50%);
+    width: fit-content;
+    margin-top: -13px;
     font-size: 18px;
     color: white;
-    border-style: hidden;
     border-radius: 23%;
-    border-width: 2px;
-    background-color: rgb(69, 69, 161);
+    border: 3px solid;
+    border-color: rgb(129, 65, 235);
+    background-color: #191937;
     padding: 0px 4px;
+
 }
 
 /*Rank General*/
@@ -118,18 +100,31 @@ nav ul li {
 
 /* Mastery */
 
+.masteryHistory {
+    display: flex;
+    flex-direction: column;
+    padding: 10px 0px 10px 70px;
+}
+
 .mastery {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 20px;
 }
 
 /* Match History */
 
 .history {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
+    padding: 10px 0px 0px 0px;
+}
+
+/* Search Bar */
+
+.playerPageSearchBar input{
+    width: 30rem;
+    padding: 15px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    height: fit-content;
+    color: rgb(0, 0, 0);
 }

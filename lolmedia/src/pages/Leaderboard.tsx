@@ -47,18 +47,18 @@ const Leaderboardpage: React.FC = () => {
   return (
     <div>
       <div className="navbar">
-        <h1><Link className='lol-topleft' to="/">League Of Legends</Link></h1>
+        <h1><Link className='lol-topleft' to="/">LOLMedia</Link></h1>
         <nav>
           <ul>
             <li><Link to="/leaderboard">Leaderboard</Link></li>
-            <li><Link to="/Player/EUW1/thomaske/EUW">Players</Link></li>
+            <li><Link to="/Player/euw1/thomasoke/EUW">Players</Link></li>
             <li><Link to="#">Stats</Link></li>
           </ul>
         </nav>
       </div>
       <div className="player">
         <div className="playerContent">
-          <div className="container">
+          <div className="LeaderboardContainer">
             <h2 className="leaderboard-name">Leaderboard</h2>
             <select className="dropLead" name="server" id="serverlist" value={server} onChange={handleServerChange}>
               <option value="euw1">EUW</option>

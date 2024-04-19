@@ -24,7 +24,7 @@ export const Mastery = ({ puuid, region, tag, name }) => {
 
         fetchMasteryData();
     }, [puuid, region]);
-    const championId = masteryData[0]?.championId; 
+    const championId = masteryData[0]?.championId;
     const championName = championNameKeyMap[championId];
     const championId1 = masteryData[1]?.championId;
     const championName1 = championNameKeyMap[championId1];
@@ -41,7 +41,7 @@ export const Mastery = ({ puuid, region, tag, name }) => {
             </div>
             <div className="mastery-info">
                 <div>{championName1}</div>
-                <img src={`https://localhost/champion/${championName1}.png`} alt={championName1} />                
+                <img src={`https://localhost/champion/${championName1}.png`} alt={championName1} />
                 <p>Points: {masteryData[1]?.championPoints.toLocaleString('en-US').replace(/,/g, ' ')}</p>
             </div>
             <div className="mastery-info">
@@ -49,7 +49,9 @@ export const Mastery = ({ puuid, region, tag, name }) => {
                 <img src={`https://localhost/champion/${championName2}.png`} alt={championName2} />
                 <p>Points: {masteryData[2]?.championPoints.toLocaleString('en-US').replace(/,/g, ' ')}</p>
             </div>
-            <Link to = {`/Mastery/${region}/${name}/${tag}`} className="linkmast">See more..</Link>
+            <div>
+                <Link to={`/Mastery/${region}/${name}/${tag}`} className="linkMast">See more..</Link>
+            </div>
         </div>
     );
 };

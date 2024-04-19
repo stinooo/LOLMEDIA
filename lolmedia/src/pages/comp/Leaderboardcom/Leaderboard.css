@@ -6,12 +6,15 @@
   padding: 15px;
   margin-bottom: 20px;
   display: flex;
+}
 
+.LeaderboardContainer {
+  display: flex;
+  flex-direction: column;
 }
 
 .player-info {
   flex: 1;
- 
 }
 
 .leaderboard-info {

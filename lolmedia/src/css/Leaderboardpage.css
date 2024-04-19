@@ -1,18 +1,3 @@
-/* Navigation bar */
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  color: white;
-  padding: 0 40px;
-}
-
-.navbar nav ul li a:hover { 
-  transition: 0.5s;
-  color: #940594;
-  /* Lighter shade of purple */
-}
-
 body {
   background-attachment: fixed;
   background-size: cover;
@@ -23,16 +8,6 @@ body {
   max-width: 800px;
   margin: 0 auto;
 }
-.navbar nav ul li a {
-  text-decoration: none;
-  font-size: 1.25rem;
-  padding: 5px 0;
-  border: 2px solid transparent;
-  filter: drop-shadow(2px 2px 4px transparent);
-  color: white;
-  /* Adjust text color */
-}
-
 
 .dropLead {
   padding: 8px 12px;

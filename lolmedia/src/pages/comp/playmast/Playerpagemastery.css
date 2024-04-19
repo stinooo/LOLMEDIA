@@ -34,6 +34,7 @@
     color: white;
 }
 
-.linkmast {
+.linkMast {
     color: lightgray;
+    text-decoration: none;
 }

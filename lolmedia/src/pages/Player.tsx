@@ -50,33 +50,24 @@ function Player() {
     return (
         <div>
             <div className="navbar">
-                <h1><Link className='lol-topleft' to="/">League Of Legends</Link></h1>
+                <h1><Link className='lol-topleft' to="/">LOLMedia</Link></h1>
                 <nav>
                     <ul>
-                        <li><SearchBar /></li>
                         <li><Link to="/leaderboard">Leaderboard</Link></li>
                         <li><Link to="/Player/euw1/thomasoke/EUW">Players</Link></li>
                         <li><Link to="#">Stats</Link></li>
                     </ul>
                 </nav>
             </div>
-            <div className="player">
-                <div className="mastery">
-                    <Mastery puuid={playerData ? playerData[2]["puuid"] : "notfound"} region={server} tag={tag} name={name} />
-                </div>
-                <div className="history">
-                    <History MatchID={playerData ? playerData[3][0] : "not found"} region={server} Puuid={playerData ? playerData[2]["puuid"] : "notfound"} />
-                </div>
+            <div className="playerPage">
                 <div className="playerInfo">
-                    <div className="iconlevel">
-                        <div className="username">
-                            <p className="name">{playerData ? playerData[2]["gameName"] : "notfound"} </p>
-                            <p className="tag"> #{playerData ? playerData[2]["tagLine"] : "notfound"}</p>
-                        </div>
-                        <div className="container">
-                            <img className="icon" src={`https://localhost/profileicon/${playerData ? playerData[1]["profileIconId"] : "notfound"}.png`} alt={`icon${playerData ? playerData[1]["profileIconId"] : "notfound"}`}></img>
-                            <div className="level">{playerData ? playerData[1]["summonerLevel"] : "notfound"}</div>
-                        </div>
+                    <div className="username">
+                        <p className="name">{playerData ? playerData[2]["gameName"] : "notfound"} </p>
+                        <p className="tag"> #{playerData ? playerData[2]["tagLine"] : "notfound"}</p>
+                    </div>
+                    <div className="IconContainer">
+                        <img className="icon" src={`https://localhost/profileicon/${playerData ? playerData[1]["profileIconId"] : "notfound"}.png`} alt={`icon${playerData ? playerData[1]["profileIconId"] : "notfound"}`}></img>
+                        <div className="level">{playerData ? playerData[1]["summonerLevel"] : "notfound"}</div>
                     </div>
                     <div className="rankBackground item">
                         <p className="rankName">Ranked Solo</p>
@@ -85,7 +76,7 @@ function Player() {
                             alt="solo duo rank" />
                         <p className="rank">{playerData ? playerData[0][1]["tier"] : "unranked"} {playerData ? playerData[0][1]["rank"] : ""}</p>
                         <p className="LP">{playerData ? playerData[0][1]["leaguePoints"] : "???"} LP
-                            <br />{playerData ? playerData[0][1]["wins"] : "not found"}W /
+                            <br />{playerData ? playerData[0][1]["wins"] : "not found"}W/
                             {playerData ? playerData[0][1]["losses"] : "not found"}L {winPercentageSOLO}%</p>
                     </div>
                     <div className="rankBackground item">
@@ -95,8 +86,19 @@ function Player() {
                             alt="Flex rank" />
                         <p className="rank">{playerData ? playerData[0][0]["tier"] : "unranked"} {playerData ? playerData[0][0]["rank"] : ""}</p>
                         <p className="LP">{playerData ? playerData[0][0]["leaguePoints"] : "????"} LP
-                            <br />{playerData ? playerData[0][0]["wins"] : "not found"}W /
+                            <br />{playerData ? playerData[0][0]["wins"] : "not found"}W/
                             {playerData ? playerData[0][0]["losses"] : "not found"}L {winPercentageFLEX}%</p>
+                    </div>
+                </div>
+                <div className="masteryHistory">
+                    <div className="playerPageSearchBar">
+                        <SearchBar />
+                    </div>
+                    <div className="mastery">
+                        <Mastery puuid={playerData ? playerData[2]["puuid"] : "notfound"} region={server} tag={tag} name={name} />
+                    </div>
+                    <div className="history">
+                        <History MatchID={playerData ? playerData[3][0] : "not found"} region={server} Puuid={playerData ? playerData[2]["puuid"] : "notfound"} />
                     </div>
                 </div>
             </div>

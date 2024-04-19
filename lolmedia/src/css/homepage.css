@@ -11,13 +11,8 @@ body {
     width: 100%;
 }
 
-/* Change the background to a different color when scrolled down */
-body.scrolled {
-    background: rgb(10, 10, 50);
-    /* Adjust the color values to your preference */
-}
+/*Navigation Bar*/
 
-/*Navigation bar*/
 .navbar {
     display: flex;
     justify-content: space-between;
@@ -47,9 +42,18 @@ nav ul li {
     color: rgb(148, 5, 148);
 }
 
-/*Player Content*/
+.lol-topleft {
+    text-decoration: none;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.lol-topleft:hover  {
+    transition: 0.5s;
+    color: rgb(148, 5, 148);
+}
 
 /*Home Page*/
+
 .main {
     margin-top: 2%;
     margin-left: 3.75rem;
@@ -84,11 +88,3 @@ nav ul li {
     font-size: 1.25rem;
     margin-top: 10px;
 }
-
-.lol-lefttop {
-    margin-top: 10%;
-    margin-left: 10%;
-    float: left;
-}
-
-/*Home Page*/
