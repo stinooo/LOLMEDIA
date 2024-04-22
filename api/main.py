@@ -170,7 +170,7 @@ async def getStatsAccount(name : str, tag : str, region : str):
 
 
     #history data match keys
-    matchRQ = requests.get("https://europe.api.riotgames.com/lol/match/v5/matches/by-puuid/" + puuid_data["puuid"] + "/ids?start=0&count=10&api_key=" + API_KEY)
+    matchRQ = requests.get("https://europe.api.riotgames.com/lol/match/v5/matches/by-puuid/" + puuid_data["puuid"] + "/ids?start=0&count=100&api_key=" + API_KEY)
     if not matchRQ.status_code == 200:
         return {"success" : "false"}
     match_data = matchRQ.json()

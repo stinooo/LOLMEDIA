@@ -45,7 +45,12 @@ function Player() {
     const lossesFLEX = playerData ? playerData[0][0].losses : 0;
     const totalGamesFLEX = winsFLEX + lossesFLEX;
     const winPercentageFLEX = totalGamesFLEX > 0 ? Math.round((winsFLEX / totalGamesFLEX) * 100) : 0;
-
+    const renderHistory = () => {
+        if (!playerData) return null;
+        return playerData[3].slice(0, 20).map((matchID: any, index: number) => (
+            <History key={index} MatchID={matchID} region={server} Puuid={playerData[2]["puuid"]} />
+        ));
+    };
 
     return (
         <div>
@@ -56,6 +61,7 @@ function Player() {
                         <li><Link to="/leaderboard">Leaderboard</Link></li>
                         <li><Link to="/Player/euw1/thomasoke/EUW">Players</Link></li>
                         <li><Link to="#">Stats</Link></li>
+                        
                     </ul>
                 </nav>
             </div>
@@ -98,7 +104,7 @@ function Player() {
                         <Mastery puuid={playerData ? playerData[2]["puuid"] : "notfound"} region={server} tag={tag} name={name} />
                     </div>
                     <div className="history">
-                        <History MatchID={playerData ? playerData[3][0] : "not found"} region={server} Puuid={playerData ? playerData[2]["puuid"] : "notfound"} />
+                    {renderHistory()}
                     </div>
                 </div>
             </div>
