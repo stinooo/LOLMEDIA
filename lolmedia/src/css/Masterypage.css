@@ -9,3 +9,18 @@ body {
   flex-direction: row;
   padding: 5px;
 }
+
+.backButton {
+  margin-left: 38px;
+}
+
+.backButtonLink {
+  font-size: 25px;
+  padding: 2px;
+  text-decoration: none;
+}
+
+.backButtonLink:hover {
+  transition: 0.5s;
+  color: rgb(148, 5, 148);
+}

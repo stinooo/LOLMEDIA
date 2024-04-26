@@ -21,9 +21,10 @@ function App() {
               <img className="img2" src="../homePageImg.png" alt=""/>
               <div className="content">
                   <h1>LOLMEDIA</h1>
-                  <p>Search User:</p>
-                  <br></br>
-                  <SearchBar/>
+                  <p className='searchPlayerHome'>Search User:</p>
+                  <div className="searchBar">
+                    <SearchBar/>
+                  </div>
               </div>
           </div>
     </div>

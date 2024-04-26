@@ -8,6 +8,7 @@
     width: auto;
     display: flex;
     flex-direction: row;
+    margin-bottom: 10px;
 }
 
 /* Groups */
@@ -22,6 +23,14 @@
     display: flex;
     flex-direction: row;
     width: 290px;
+}
+
+.history-container .groupThree {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
 }
 
 /* Match History Text*/
@@ -124,3 +133,16 @@
     display: flex;
     flex-direction: row;
 }
+
+/* Match History Page Button */
+
+.arrowDown {
+    border: solid rgb(14, 72, 29);
+    border-width: 0 3px 3px 0;
+    display: inline-block;
+    padding: 3px;
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    margin-bottom: 10px;
+}
+  

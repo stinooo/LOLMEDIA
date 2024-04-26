@@ -70,15 +70,6 @@ nav ul li {
     float: right;
 }
 
-.main .content input {
-    width: 30rem;
-    padding: 15px 20px;
-    border-radius: 10px;
-    cursor: pointer;
-    height: fit-content;
-    color: rgb(0, 0, 0);
-}
-
 .main .content h2 {
     font-size: 2.8125rem;
     color: white;
@@ -87,4 +78,8 @@ nav ul li {
 .main .content p {
     font-size: 1.25rem;
     margin-top: 10px;
+}
+
+.searchPlayerHome {
+    padding: 0px 0px 10px 0px;
 }

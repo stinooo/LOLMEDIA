@@ -1,7 +1,3 @@
-/*Search Bar*/
-
-
-
 /*Player Info*/
 /*Player name, rank, icon and level*/
 
@@ -116,15 +112,4 @@
 
 .history {
     padding: 10px 0px 0px 0px;
-}
-
-/* Search Bar */
-
-.playerPageSearchBar input{
-    width: 30rem;
-    padding: 15px 20px;
-    border-radius: 10px;
-    cursor: pointer;
-    height: fit-content;
-    color: rgb(0, 0, 0);
 }
