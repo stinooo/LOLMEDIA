@@ -97,7 +97,7 @@ function Player() {
                     </div>
                 </div>
                 <div className="masteryHistory">
-                    <div className="playerPageSearchBar">
+                    <div className="searchBar">
                         <SearchBar />
                     </div>
                     <div className="mastery">

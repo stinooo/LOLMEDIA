@@ -235,6 +235,9 @@ export const History = ({ MatchID ,region, Puuid}) => {
                             </div>
                         </div>
                     </div>
+                    <div className="groupThree">
+                        <p><Link to="#"><i class="arrowDown"></i></Link></p>
+                    </div>
                 </div>
             )}
         </div>

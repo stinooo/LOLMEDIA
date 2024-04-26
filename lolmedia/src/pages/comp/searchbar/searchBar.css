@@ -45,3 +45,11 @@ input:focus {
     margin-top: 10px;
 }
 
+.searchBar input {
+    width: 30rem;
+    padding: 15px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    height: fit-content;
+    color: rgb(0, 0, 0);
+}

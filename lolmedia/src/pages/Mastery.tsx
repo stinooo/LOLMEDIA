@@ -39,6 +39,9 @@ const Masterypage: React.FC = () => {
                     </ul>
                 </nav>
             </div>
+            <div className="backButton">
+                <Link className="backButtonLink" to={`http://localhost:3000/Player/${server}/${name}/${tag}`}>&lt; Go Back</Link>
+            </div>
             <div className="Mastery">
                 {masteryData.map((mastery) => (
                     <Masterycomp mastery={mastery} />
