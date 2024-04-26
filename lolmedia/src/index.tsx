@@ -6,8 +6,8 @@ import reportWebVitals from './reportWebVitals';
 import App from './pages/App';
 import Player from './pages/Player';
 import Leaderboard from './pages/Leaderboard';
-import Temp from './pages/temp';
 import Mastery from './pages/Mastery';
+import Matchpage from './pages/Matchpage';
 
 
 import { BrowserRouter, Route, Routes } from "react-router-dom";
@@ -22,8 +22,8 @@ root.render(
           <Route path="/" element={<App />} />
           <Route path="/player/:server/:name/:tag" element={<Player />} />
           <Route path="/leaderboard" element={<Leaderboard />} />
-          <Route path="/temp/:server/:summenerID" element={<Temp />} />
           <Route path="/Mastery/:server/:name/:tag" element={<Mastery/>} />
+          <Route path="/Match/:Match" element={<Matchpage/>} />
         </Routes>
       </BrowserRouter>
   </React.StrictMode>

@@ -31,9 +31,6 @@ function Player() {
         console.log("playerData: " + playerData)
     }, [name, tag, server]);
 
-    // if (playerData) console.log(playerData[0]["leagueId"])
-    if (playerData) console.log(playerData[0][1]["leaguePoints"])
-
     //SOLOQUEUE winrate calculation
     const winsSOLO = playerData ? playerData[0][1].wins : 0;
     const lossesSOLO = playerData ? playerData[0][1].losses : 0;
@@ -47,7 +44,7 @@ function Player() {
     const winPercentageFLEX = totalGamesFLEX > 0 ? Math.round((winsFLEX / totalGamesFLEX) * 100) : 0;
     const renderHistory = () => {
         if (!playerData) return null;
-        return playerData[3].slice(0, 20).map((matchID: any, index: number) => (
+        return playerData[3].slice(0, 10).map((matchID: any, index: number) => (
             <History key={index} MatchID={matchID} region={server} Puuid={playerData[2]["puuid"]} />
         ));
     };

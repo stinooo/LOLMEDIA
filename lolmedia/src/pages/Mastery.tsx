@@ -43,6 +43,7 @@ const Masterypage: React.FC = () => {
                 {masteryData.map((mastery) => (
                     <Masterycomp mastery={mastery} />
                 ))}
+                
             </div>
         </div>
     );

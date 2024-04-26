@@ -35,44 +35,51 @@ export const History = ({ MatchID ,region, Puuid}) => {
 
     const truncateString = (str, maxLen) => {
         return str.length > maxLen ? str.substring(0, maxLen) + ".." : str;
-    };
-    let x = -1;
+    };  
 
+    let rightplayer = matchData?.metadata.participants.indexOf(Puuid);
+    console.log("rightplayer: " + rightplayer);
+
+    /*
     switch (Puuid) {
         case matchData?.metadata.participants[0]:
-            x = 0;
+            rightplayer = 0;
             break;
         case matchData?.metadata.participants[1]:
-            x = 1;
+            rightplayer = 1;
             break;
         case matchData?.metadata.participants[2]:
-            x = 2;
+            rightplayer = 2;
             break;
         case matchData?.metadata.participants[3]:
-            x = 3;
+            rightplayer = 3;
             break;
         case matchData?.metadata.participants[4]:
-            x = 4;
+            rightplayer = 4;
             break;
         case matchData?.metadata.participants[5]:
-            x = 5;
+            rightplayer = 5;
             break;
         case matchData?.metadata.participants[6]:
-            x = 6;
+            rightplayer = 6;
             break;
         case matchData?.metadata.participants[7]:
-            x = 7;
+            rightplayer = 7;
             break;
         case matchData?.metadata.participants[8]:
-            x = 8;
+            rightplayer = 8;
             break;
         case matchData?.metadata.participants[9]:
-            x = 9;
+            rightplayer = 9;
             break;
         default:
-            x = -1; 
+            rightplayer = -1;
+            console.log("Error: Player not found in match data");
+            console.log("Puuid: " + Puuid); 
             break;
     }
+    */
+
     const gameDurationSeconds = matchData ? matchData.info.gameDuration: "";
     const minutes = Math.floor(gameDurationSeconds / 60);
     const seconds = gameDurationSeconds % 60;
@@ -105,9 +112,11 @@ export const History = ({ MatchID ,region, Puuid}) => {
         const minutes = Math.round(differenceInMinutes);
         timeElapsed = `${minutes} minutes ago`;
     }
-
-    const unKDA = matchData ? matchData.info.participants[x].challenges.kda: ""; 
+    const unKDA = matchData?.info.participants[rightplayer]?.challenges.kda ?? "";
     const KDA = Math.round(unKDA * 100) / 100;
+
+    let gamemode = "Normal";
+    if(matchData ? matchData.info.gameMode: "" === "CLASSIC"){ gamemode = "Ranked";}
 
     return (
         <div className="historyMain">
@@ -116,34 +125,34 @@ export const History = ({ MatchID ,region, Puuid}) => {
                 <div className="history-container">
                     <div className="groupOne">
                         <div className="historyText">
-                            <p>{matchData ? matchData.info.gameMode: ""} </p>
+                            <p> {gamemode}</p>
                             <p>{timeElapsed}</p>
                             <p>  game {formattedDuration}</p>
                             <div className="winLoss">
-                                <p>{matchData && matchData.info.participants[x].win? <p>WIN</p>: <p>LOSS</p>}</p>
+                                <p>{matchData && matchData?.info.participants[rightplayer]?.win? <p>WIN</p>: <p>LOSS</p>}</p>
                             </div>
                         </div>
                         <div className="iconSpells">
-                            <img className="characterIcon" src={`https://localhost/champion/${matchData ? matchData.info.participants[x].championName: ""}.png`} alt="champIcon" />
+                            <img className="characterIcon" src={`https://localhost/champion/${matchData ? matchData?.info.participants[rightplayer]?.championName: ""}.png`} alt="champIcon" />
                             <div className="spells">
-                                <img src="https://localhost/Spels/SummonerFlash.png" alt="spell1" />
-                                <img src="https://localhost/Spels/SummonerHaste.png" alt="spell2" />
+                                <img src={`https://localhost/champion/${matchData ? matchData?.info.participants[rightplayer]?.summoner1Id: ""}.png`} alt="spell1" />
+                                <img src={`https://localhost/champion/${matchData ? matchData?.info.participants[rightplayer]?.summoner2Id: ""}.png`} alt="spell2" />
                             </div>
                             <div className="playerStats">
-                                <p>{matchData ? matchData.info.participants[x].kills: ""} / {matchData ? matchData.info.participants[x].deaths: ""} / {matchData ? matchData.info.participants[x].assists: ""}</p>
+                                <p>{matchData ? matchData?.info.participants[rightplayer]?.kills: ""} / {matchData ? matchData?.info.participants[rightplayer]?.deaths: ""} / {matchData ? matchData?.info.participants[rightplayer]?.assists: ""}</p>
                                 <p> {KDA} KDA</p>
-                                <p>{matchData ? matchData.info.participants[x].totalMinionsKilled: ""} CS</p>
-                                <p>{matchData ? matchData.info.participants[x].totalDamageDealtToChampions: ""} DMG</p>
+                                <p>{matchData ? matchData?.info.participants[rightplayer]?.totalMinionsKilled: ""} CS</p>
+                                <p>{matchData ? matchData?.info.participants[rightplayer]?.totalDamageDealtToChampions: ""} DMG</p>
                             </div>
                         </div> 
                         <div className="playerItems">
-                            <img src={`https://localhost/item/${matchData ? matchData.info.participants[x].item0: "7050"}.png`} alt="" />
-                            <img src={`https://localhost/item/${matchData ? matchData.info.participants[x].item1: "7050"}.png`} alt="" />
-                            <img src={`https://localhost/item/${matchData ? matchData.info.participants[x].item2: "7050"}.png`} alt=""/>
-                            <img src={`https://localhost/item/${matchData ? matchData.info.participants[x].item3: "7050"}.png`} alt="" />
-                            <img src={`https://localhost/item/${matchData ? matchData.info.participants[x].item4: "7050"}.png`} alt="" />
-                            <img src={`https://localhost/item/${matchData ? matchData.info.participants[x].item5: "7050"}.png`} alt="" />
-                            <img src={`https://localhost/item/${matchData ? matchData.info.participants[x].item6: "7050"}.png`} alt= ""/>
+                            <img src={`https://localhost/item/${matchData ? matchData?.info.participants[rightplayer]?.item0: "7050"}.png`} alt="" />
+                            <img src={`https://localhost/item/${matchData ? matchData?.info.participants[rightplayer]?.item1: "7050"}.png`} alt="" />
+                            <img src={`https://localhost/item/${matchData ? matchData?.info.participants[rightplayer]?.item2: "7050"}.png`} alt=""/>
+                            <img src={`https://localhost/item/${matchData ? matchData?.info.participants[rightplayer]?.item3: "7050"}.png`} alt="" />
+                            <img src={`https://localhost/item/${matchData ? matchData?.info.participants[rightplayer]?.item4: "7050"}.png`} alt="" />
+                            <img src={`https://localhost/item/${matchData ? matchData?.info.participants[rightplayer]?.item5: "7050"}.png`} alt="" />
+                            <img src={`https://localhost/item/${matchData ? matchData?.info.participants[rightplayer]?.item6: "7050"}.png`} alt= ""/>
                         </div>
                     </div>
                     <div className="groupTwo">
