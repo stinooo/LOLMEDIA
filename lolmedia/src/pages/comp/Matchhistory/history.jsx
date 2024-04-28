@@ -34,7 +34,7 @@ export const History = ({ MatchID ,region, Puuid , name ,tag}) => {
     };
 
     const truncateString = (str, maxLen) => {
-        return str.length > maxLen ? str.substring(0, maxLen) + ".." : str;
+        return str.length > maxLen ? str.substring(0, maxLen) + "" : str;
     };  
 
     let rightplayer = matchData?.metadata.participants.indexOf(Puuid);
