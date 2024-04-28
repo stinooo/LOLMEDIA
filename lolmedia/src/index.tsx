@@ -23,7 +23,7 @@ root.render(
           <Route path="/player/:server/:name/:tag" element={<Player />} />
           <Route path="/leaderboard" element={<Leaderboard />} />
           <Route path="/Mastery/:server/:name/:tag" element={<Mastery/>} />
-          <Route path="/Match/:Match" element={<Matchpage/>} />
+          <Route path="/Match/:MatchID/:server/:name/:tag" element={<Matchpage/>} />
         </Routes>
       </BrowserRouter>
   </React.StrictMode>

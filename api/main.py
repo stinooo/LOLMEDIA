@@ -19,6 +19,25 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+server_regions = {
+    "BR1": "americas",
+    "EUN1": "europa",
+    "EUW1": "europa",
+    "JP1": "asia",
+    "KR": "asia",
+    "LA1": "americas",
+    "LA2": "americas",
+    "NA1": "americas",
+    "OC1": "americas",
+    "PH2": "sea",
+    "RU": "europa",
+    "SG2": "sea",
+    "TH2": "sea",
+    "TR1": "europa",
+    "TW2": "sea",
+    "VN": "sea"
+}
+
 @app.get("/get-validuser")
 async def getValidUser(name : str, tag : str, region : str):
     # Check region
@@ -169,23 +188,45 @@ async def getStatsAccount(name : str, tag : str, region : str):
             ranked_data[0], ranked_data[1] = ranked_data[1], ranked_data[0]
 
 
-    #history data match keys
-    matchRQ = requests.get("https://europe.api.riotgames.com/lol/match/v5/matches/by-puuid/" + puuid_data["puuid"] + "/ids?start=0&count=100&api_key=" + API_KEY)
-    if not matchRQ.status_code == 200:
-        return {"success" : "false"}
-    match_data = matchRQ.json()
+    #history data
+    # Get the region corresponding to the server
+    server = server_regions[region.upper()]
 
-    return [ranked_data, summoner_data, puuid_data, match_data]
-#
+    # Define base URLs for each region
+    region_base_urls = {
+        "americas": "https://americas.api.riotgames.com",
+        "europa": "https://europe.api.riotgames.com",
+        "asia": "https://asia.api.riotgames.com",
+        "sea": "https://sea.api.riotgames.com"
+    }
+
+    # Construct the URL using the chosen region
+    puuid = puuid_data["puuid"]
+    base_url = region_base_urls[server]
+    match_history_url = f"{base_url}/lol/match/v5/matches/by-puuid/{puuid}/ids?start=0&count=100&api_key={API_KEY}"
+
+    # Fetch match history data
+    match_history_rq = requests.get(match_history_url)
+
+    match_history_data = match_history_rq.json()
+    return [ranked_data, summoner_data, puuid_data, match_history_data]
+
+
 @app.get("/get-match")
-async def getMatchData(MatchID : str):
-    # Check region
-   
-    matchRQ = requests.get("https://europe.api.riotgames.com/lol/match/v5/matches/" + MatchID +"?api_key=" + API_KEY)
-    if not matchRQ.status_code == 200:
-        return {"success" : "false"}
-    match_data = matchRQ.json()
+async def getMatchData(MatchID: str, region: str):
+    server= server_regions[region.upper()]
+    region_base_urls = {
+        "americas": "https://americas.api.riotgames.com",
+        "europa": "https://europe.api.riotgames.com",
+        "asia": "https://asia.api.riotgames.com",
+        "sea": "https://sea.api.riotgames.com"
+    }
+    base_url = region_base_urls[server]
+    match_url = f"{base_url}/lol/match/v5/matches/{MatchID}?api_key={API_KEY}"
 
+    match_rq = requests.get(match_url)
+
+    match_data = match_rq.json()
     return match_data
 
 

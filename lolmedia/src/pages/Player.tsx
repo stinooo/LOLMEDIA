@@ -8,7 +8,6 @@ import { SearchBar } from "./comp/searchbar/searchBar";
 function Player() {
     const { server, name, tag } = useParams();
     const [playerData, setPlayerData] = useState<any>(null);
-
     const fetchData = async () => {
         try {
             const response = await fetch(`http://127.0.0.1:7000/get-playerpage?name=${name}&tag=${tag}&region=${server}`);
@@ -45,7 +44,7 @@ function Player() {
     const renderHistory = () => {
         if (!playerData) return null;
         return playerData[3].slice(0, 10).map((matchID: any, index: number) => (
-            <History key={index} MatchID={matchID} region={server} Puuid={playerData[2]["puuid"]} />
+            <History key={index} MatchID={matchID} region={server} Puuid={playerData[2]["puuid"]} name={name} tag={tag} />
         ));
     };
 

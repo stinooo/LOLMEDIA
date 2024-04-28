@@ -105,6 +105,7 @@
 .lastFive {
     display: flex;
     flex-direction: column;
+    padding-left: 5px;
 }
 
 .history-container .firstFive img,

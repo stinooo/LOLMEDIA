@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import "./history.css";
 
 
-export const History = ({ MatchID ,region, Puuid}) => {
+export const History = ({ MatchID ,region, Puuid , name ,tag}) => {
     const [errorMessage, setErrorMessage] = useState("");
     const [matchData, setMatchData] = useState(null);
     useEffect(() => {
@@ -11,7 +11,7 @@ export const History = ({ MatchID ,region, Puuid}) => {
     }, [MatchID]);
 
     const fetchData = (MatchID ) => {
-        fetch("http://127.0.0.1:7000/get-match?MatchID=" + MatchID)
+        fetch("http://127.0.0.1:7000/get-match?MatchID=" + MatchID + "&region=" + region )
             .then((response) => {
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
@@ -39,46 +39,6 @@ export const History = ({ MatchID ,region, Puuid}) => {
 
     let rightplayer = matchData?.metadata.participants.indexOf(Puuid);
     console.log("rightplayer: " + rightplayer);
-
-    /*
-    switch (Puuid) {
-        case matchData?.metadata.participants[0]:
-            rightplayer = 0;
-            break;
-        case matchData?.metadata.participants[1]:
-            rightplayer = 1;
-            break;
-        case matchData?.metadata.participants[2]:
-            rightplayer = 2;
-            break;
-        case matchData?.metadata.participants[3]:
-            rightplayer = 3;
-            break;
-        case matchData?.metadata.participants[4]:
-            rightplayer = 4;
-            break;
-        case matchData?.metadata.participants[5]:
-            rightplayer = 5;
-            break;
-        case matchData?.metadata.participants[6]:
-            rightplayer = 6;
-            break;
-        case matchData?.metadata.participants[7]:
-            rightplayer = 7;
-            break;
-        case matchData?.metadata.participants[8]:
-            rightplayer = 8;
-            break;
-        case matchData?.metadata.participants[9]:
-            rightplayer = 9;
-            break;
-        default:
-            rightplayer = -1;
-            console.log("Error: Player not found in match data");
-            console.log("Puuid: " + Puuid); 
-            break;
-    }
-    */
 
     const gameDurationSeconds = matchData ? matchData.info.gameDuration: "";
     const minutes = Math.floor(gameDurationSeconds / 60);
@@ -245,7 +205,7 @@ export const History = ({ MatchID ,region, Puuid}) => {
                         </div>
                     </div>
                     <div className="groupThree">
-                        <p><Link to="#"><i class="arrowDown"></i></Link></p>
+                        <p><Link to={`http://localhost:3000/Match/${MatchID}/${region}/${name}/${tag}`}><i class="arrowDown"></i></Link></p>
                     </div>
                 </div>
             )}
