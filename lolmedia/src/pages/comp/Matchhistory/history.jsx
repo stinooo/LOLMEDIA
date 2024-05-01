@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./history.css";
-
+import gameModesData from '../../../all json/queues1.json';
+import summmonerSpells from '../../../all json/summoner.json';
 
 export const History = ({ MatchID ,region, Puuid , name ,tag}) => {
     const [errorMessage, setErrorMessage] = useState("");
@@ -75,8 +76,8 @@ export const History = ({ MatchID ,region, Puuid , name ,tag}) => {
     const unKDA = matchData?.info.participants[rightplayer]?.challenges.kda ?? "";
     const KDA = Math.round(unKDA * 100) / 100;
 
-    let gamemode = "Normal";
-    if(matchData ? matchData.info.gameMode: "" === "CLASSIC"){ gamemode = "Ranked";}
+    let gamemode = matchData ? matchData.info.queueId: "";
+    const gamemodeInfo = gamemode !== "" ? gameModesData[gamemode] : null;
 
     return (
         <div className="historyMain">
@@ -85,18 +86,15 @@ export const History = ({ MatchID ,region, Puuid , name ,tag}) => {
                 <div className="history-container">
                     <div className="groupOne">
                         <div className="historyText">
-                            <p> {gamemode}</p>
+                            <p>{gamemodeInfo ? gamemodeInfo.name : "Unknown Game Mode"}</p>
                             <p>{timeElapsed}</p>
                             <p>  game {formattedDuration}</p>
-                            <div className="winLoss">
-                                <p>{matchData && matchData?.info.participants[rightplayer]?.win? <p>WIN</p>: <p>LOSS</p>}</p>
-                            </div>
                         </div>
                         <div className="iconSpells">
                             <img className="characterIcon" src={`https://localhost/champion/${matchData ? matchData?.info.participants[rightplayer]?.championName: ""}.png`} alt="champIcon" />
                             <div className="spells">
-                                <img src={`https://localhost/champion/${matchData ? matchData?.info.participants[rightplayer]?.summoner1Id: ""}.png`} alt="spell1" />
-                                <img src={`https://localhost/champion/${matchData ? matchData?.info.participants[rightplayer]?.summoner2Id: ""}.png`} alt="spell2" />
+                                <img src={`https://localhost/Spels/${matchData ? matchData?.info.participants[rightplayer]?.summoner1Id: ""}.png`} alt="" />
+                                <img src={`https://localhost/Spels/${matchData ? matchData?.info.participants[rightplayer]?.summoner2Id: ""}.png`} alt="" />
                             </div>
                             <div className="playerStats">
                                 <p>{matchData ? matchData?.info.participants[rightplayer]?.kills: ""} / {matchData ? matchData?.info.participants[rightplayer]?.deaths: ""} / {matchData ? matchData?.info.participants[rightplayer]?.assists: ""}</p>

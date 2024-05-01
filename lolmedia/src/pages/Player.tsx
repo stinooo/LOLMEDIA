@@ -8,6 +8,9 @@ import { SearchBar } from "./comp/searchbar/searchBar";
 function Player() {
     const { server, name, tag } = useParams();
     const [playerData, setPlayerData] = useState<any>(null);
+    const [displayedMatches, setDisplayedMatches] = useState<number>(10);
+    const matchesToLoad = 5;
+
     const fetchData = async () => {
         try {
             const response = await fetch(`http://127.0.0.1:7000/get-playerpage?name=${name}&tag=${tag}&region=${server}`);
@@ -19,8 +22,6 @@ function Player() {
                 setPlayerData(data);
             }
             console.log("UseEffect done");
-            console.log(data);
-
         } catch (error) {
             console.error('There was a problem with the fetch operation:', error);
         }
@@ -43,9 +44,12 @@ function Player() {
     const winPercentageFLEX = totalGamesFLEX > 0 ? Math.round((winsFLEX / totalGamesFLEX) * 100) : 0;
     const renderHistory = () => {
         if (!playerData) return null;
-        return playerData[3].slice(0, 10).map((matchID: any, index: number) => (
+        return playerData[3].slice(0, displayedMatches).map((matchID: any, index: number) => (
             <History key={index} MatchID={matchID} region={server} Puuid={playerData[2]["puuid"]} name={name} tag={tag} />
         ));
+    };
+    const loadMoreMatches = () => {
+        setDisplayedMatches(prev => prev + matchesToLoad);
     };
 
     return (
@@ -100,7 +104,8 @@ function Player() {
                         <Mastery puuid={playerData ? playerData[2]["puuid"] : "notfound"} region={server} tag={tag} name={name} />
                     </div>
                     <div className="history">
-                    {renderHistory()}
+                        {renderHistory()}
+                        <button onClick={loadMoreMatches}>Load More Matches</button>
                     </div>
                 </div>
             </div>
