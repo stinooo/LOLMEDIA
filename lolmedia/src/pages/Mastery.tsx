@@ -17,8 +17,6 @@ const Masterypage: React.FC = () => {
 
                 const data = await response.json();
                 setMasteryData(data);
-                console.log(data);
-
             } catch (error) {
                 console.error('There was a problem with the fetch operation:', error);
             }

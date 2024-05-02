@@ -21,14 +21,12 @@ function Player() {
             if (!data["success"]) {
                 setPlayerData(data);
             }
-            console.log("UseEffect done");
         } catch (error) {
             console.error('There was a problem with the fetch operation:', error);
         }
     };
     useEffect(() => {
         fetchData();
-        console.log("playerData: " + playerData)
     }, [name, tag, server]);
 
     //SOLOQUEUE winrate calculation

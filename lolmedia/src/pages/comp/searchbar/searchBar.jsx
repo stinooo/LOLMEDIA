@@ -25,7 +25,7 @@ export const SearchBar = () => {
                 if (json.success === "false") {
                     setErrorMessage("Player not found"); // Set error message if player is not found
                 } else {
-                    console.log(json); // Log the response if player is found
+                    
                     window.location.href = "http://localhost:3000/Player/"+ server+"/"+name+"/"+tag;
                 }
             })

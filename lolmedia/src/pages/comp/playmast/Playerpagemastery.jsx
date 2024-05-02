@@ -15,7 +15,6 @@ export const Mastery = ({ puuid, region, tag, name }) => {
                     throw new Error("Network response was not ok");
                 }
                 const data = await response.json();
-                console.log(data);
                 setMasteryData(data);
             } catch (error) {
                 console.error("Error fetching mastery data:", error);

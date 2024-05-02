@@ -5,28 +5,83 @@ import { Matchcomp } from './comp/Match/Matchcomp';
 
 const Matchpage: React.FC = () => {
     const { MatchID, server, name, tag } = useParams();
-    const [MatchData, setMatchData] = useState<any>(null); // Change the state type to match the data structure
+    const [matchData, setmatchData] = useState<any>(null);
+    const [matchhistory, setmatchhistory] = useState<any>(null);
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch(`http://127.0.0.1:7000/get-match?MatchID=${MatchID}&region=${server}`);
-                if (!response.ok) {
+                // First API call
+                const matchResponse = await fetch(`http://127.0.0.1:7000/get-match?MatchID=${MatchID}&region=${server}`);
+                if (!matchResponse.ok) {
                     throw new Error('Network response was not ok');
                 }
-
-                const data = await response.json();
-                setMatchData(data);
-                console.log(data);
-
+                const matchData = await matchResponse.json();
+                setmatchData(matchData);
+    
+                // Second API call
+                const matchhistoryResponse = await fetch(`http://127.0.0.1:7000/get-history?name=${name}&tag=${tag}&region=${server}`);
+                if (!matchhistoryResponse.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                const matchhistory = await matchhistoryResponse.json();
+                setmatchhistory(matchhistory);
             } catch (error) {
                 console.error('There was a problem with the fetch operation:', error);
             }
         };
-
+    
         fetchData();
+    }, [MatchID, server, name, tag]);
 
-    }, [MatchID, server]); // Only include MatchID and region in the dependency array
+    const repeatArray = Array.from({ length: 10 });
+
+    //GAMEINFO
+    const gameDurationSeconds = matchData ? matchData.info.gameDuration: "";
+    const minutes = Math.floor(gameDurationSeconds / 60);
+    const seconds = gameDurationSeconds % 60;
+    
+        // Format minutes and seconds with leading zeros if necessary
+    const formattedMinutes = String(minutes).padStart(2, '0');
+    const formattedSeconds = String(seconds).padStart(2, '0');
+    
+        // Construct the formatted string
+    const formattedDuration = `${formattedMinutes}:${formattedSeconds}`;
+    
+    const currentTimestamp = Date.now();
+    const providedTimestamp = matchData ? matchData.info.gameEndTimestamp: "";
+    const difference = currentTimestamp - providedTimestamp;
+    const differenceInSeconds = difference / 1000;
+    const differenceInMinutes = differenceInSeconds / 60;
+    const differenceInHours = differenceInMinutes / 60;
+    const differenceInDays = differenceInHours / 24;
+    let timeElapsed;
+    if (differenceInDays >= 1) {
+        if (differenceInDays <= 1.5) {
+            timeElapsed = '1 day ago';
+        } else {
+            timeElapsed = `${Math.floor(differenceInDays)} days ago`;
+        }
+    } else if (differenceInHours >= 1) {
+        const hours = Math.floor(differenceInHours);
+        timeElapsed = `${hours} Hours ago`;
+    } else {
+        const minutes = Math.round(differenceInMinutes);
+        timeElapsed = `${minutes} minutes ago`;
+    }
+    const gameCreationTimestamp = matchData ? matchData.info.gameCreation: "" // Assuming 0 if matchData is not available
+    const gameStartDate = new Date(gameCreationTimestamp);
+
+// Format the date and time
+    const gameDate = gameStartDate.toLocaleDateString(); // Format: MM/DD/YYYY
+    const gameTime = gameStartDate.toLocaleTimeString(); // Format: HH:MM:SS
+
+    let matchcounter = matchhistory?.indexOf(MatchID);        
+    const nextmatch = matchhistory ? matchhistory[matchcounter + 1] : "";
+    let previousmatch = matchhistory ? matchhistory[matchcounter - 1] : "";
+    if (matchcounter === 0) {
+        previousmatch = matchhistory ? matchhistory[matchcounter] : "";
+    }
 
     return (
         <div>
@@ -40,9 +95,33 @@ const Matchpage: React.FC = () => {
                     </ul>
                 </nav>
             </div>
+            <div className="match-header">
+                <h1></h1>
+                <h1>
+                    {gameDate} <br />
+                    {gameTime}
+                </h1>
+                <Link to={`http://localhost:3000/Match/${previousmatch}/${server}/${name}/${tag}`}>early match</Link>
+                <br />
+                <Link to={`http://localhost:3000/Match/${nextmatch}/${server}/${name}/${tag}`}>later match</Link>
 
+                <p>drakes killed link{matchData ? matchData.info.teams[0].objectives.dragon?.kills: ""}</p>
+                <p>drakes killed rechts{matchData ? matchData.info.teams[1].objectives.dragon?.kills: ""}</p>
+                <p>barons killed link{matchData ? matchData.info.teams[0].objectives.baron?.kills: ""}</p>
+                <p>barons killed rechts{matchData ? matchData.info.teams[1].objectives.baron?.kills: ""}</p>
+                <p>towers destroyed link{matchData ? matchData.info.teams[0].objectives.tower?.kills: ""}</p>
+                <p>towers destroyed rechts{matchData ? matchData.info.teams[1].objectives.tower?.kills: ""}</p>
+                <p>Team 1(Links){matchData && matchData.info.participants[0].win? <p>WIN</p>: <p>Lose</p>}</p>
+                <p>Team 2(rechts){matchData && matchData.info.participants[9].win? <p>WIN</p>: <p>Lose</p>}</p>
+                <Link to={`/Player/${server}/${name}/${tag}`}>BACKbutton</Link>
+                <h2>Server: {server}</h2>
+                <p>Duration {formattedDuration}</p>
+                <p>timeElapsed {timeElapsed}</p>
+            </div>
             <div className="match-details">
-               
+                {repeatArray.map((_, index) => (
+                 <Matchcomp index={index} matchData={matchData} />
+                 ))}
             </div>
         </div>
     );

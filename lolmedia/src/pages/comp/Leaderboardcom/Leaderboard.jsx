@@ -24,7 +24,6 @@ export const Leaderboard = ({ leader, region }) => {
           setData(null);
         } else {
           setData(json);
-          console.log(json);
         }
       })
       .catch((error) => {

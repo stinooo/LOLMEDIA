@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./history.css";
 import gameModesData from '../../../all json/queues1.json';
-import summmonerSpells from '../../../all json/summoner.json';
+
 
 export const History = ({ MatchID ,region, Puuid , name ,tag}) => {
     const [errorMessage, setErrorMessage] = useState("");
@@ -39,7 +39,7 @@ export const History = ({ MatchID ,region, Puuid , name ,tag}) => {
     };  
 
     let rightplayer = matchData?.metadata.participants.indexOf(Puuid);
-    console.log("rightplayer: " + rightplayer);
+
 
     const gameDurationSeconds = matchData ? matchData.info.gameDuration: "";
     const minutes = Math.floor(gameDurationSeconds / 60);

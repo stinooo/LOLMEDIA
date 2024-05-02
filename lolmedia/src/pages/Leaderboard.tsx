@@ -32,7 +32,6 @@ const Leaderboardpage: React.FC = () => {
         }
         const data: LeaderData[] = await response.json();
         setLeaderboardData(data);
-        console.log(data);
       } catch (error) {
         console.error('There was a problem with the fetch operation:', error);
       }

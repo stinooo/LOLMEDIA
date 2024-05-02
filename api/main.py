@@ -284,6 +284,42 @@ async def getPlayerNameLeaderboard(region : str , summonerID : str):
 
     return playername_data
 
+@app.get("/get-history")
+async def getHistory(name : str, tag :str, region : str):
+    # Check region
+    region = region.lower()
+    validRegions = ["br1","eun1","euw1","jp1","kr","la1","la2","na1","oc1","ph2","ru","sg2","th2","tr1","tw2","vn"]
+    if region not in validRegions:
+        return {"success" : "false"}
+    
+    # Fetch puuid
+    puuidRQ = requests.get("https://europe.api.riotgames.com/riot/account/v1/accounts/by-riot-id/"
+                           + name + "/" + tag + "?api_key=" + API_KEY)
+    if not puuidRQ.status_code == 200:
+        raise HTTPException(status_code=puuidRQ.status_code)
+    puuid_data = puuidRQ.json()
+
+    # Get the region corresponding to the server
+    server = server_regions[region.upper()]
+
+    # Define base URLs for each region
+    region_base_urls = {
+        "americas": "https://americas.api.riotgames.com",
+        "europa": "https://europe.api.riotgames.com",
+        "asia": "https://asia.api.riotgames.com",
+        "sea": "https://sea.api.riotgames.com"
+    }
+
+    # Construct the URL using the chosen region
+    base_url = region_base_urls[server]
+    match_history_url = base_url + "/lol/match/v5/matches/by-puuid/" + puuid_data["puuid"] + "/ids?start=0&count=100&api_key=" + API_KEY
+
+    # Fetch match history data
+    match_history_rq = requests.get(match_history_url)
+
+    match_history_data = match_history_rq.json()
+    return match_history_data
+
 
 
 @app.get("/get-test")
