@@ -98,8 +98,8 @@ const Matchpage: React.FC = () => {
             <div className="matchPage">
                 <div className="backButtonMatch">
                     <Link className="backButtonLink" to={`/Player/${server}/${name}/${tag}`}>&lt; Go Back</Link>
-                    <Link className="backButtonLink" to={`http://localhost:3000/Match/${previousmatch}/${server}/${name}/${tag}`}>early match</Link>
-                    <Link className="backButtonLink" to={`http://localhost:3000/Match/${nextmatch}/${server}/${name}/${tag}`}>later match</Link>
+                    <Link className="backButtonLink" to={`http://localhost:3000/Match/${previousmatch}/${server}/${name}/${tag}`}>previous match</Link>
+                    <Link className="backButtonLink" to={`http://localhost:3000/Match/${nextmatch}/${server}/${name}/${tag}`}>next match</Link>
                 </div>
                 <div className="matchStart">
                     <div className="matchHeader">
@@ -123,13 +123,14 @@ const Matchpage: React.FC = () => {
                             <p>{matchData && matchData.info.participants[9].win ? <p>WIN</p> : <p>Lose</p>}</p>
                         </div>
                     </div>
+                    <div className="playerDataMatch">
+                        <div className="match-details">
+                            {repeatArray.map((_, index) => (
+                                <Matchcomp index={index} matchData={matchData} server={server} tag={tag} name={name} />
+                            ))}
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div className="test">test</div>
-            <div className="match-details">
-                {repeatArray.map((_, index) => (
-                    <Matchcomp index={index} matchData={matchData} server={server} tag={tag} name={name} />
-                ))}
             </div>
         </div>
     );

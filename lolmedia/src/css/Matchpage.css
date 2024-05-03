@@ -14,6 +14,7 @@
 .matchStart {
   display: flex;
   justify-content: center;
+  flex-direction: column;
 }
 
 .matchHeader {
@@ -47,7 +48,10 @@
   width: 200px;
 }
 
-.test {
+/* Player Match Data */
+
+.playerDataMatch {
   display: flex;
+  margin-left: 150px;
   flex-direction: column;
 }
