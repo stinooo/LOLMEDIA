@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link, useParams } from 'react-router-dom';
 import "../css/Matchpage.css";
 import { Matchcomp } from './comp/Match/Matchcomp';
+import { BarChart } from '@mui/x-charts/BarChart';
 
 const Matchpage: React.FC = () => {
     const { MatchID, server, name, tag } = useParams();
@@ -18,6 +19,7 @@ const Matchpage: React.FC = () => {
                 }
                 const matchData = await matchResponse.json();
                 setmatchData(matchData);
+                console.log(MatchID);
 
                 // Second API call
                 const matchhistoryResponse = await fetch(`http://127.0.0.1:7000/get-history?name=${name}&tag=${tag}&region=${server}`);
@@ -131,6 +133,20 @@ const Matchpage: React.FC = () => {
                     <Matchcomp index={index} matchData={matchData} server={server} tag={tag} name={name} />
                 ))}
             </div>
+            <div>
+            <BarChart
+        className="Chart-damage"
+        series={[
+        { data: [matchData?.info.participants[0]?.totalDamageDealtToChampions] },
+        { data: [matchData?.info.participants[1]?.totalDamageDealtToChampions] }
+                ]}
+        height={290}
+        xAxis={[
+          { data: ['Participant 1', 'Participant 2'], scaleType: 'band' } // Adjust labels as needed
+        ]}
+        margin={{ top: 10, bottom: 30, left: 40, right: 10 }}
+      />
+    </div>
         </div>
     );
 }
