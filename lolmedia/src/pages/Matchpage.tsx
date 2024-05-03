@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { Link, useParams } from 'react-router-dom';
-import "../css/Matchpage.css";
+
 import { Matchcomp } from './comp/Match/Matchcomp';
 import { BarChart } from '@mui/x-charts/BarChart';
+import "../css/Matchpage.css";
 
 const Matchpage: React.FC = () => {
     const { MatchID, server, name, tag } = useParams();
@@ -12,7 +13,6 @@ const Matchpage: React.FC = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                // First API call
                 const matchResponse = await fetch(`http://127.0.0.1:7000/get-match?MatchID=${MatchID}&region=${server}`);
                 if (!matchResponse.ok) {
                     throw new Error('Network response was not ok');
@@ -21,7 +21,6 @@ const Matchpage: React.FC = () => {
                 setmatchData(matchData);
                 console.log(MatchID);
 
-                // Second API call
                 const matchhistoryResponse = await fetch(`http://127.0.0.1:7000/get-history?name=${name}&tag=${tag}&region=${server}`);
                 if (!matchhistoryResponse.ok) {
                     throw new Error('Network response was not ok');
@@ -43,11 +42,9 @@ const Matchpage: React.FC = () => {
     const minutes = Math.floor(gameDurationSeconds / 60);
     const seconds = gameDurationSeconds % 60;
 
-    // Format minutes and seconds with leading zeros if necessary
     const formattedMinutes = String(minutes).padStart(2, '0');
     const formattedSeconds = String(seconds).padStart(2, '0');
 
-    // Construct the formatted string
     const formattedDuration = `${formattedMinutes}:${formattedSeconds}`;
 
     const currentTimestamp = Date.now();
@@ -84,6 +81,7 @@ const Matchpage: React.FC = () => {
     if (matchcounter === 0) {
         previousmatch = matchhistory ? matchhistory[matchcounter] : "";
     }
+    
 
     return (
         <div>
@@ -133,19 +131,35 @@ const Matchpage: React.FC = () => {
                     <Matchcomp index={index} matchData={matchData} server={server} tag={tag} name={name} />
                 ))}
             </div>
-            <div>
+            <div className="chart">
+                
             <BarChart
-        className="Chart-damage"
-        series={[
-        { data: [matchData?.info.participants[0]?.totalDamageDealtToChampions] },
-        { data: [matchData?.info.participants[1]?.totalDamageDealtToChampions] }
-                ]}
-        height={290}
-        xAxis={[
-          { data: ['Participant 1', 'Participant 2'], scaleType: 'band' } // Adjust labels as needed
-        ]}
-        margin={{ top: 10, bottom: 30, left: 40, right: 10 }}
-      />
+      series={[
+        { data: [matchData ? matchData.info.participants[0].totalDamageDealtToChampions : 0,
+        matchData ? matchData.info.participants[1].totalDamageDealtToChampions : 0,
+        matchData ? matchData.info.participants[2].totalDamageDealtToChampions : 0,
+        matchData ? matchData.info.participants[3].totalDamageDealtToChampions : 0,
+        matchData ? matchData.info.participants[4].totalDamageDealtToChampions : 0,
+        matchData ? matchData.info.participants[5].totalDamageDealtToChampions : 0,
+        matchData ? matchData.info.participants[6].totalDamageDealtToChampions : 0,
+        matchData ? matchData.info.participants[7].totalDamageDealtToChampions : 0,
+        matchData ? matchData.info.participants[8].totalDamageDealtToChampions : 0,
+        matchData ? matchData.info.participants[9].totalDamageDealtToChampions : 0
+        ] ,label: 'TotalDamage', color: 'grey'  },   
+
+      ]}
+      height={500}
+      width={1500}
+      grid={{ horizontal: true }}
+      
+      xAxis={[{ data: [`${matchData?.info.participants[0]?.riotIdGameName}`,`${matchData?.info.participants[1]?.riotIdGameName}`
+      ,`${matchData?.info.participants[2]?.riotIdGameName}`, `${matchData?.info.participants[3]?.riotIdGameName}`,
+      `${matchData?.info.participants[4]?.riotIdGameName}`,`${matchData?.info.participants[5]?.riotIdGameName}`,
+      `${matchData?.info.participants[6]?.riotIdGameName}`,`${matchData?.info.participants[7]?.riotIdGameName}`
+    ,`${matchData?.info.participants[8]?.riotIdGameName}`,`${matchData?.info.participants[9]?.riotIdGameName}`], scaleType: 'band', }]}
+      margin={{ top: 10, bottom: 30, left: 40, right: 10 }} 
+
+    />
     </div>
         </div>
     );
