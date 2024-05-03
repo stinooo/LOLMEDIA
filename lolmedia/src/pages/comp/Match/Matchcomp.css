@@ -1,0 +1,72 @@
+/* Player Match Component */
+
+.playersMatch {
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    background-color: red;
+    border: solid black 5px;
+}
+
+/* Icon + Spells */
+
+.iconSpellsMatch {
+    display: flex;
+    flex-direction: row;
+}
+
+.characterIconMatch {
+    height: 70px;
+    padding: 3px;
+    border-radius: 50%;
+}
+
+.spellMatch {
+    padding: 2px;
+}
+
+.spellsMatch {
+    display: flex;
+    flex-direction: column;
+    margin-top: 3px;
+}
+
+.spellsMatch img {
+    height: 30px;
+    width: 30px;
+}
+
+/* Player Stats */
+
+.nameLevelMatch {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+.kdaMatch {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-bottom: 10px;
+    padding: 0 0 0 10px;
+}
+
+.extraDataPlayerMatch {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-bottom: 10px;
+    padding: 0 0 0 10px;
+}
+
+/* Player Items */
+
+.playerItemsMatchPage {
+    padding: 0px 0px 0px 3px;
+}
+
+.itemMatch {
+    width: 30px;
+}

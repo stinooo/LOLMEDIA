@@ -100,8 +100,8 @@ const Matchpage: React.FC = () => {
             <div className="matchPage">
                 <div className="backButtonMatch">
                     <Link className="backButtonLink" to={`/Player/${server}/${name}/${tag}`}>&lt; Go Back</Link>
-                    <Link className="backButtonLink" to={`http://localhost:3000/Match/${previousmatch}/${server}/${name}/${tag}`}>early match</Link>
-                    <Link className="backButtonLink" to={`http://localhost:3000/Match/${nextmatch}/${server}/${name}/${tag}`}>later match</Link>
+                    <Link className="backButtonLink" to={`http://localhost:3000/Match/${previousmatch}/${server}/${name}/${tag}`}>previous match</Link>
+                    <Link className="backButtonLink" to={`http://localhost:3000/Match/${nextmatch}/${server}/${name}/${tag}`}>next match</Link>
                 </div>
                 <div className="matchStart">
                     <div className="matchHeader">
