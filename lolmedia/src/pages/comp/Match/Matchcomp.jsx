@@ -1,7 +1,8 @@
 import React from "react";
 import "./Matchcomp.css";
+import { Link } from "react-router-dom";
 
-export const Matchcomp = ({ index, matchData}) => {
+export const Matchcomp = ({ index, matchData ,server , tag ,name}) => {
 
 
     const rightplayer = index;
@@ -22,6 +23,10 @@ export const Matchcomp = ({ index, matchData}) => {
                         <div className="playerStats">
                             <p>{matchData ? matchData?.info.participants[rightplayer]?.kills: ""} / {matchData ? matchData?.info.participants[rightplayer]?.deaths: ""} / {matchData ? matchData?.info.participants[rightplayer]?.assists: ""}</p>
                             <p> {KDA} KDA</p>
+                            <p><div><Link
+                 to={`/Player/${server}/${matchData ? matchData.info.participants[rightplayer].riotIdGameName :"" }/${matchData ? matchData.info.participants[rightplayer].riotIdTagline :"" }`}>
+                                         <p>{matchData ? matchData.info.participants[rightplayer].riotIdGameName : ""}</p>
+                                    </Link></div>`</p>
 
                             <p>{matchData ? matchData?.info.participants[rightplayer]?.totalMinionsKilled: ""} CS</p>
                             <p>{matchData ? matchData?.info.participants[rightplayer]?.totalDamageDealtToChampions: ""} DMG</p>

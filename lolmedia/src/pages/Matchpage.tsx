@@ -18,7 +18,7 @@ const Matchpage: React.FC = () => {
                 }
                 const matchData = await matchResponse.json();
                 setmatchData(matchData);
-    
+
                 // Second API call
                 const matchhistoryResponse = await fetch(`http://127.0.0.1:7000/get-history?name=${name}&tag=${tag}&region=${server}`);
                 if (!matchhistoryResponse.ok) {
@@ -30,26 +30,26 @@ const Matchpage: React.FC = () => {
                 console.error('There was a problem with the fetch operation:', error);
             }
         };
-    
+
         fetchData();
     }, [MatchID, server, name, tag]);
 
     const repeatArray = Array.from({ length: 10 });
 
     //GAMEINFO
-    const gameDurationSeconds = matchData ? matchData.info.gameDuration: "";
+    const gameDurationSeconds = matchData ? matchData.info.gameDuration : "";
     const minutes = Math.floor(gameDurationSeconds / 60);
     const seconds = gameDurationSeconds % 60;
-    
-        // Format minutes and seconds with leading zeros if necessary
+
+    // Format minutes and seconds with leading zeros if necessary
     const formattedMinutes = String(minutes).padStart(2, '0');
     const formattedSeconds = String(seconds).padStart(2, '0');
-    
-        // Construct the formatted string
+
+    // Construct the formatted string
     const formattedDuration = `${formattedMinutes}:${formattedSeconds}`;
-    
+
     const currentTimestamp = Date.now();
-    const providedTimestamp = matchData ? matchData.info.gameEndTimestamp: "";
+    const providedTimestamp = matchData ? matchData.info.gameEndTimestamp : "";
     const difference = currentTimestamp - providedTimestamp;
     const differenceInSeconds = difference / 1000;
     const differenceInMinutes = differenceInSeconds / 60;
@@ -69,14 +69,14 @@ const Matchpage: React.FC = () => {
         const minutes = Math.round(differenceInMinutes);
         timeElapsed = `${minutes} minutes ago`;
     }
-    const gameCreationTimestamp = matchData ? matchData.info.gameCreation: "" // Assuming 0 if matchData is not available
+    const gameCreationTimestamp = matchData ? matchData.info.gameCreation : "" // Assuming 0 if matchData is not available
     const gameStartDate = new Date(gameCreationTimestamp);
 
-// Format the date and time
+    // Format the date and time
     const gameDate = gameStartDate.toLocaleDateString(); // Format: MM/DD/YYYY
     const gameTime = gameStartDate.toLocaleTimeString(); // Format: HH:MM:SS
 
-    let matchcounter = matchhistory?.indexOf(MatchID);        
+    let matchcounter = matchhistory?.indexOf(MatchID);
     const nextmatch = matchhistory ? matchhistory[matchcounter + 1] : "";
     let previousmatch = matchhistory ? matchhistory[matchcounter - 1] : "";
     if (matchcounter === 0) {
@@ -95,33 +95,41 @@ const Matchpage: React.FC = () => {
                     </ul>
                 </nav>
             </div>
-            <div className="match-header">
-                <h1></h1>
-                <h1>
-                    {gameDate} <br />
-                    {gameTime}
-                </h1>
-                <Link to={`http://localhost:3000/Match/${previousmatch}/${server}/${name}/${tag}`}>early match</Link>
-                <br />
-                <Link to={`http://localhost:3000/Match/${nextmatch}/${server}/${name}/${tag}`}>later match</Link>
-
-                <p>drakes killed link{matchData ? matchData.info.teams[0].objectives.dragon?.kills: ""}</p>
-                <p>drakes killed rechts{matchData ? matchData.info.teams[1].objectives.dragon?.kills: ""}</p>
-                <p>barons killed link{matchData ? matchData.info.teams[0].objectives.baron?.kills: ""}</p>
-                <p>barons killed rechts{matchData ? matchData.info.teams[1].objectives.baron?.kills: ""}</p>
-                <p>towers destroyed link{matchData ? matchData.info.teams[0].objectives.tower?.kills: ""}</p>
-                <p>towers destroyed rechts{matchData ? matchData.info.teams[1].objectives.tower?.kills: ""}</p>
-                <p>Team 1(Links){matchData && matchData.info.participants[0].win? <p>WIN</p>: <p>Lose</p>}</p>
-                <p>Team 2(rechts){matchData && matchData.info.participants[9].win? <p>WIN</p>: <p>Lose</p>}</p>
-                <Link to={`/Player/${server}/${name}/${tag}`}>BACKbutton</Link>
-                <h2>Server: {server}</h2>
-                <p>Duration {formattedDuration}</p>
-                <p>timeElapsed {timeElapsed}</p>
+            <div className="matchPage">
+                <div className="backButtonMatch">
+                    <Link className="backButtonLink" to={`/Player/${server}/${name}/${tag}`}>&lt; Go Back</Link>
+                    <Link className="backButtonLink" to={`http://localhost:3000/Match/${previousmatch}/${server}/${name}/${tag}`}>early match</Link>
+                    <Link className="backButtonLink" to={`http://localhost:3000/Match/${nextmatch}/${server}/${name}/${tag}`}>later match</Link>
+                </div>
+                <div className="matchStart">
+                    <div className="matchHeader">
+                        <div className="leftTeamStats">
+                            <p>Dragons: {matchData ? matchData.info.teams[0].objectives.dragon?.kills : ""}</p>
+                            <p>Barons: {matchData ? matchData.info.teams[0].objectives.baron?.kills : ""}</p>
+                            <p>Towers destroyed: {matchData ? matchData.info.teams[0].objectives.tower?.kills : ""}</p>
+                            <p>{matchData && matchData.info.participants[0].win ? <p>WIN</p> : <p>Lose</p>}</p>
+                        </div>
+                        <div className="generalGameData">
+                            {gameDate}
+                            {gameTime}
+                            <h2>Server: {server}</h2>
+                            <p>Duration {formattedDuration}</p>
+                            <p>{timeElapsed}</p>
+                        </div>
+                        <div className="rightTeamStats">
+                            <p>Dragons: {matchData ? matchData.info.teams[1].objectives.dragon?.kills : ""}</p>
+                            <p>Barons: {matchData ? matchData.info.teams[1].objectives.baron?.kills : ""}</p>
+                            <p>Towers destroyed: {matchData ? matchData.info.teams[1].objectives.tower?.kills : ""}</p>
+                            <p>{matchData && matchData.info.participants[9].win ? <p>WIN</p> : <p>Lose</p>}</p>
+                        </div>
+                    </div>
+                </div>
             </div>
+            <div className="test">test</div>
             <div className="match-details">
                 {repeatArray.map((_, index) => (
-                 <Matchcomp index={index} matchData={matchData} />
-                 ))}
+                    <Matchcomp index={index} matchData={matchData} server={server} tag={tag} name={name} />
+                ))}
             </div>
         </div>
     );

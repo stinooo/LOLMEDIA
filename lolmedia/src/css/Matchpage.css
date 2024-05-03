@@ -1,5 +1,53 @@
-body {
-    background-attachment: fixed;
-    background-size: cover;
-  }
-  
+.backButtonMatch {
+  display: flex;
+  margin-left: 35px;
+  flex-direction: column;
+}
+
+.matchPage {
+  display: flex;
+  flex-direction: row;
+}
+
+/* Match Header */
+
+.matchStart {
+  display: flex;
+  justify-content: center;
+}
+
+.matchHeader {
+  display: flex;
+  flex-direction: row;
+  background-color: rgb(101, 26, 26);
+  width: 800px;
+  height: 200px;
+  margin-left: 150px;
+}
+
+.generalGameData {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 200px;
+  width: 400px;
+  background-color: rgb(12, 2, 2);
+}
+
+.leftTeamStats {
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+}
+
+.rightTeamStats {
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+}
+
+.test {
+  display: flex;
+  flex-direction: column;
+}
