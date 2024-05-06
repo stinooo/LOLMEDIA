@@ -112,4 +112,12 @@
 
 .history {
     padding: 10px 0px 0px 0px;
+    size: 90%;
+}
+
+.searchBar {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: -80px;
 }

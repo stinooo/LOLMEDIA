@@ -78,12 +78,13 @@ export const History = ({ MatchID ,region, Puuid , name ,tag}) => {
 
     let gamemode = matchData ? matchData.info.queueId: "";
     const gamemodeInfo = gamemode !== "" ? gameModesData[gamemode] : null;
+    {matchData && matchData.info.participants[0].win ? <p>WIN</p> : <p>Lose</p>}
 
     return (
         <div className="historyMain">
             {errorMessage && <div className="error-message">{errorMessage}</div>}
             {matchData && (
-                <div className="history-container">
+                <div className={`history-container ${matchData && matchData.info.participants[0].win ? 'win' : 'lose'}`}>
                     <div className="groupOne">
                         <div className="historyText">
                             <p>{gamemodeInfo ? gamemodeInfo.name : "Unknown Game Mode"}</p>
@@ -99,6 +100,7 @@ export const History = ({ MatchID ,region, Puuid , name ,tag}) => {
                             <div className="playerStats">
                                 <p>{matchData ? matchData?.info.participants[rightplayer]?.kills: ""} / {matchData ? matchData?.info.participants[rightplayer]?.deaths: ""} / {matchData ? matchData?.info.participants[rightplayer]?.assists: ""}</p>
                                 <p> {KDA} KDA</p>
+                                
                                 <p>{matchData ? matchData?.info.participants[rightplayer]?.totalMinionsKilled: ""} CS</p>
                                 <p>{matchData ? matchData?.info.participants[rightplayer]?.totalDamageDealtToChampions: ""} DMG</p>
                             </div>

@@ -108,7 +108,7 @@ function Player() {
                 </div>
             </div>
         </div>
-    )
+    );
 }
 
 export default Player;

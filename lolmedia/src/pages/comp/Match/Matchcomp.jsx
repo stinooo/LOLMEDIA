@@ -8,6 +8,8 @@ export const Matchcomp = ({ index, matchData, server, tag, name }) => {
     const rightplayer = index;
     const unKDA = matchData?.info.participants[rightplayer]?.challenges.kda ?? "";
     const KDA = Math.round(unKDA * 100) / 100;
+    const CS = (matchData?.info.participants[rightplayer]?.totalMinionsKilled ?? 0) + (matchData?.info.participants[rightplayer]?.neutralMinionsKilled ?? 0);
+
     return (
         <div className="playersMatch">
             <div className="iconSpellsMatch">
@@ -29,7 +31,7 @@ export const Matchcomp = ({ index, matchData, server, tag, name }) => {
                 </div>
                 <div className="extraDataPlayerMatch">
                     <div>Vision {matchData ? matchData?.info.participants[rightplayer]?.visionScore : ""}</div>
-                    <p>{matchData ? matchData?.info.participants[rightplayer]?.totalMinionsKilled : ""} CS</p>
+                    <p>{CS} CS</p>
                     <p>{matchData ? matchData?.info.participants[rightplayer]?.totalDamageDealtToChampions : ""} DMG</p>
                 </div>
             </div>

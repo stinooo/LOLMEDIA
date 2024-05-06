@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { Link, useParams } from 'react-router-dom';
-
+import {Grafe} from './comp/Grafe/grafe';
 import { Matchcomp } from './comp/Match/Matchcomp';
-import { BarChart } from '@mui/x-charts/BarChart';
 import "../css/Matchpage.css";
 
 const Matchpage: React.FC = () => {
     const { MatchID, server, name, tag } = useParams();
     const [matchData, setmatchData] = useState<any>(null);
     const [matchhistory, setmatchhistory] = useState<any>(null);
+    const [willbeshow, setWillBeShow] = useState<string>("totalDamageDealtToChampions");
 
     useEffect(() => {
         const fetchData = async () => {
@@ -81,7 +81,19 @@ const Matchpage: React.FC = () => {
     if (matchcounter === 0) {
         previousmatch = matchhistory ? matchhistory[matchcounter] : "";
     }
-    
+
+    const handleTankButton = () => {
+        setWillBeShow("totalDamageTaken");
+    };
+
+    const handleHealedButton = () => {
+        setWillBeShow("totalHeal");
+    };
+
+    const handleDamageButton = () => {
+        setWillBeShow("totalDamageDealtToChampions");
+    };
+
 
     return (
         <div>
@@ -107,7 +119,7 @@ const Matchpage: React.FC = () => {
                             <p>Dragons: {matchData ? matchData.info.teams[0].objectives.dragon?.kills : ""}</p>
                             <p>Barons: {matchData ? matchData.info.teams[0].objectives.baron?.kills : ""}</p>
                             <p>Towers destroyed: {matchData ? matchData.info.teams[0].objectives.tower?.kills : ""}</p>
-                            <p>{matchData && matchData.info.participants[0].win ? <p>WIN</p> : <p>Lose</p>}</p>
+                            <h1>{matchData && matchData.info.participants[0].win ? <p>WIN</p> : <p>Lose</p>}</h1>
                         </div>
                         <div className="generalGameData">
                             {gameDate}
@@ -120,47 +132,25 @@ const Matchpage: React.FC = () => {
                             <p>Dragons: {matchData ? matchData.info.teams[1].objectives.dragon?.kills : ""}</p>
                             <p>Barons: {matchData ? matchData.info.teams[1].objectives.baron?.kills : ""}</p>
                             <p>Towers destroyed: {matchData ? matchData.info.teams[1].objectives.tower?.kills : ""}</p>
-                            <p>{matchData && matchData.info.participants[9].win ? <p>WIN</p> : <p>Lose</p>}</p>
+                            <h1>{matchData && matchData.info.participants[9].win ? <p>WIN</p> : <p>Lose</p>}</h1>
                         </div>
                     </div>
                 </div>
             </div>
-            <div className="test">test</div>
             <div className="match-details">
                 {repeatArray.map((_, index) => (
                     <Matchcomp index={index} matchData={matchData} server={server} tag={tag} name={name} />
                 ))}
             </div>
-            <div className="chart">
-                
-            <BarChart
-      series={[
-        { data: [matchData ? matchData.info.participants[0].totalDamageDealtToChampions : 0,
-        matchData ? matchData.info.participants[1].totalDamageDealtToChampions : 0,
-        matchData ? matchData.info.participants[2].totalDamageDealtToChampions : 0,
-        matchData ? matchData.info.participants[3].totalDamageDealtToChampions : 0,
-        matchData ? matchData.info.participants[4].totalDamageDealtToChampions : 0,
-        matchData ? matchData.info.participants[5].totalDamageDealtToChampions : 0,
-        matchData ? matchData.info.participants[6].totalDamageDealtToChampions : 0,
-        matchData ? matchData.info.participants[7].totalDamageDealtToChampions : 0,
-        matchData ? matchData.info.participants[8].totalDamageDealtToChampions : 0,
-        matchData ? matchData.info.participants[9].totalDamageDealtToChampions : 0
-        ] ,label: 'TotalDamage', color: 'grey'  },   
-
-      ]}
-      height={500}
-      width={1500}
-      grid={{ horizontal: true }}
-      
-      xAxis={[{ data: [`${matchData?.info.participants[0]?.riotIdGameName}`,`${matchData?.info.participants[1]?.riotIdGameName}`
-      ,`${matchData?.info.participants[2]?.riotIdGameName}`, `${matchData?.info.participants[3]?.riotIdGameName}`,
-      `${matchData?.info.participants[4]?.riotIdGameName}`,`${matchData?.info.participants[5]?.riotIdGameName}`,
-      `${matchData?.info.participants[6]?.riotIdGameName}`,`${matchData?.info.participants[7]?.riotIdGameName}`
-    ,`${matchData?.info.participants[8]?.riotIdGameName}`,`${matchData?.info.participants[9]?.riotIdGameName}`], scaleType: 'band', }]}
-      margin={{ top: 10, bottom: 30, left: 40, right: 10 }} 
-
-    />
-    </div>
+            <button className="backButtonLink" onClick={handleTankButton}>Show Tanked Data</button>
+            <button className="backButtonLink" onClick={handleHealedButton}>Show Healed Data</button>
+            <button className="backButtonLink" onClick={handleDamageButton}>Show Damage Data</button>
+            <div className="match-details">
+            
+            </div>
+            <div className="grafe">
+                <Grafe key={willbeshow} matchData={matchData} shows={willbeshow} />
+            </div>
         </div>
     );
 }
