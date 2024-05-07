@@ -53,12 +53,12 @@ export const Grafe = ({key , matchData , shows}) => {
                 margin={{
                     right: 30,
                     left: 20,
+                    top:10,
                 }}
             >
                 <CartesianGrid strokeDasharray="3 3" />
                 <XAxis dataKey="name" />
-                <YAxis />
-                <Tooltip/>                
+                <YAxis />             
                 <Legend />
                 <Bar dataKey={shows} fill="#8884d8" />
             </BarChart>

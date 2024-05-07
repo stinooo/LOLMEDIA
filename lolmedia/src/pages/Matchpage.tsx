@@ -82,18 +82,9 @@ const Matchpage: React.FC = () => {
         previousmatch = matchhistory ? matchhistory[matchcounter] : "";
     }
 
-    const handleTankButton = () => {
-        setWillBeShow("totalDamageTaken");
+    const handleOptionSelect = (event: React.ChangeEvent<HTMLSelectElement>) => {
+        setWillBeShow(event.target.value);
     };
-
-    const handleHealedButton = () => {
-        setWillBeShow("totalHeal");
-    };
-
-    const handleDamageButton = () => {
-        setWillBeShow("totalDamageDealtToChampions");
-    };
-
 
     return (
         <div>
@@ -139,18 +130,31 @@ const Matchpage: React.FC = () => {
             </div>
             <div className="match-details">
                 {repeatArray.map((_, index) => (
-                    <Matchcomp index={index} matchData={matchData} server={server} tag={tag} name={name} />
+                    <Matchcomp key={index} index={index} matchData={matchData} server={server} tag={tag} name={name} />
                 ))}
             </div>
-            <button className="backButtonLink" onClick={handleTankButton}>Show Tanked Data</button>
-            <button className="backButtonLink" onClick={handleHealedButton}>Show Healed Data</button>
-            <button className="backButtonLink" onClick={handleDamageButton}>Show Damage Data</button>
-            <div className="match-details">
-            
+            <div>
+                <form method="post">
+                    <label htmlFor="DATA">Choose an option:</label>
+                        <select className="drop" name="DATA" id="Datalist" value={willbeshow} onChange={handleOptionSelect}>
+                            <option value="totalDamageDealtToChampions">Damage</option>
+                            <option value="totalDamageTaken">Tanked</option>
+                            <option value="totalHeal">Healed</option>
+                            <option value="goldEarned">Gold</option>
+                        </select>
+                </form>
             </div>
+            
             <div className="grafe">
                 <Grafe key={willbeshow} matchData={matchData} shows={willbeshow} />
             </div>
+            <div className="match-details">
+            </div>
+                <div>
+                
+                </div>
+
+
         </div>
     );
 }
