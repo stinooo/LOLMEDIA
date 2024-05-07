@@ -38,10 +38,10 @@ export const History = ({ MatchID ,region, Puuid , name ,tag}) => {
         return str.length > maxLen ? str.substring(0, maxLen) + "" : str;
     };  
 
-    let rightplayer = matchData?.metadata.participants.indexOf(Puuid);
+    let rightplayer = matchData?.metadata?.participants?.indexOf(Puuid);
 
 
-    const gameDurationSeconds = matchData ? matchData.info.gameDuration: "";
+    const gameDurationSeconds = matchData ? matchData?.info?.gameDuration: "";
     const minutes = Math.floor(gameDurationSeconds / 60);
     const seconds = gameDurationSeconds % 60;
 
@@ -53,7 +53,7 @@ export const History = ({ MatchID ,region, Puuid , name ,tag}) => {
     const formattedDuration = `${formattedMinutes}:${formattedSeconds}`;
 
     const currentTimestamp = Date.now();
-    const providedTimestamp = matchData ? matchData.info.gameEndTimestamp: "";
+    const providedTimestamp = matchData ? matchData?.info?.gameEndTimestamp: "";
     const difference = currentTimestamp - providedTimestamp;
     const differenceInSeconds = difference / 1000;
     const differenceInMinutes = differenceInSeconds / 60;
@@ -78,7 +78,7 @@ export const History = ({ MatchID ,region, Puuid , name ,tag}) => {
 
     let gamemode = matchData ? matchData.info.queueId: "";
     const gamemodeInfo = gamemode !== "" ? gameModesData[gamemode] : null;
-    {matchData && matchData.info.participants[0].win ? <p>WIN</p> : <p>Lose</p>}
+    {matchData && matchData?.info?.participants[0]?.win ? <p>WIN</p> : <p>Lose</p>}
 
     return (
         <div className="historyMain">
