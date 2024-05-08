@@ -115,9 +115,6 @@
     size: 90%;
 }
 
-.searchBar {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
+.searchBarPlayer {
     margin-top: -80px;
 }

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link, useParams } from 'react-router-dom';
-import {Grafe} from './comp/Grafe/grafe';
+import { Grafe } from './comp/Grafe/grafe';
 import { Matchcomp } from './comp/Match/Matchcomp';
 import "../css/Matchpage.css";
 
@@ -123,36 +123,45 @@ const Matchpage: React.FC = () => {
                             <p>Dragons: {matchData ? matchData.info.teams[1].objectives.dragon?.kills : ""}</p>
                             <p>Barons: {matchData ? matchData.info.teams[1].objectives.baron?.kills : ""}</p>
                             <p>Towers destroyed: {matchData ? matchData.info.teams[1].objectives.tower?.kills : ""}</p>
-                            <h1>{matchData && matchData.info.participants[9].win ? <p>WIN</p> : <p>Lose</p>}</h1>
+                            <h1>{matchData && matchData.info.participants[9].win ? <p>WIN</p> : <p>LOSS</p>}</h1>
+                        </div>
+                    </div>
+                    <div className="playerDataMatch">
+                        <div className="match-details">
+                            <div className="left-columnMatch">
+                                {repeatArray.slice(0, 5).map((_, index) => (
+                                    <Matchcomp key={index} index={index} matchData={matchData} server={server} tag={tag} name={name} />
+                                ))}
+                            </div>
+                            <div className="right-columnMatch">
+                                {repeatArray.slice(5).map((_, index) => (
+                                    <Matchcomp key={index} index={index + 5} matchData={matchData} server={server} tag={tag} name={name} />
+                                ))}
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div className="match-details">
-                {repeatArray.map((_, index) => (
-                    <Matchcomp key={index} index={index} matchData={matchData} server={server} tag={tag} name={name} />
-                ))}
-            </div>
             <div>
                 <form method="post">
-                    <label htmlFor="DATA">Choose an option:</label>
-                        <select className="drop" name="DATA" id="Datalist" value={willbeshow} onChange={handleOptionSelect}>
-                            <option value="totalDamageDealtToChampions">Damage</option>
-                            <option value="totalDamageTaken">Tanked</option>
-                            <option value="totalHeal">Healed</option>
-                            <option value="goldEarned">Gold</option>
-                        </select>
+                    <label className="dropDownLabel" htmlFor="DATA">Choose an option:</label>
+                    <select className="drop" name="DATA" id="Datalist" value={willbeshow} onChange={handleOptionSelect}>
+                        <option value="totalDamageDealtToChampions">Damage</option>
+                        <option value="totalDamageTaken">Tanked</option>
+                        <option value="totalHeal">Healed</option>
+                        <option value="goldEarned">Gold</option>
+                    </select>
                 </form>
             </div>
-            
+
             <div className="grafe">
                 <Grafe key={willbeshow} matchData={matchData} shows={willbeshow} />
             </div>
             <div className="match-details">
             </div>
-                <div>
-                
-                </div>
+            <div>
+
+            </div>
 
 
         </div>

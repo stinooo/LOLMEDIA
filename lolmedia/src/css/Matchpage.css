@@ -20,10 +20,7 @@
 .matchHeader {
   display: flex;
   flex-direction: row;
-  background-color: rgb(101, 26, 26);
-  width: 800px;
-  height: 200px;
-  margin-left: 150px;
+  margin-left: 100px;
 }
 
 .generalGameData {
@@ -33,39 +30,48 @@
   justify-content: center;
   height: 200px;
   width: 400px;
-  background-color: rgb(12, 2, 2);
+  background: linear-gradient(90deg, rgb(108, 106, 106), rgb(0, 0, 0));
 }
 
 .leftTeamStats {
   display: flex;
   flex-direction: column;
-  width: 200px;
+  background: linear-gradient(70deg, rgb(128, 211, 112), rgb(34, 97, 7));
+  width: 250px;
 }
 
 .rightTeamStats {
   display: flex;
   flex-direction: column;
-  width: 200px;
+  background: linear-gradient(70deg, rgb(215, 63, 63), rgb(135, 6, 6));
+  width: 250px;
 }
 
 /* Player Match Data */
 
 .playerDataMatch {
   display: flex;
-  margin-left: 150px;
+  margin-left: 100px;
   flex-direction: column;
 }
 
-.chart {
+.match-details {
   display: flex;
-  flex-direction: row;
-  justify-content: center;
 }
 
-tspan {
+/* Graphs */
+
+.dropDownLabel {
+  margin-left: 27px;
+  padding: 0 5px 0 0;
   font-size: 20px;
-  font-weight: bold;
-  color: white;
-  background-color: white;
 }
 
+.drop {
+  color: black;
+  padding: 2px;
+}
+
+.drop option {
+  color: black;
+}

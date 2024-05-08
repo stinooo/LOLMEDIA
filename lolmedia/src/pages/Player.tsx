@@ -59,7 +59,7 @@ function Player() {
                         <li><Link to="/leaderboard">Leaderboard</Link></li>
                         <li><Link to="/Player/euw1/thomasoke/EUW">Players</Link></li>
                         <li><Link to="#">Stats</Link></li>
-                        
+
                     </ul>
                 </nav>
             </div>
@@ -95,8 +95,10 @@ function Player() {
                     </div>
                 </div>
                 <div className="masteryHistory">
-                    <div className="searchBar">
-                        <SearchBar />
+                    <div className="searchBarPlayer">
+                        <div className="searchBar">
+                            <SearchBar />
+                        </div>
                     </div>
                     <div className="mastery">
                         <Mastery puuid={playerData ? playerData[2]["puuid"] : "notfound"} region={server} tag={tag} name={name} />
