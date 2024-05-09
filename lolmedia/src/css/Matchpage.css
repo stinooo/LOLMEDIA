@@ -33,6 +33,15 @@
   background: linear-gradient(90deg, rgb(108, 106, 106), rgb(0, 0, 0));
 }
 
+.gameTimeDataMatch {
+  display: flex;
+  flex-direction: row;
+}
+
+.gameTime {
+  margin-left: 5px;
+}
+
 .leftTeamStats {
   display: flex;
   flex-direction: column;
@@ -40,11 +49,25 @@
   width: 250px;
 }
 
+.leftTeamStats p {
+  font-size: 19px;
+  color: lightgray;
+}
+
 .rightTeamStats {
   display: flex;
   flex-direction: column;
   background: linear-gradient(70deg, rgb(215, 63, 63), rgb(135, 6, 6));
   width: 250px;
+}
+
+.rightTeamStats p {
+  font-size: 19px;
+  color: lightgray;
+}
+
+.winLossMatch {
+  font-size: 30px;
 }
 
 /* Player Match Data */
@@ -74,4 +97,8 @@
 
 .drop option {
   color: black;
+}
+
+.graphDrop {
+  margin-top: 50px;
 }

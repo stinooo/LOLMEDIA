@@ -110,11 +110,13 @@ const Matchpage: React.FC = () => {
                             <p>Dragons: {matchData ? matchData.info.teams[0].objectives.dragon?.kills : ""}</p>
                             <p>Barons: {matchData ? matchData.info.teams[0].objectives.baron?.kills : ""}</p>
                             <p>Towers destroyed: {matchData ? matchData.info.teams[0].objectives.tower?.kills : ""}</p>
-                            <h1>{matchData && matchData.info.participants[0].win ? <p>WIN</p> : <p>Lose</p>}</h1>
+                            <h1>{matchData && matchData.info.participants[0].win ? <h1 className="winLossMatch">WIN</h1> : <h1 className="winLossMatch">LOSS</h1>}</h1>
                         </div>
                         <div className="generalGameData">
-                            {gameDate}
-                            {gameTime}
+                            <div className="gameTimeDataMatch">
+                                <p className="gameData">{gameDate}</p>
+                                <p className="gameTime">{gameTime}</p>
+                            </div>
                             <h2>Server: {server}</h2>
                             <p>Duration {formattedDuration}</p>
                             <p>{timeElapsed}</p>
@@ -123,7 +125,7 @@ const Matchpage: React.FC = () => {
                             <p>Dragons: {matchData ? matchData.info.teams[1].objectives.dragon?.kills : ""}</p>
                             <p>Barons: {matchData ? matchData.info.teams[1].objectives.baron?.kills : ""}</p>
                             <p>Towers destroyed: {matchData ? matchData.info.teams[1].objectives.tower?.kills : ""}</p>
-                            <h1>{matchData && matchData.info.participants[9].win ? <p>WIN</p> : <p>LOSS</p>}</h1>
+                            <h1>{matchData && matchData.info.participants[9].win ? <h1 className="winLossMatch">WIN</h1> : <h1 className="winLossMatch">LOSS</h1>}</h1>
                         </div>
                     </div>
                     <div className="playerDataMatch">
@@ -142,7 +144,7 @@ const Matchpage: React.FC = () => {
                     </div>
                 </div>
             </div>
-            <div>
+            <div className="graphDrop">
                 <form method="post">
                     <label className="dropDownLabel" htmlFor="DATA">Choose an option:</label>
                     <select className="drop" name="DATA" id="Datalist" value={willbeshow} onChange={handleOptionSelect}>

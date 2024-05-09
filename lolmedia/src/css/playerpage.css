@@ -118,3 +118,8 @@
 .searchBarPlayer {
     margin-top: -80px;
 }
+
+.loadMoreMatches {
+    color: black;
+    padding: 1px;
+}

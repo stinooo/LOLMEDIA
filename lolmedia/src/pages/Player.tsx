@@ -105,7 +105,7 @@ function Player() {
                     </div>
                     <div className="history">
                         {renderHistory()}
-                        <button onClick={loadMoreMatches}>Load More Matches</button>
+                        <button className="loadMoreMatches"onClick={loadMoreMatches}>Load More Matches</button>
                     </div>
                 </div>
             </div>
