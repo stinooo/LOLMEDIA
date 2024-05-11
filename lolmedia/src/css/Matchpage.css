@@ -50,6 +50,7 @@
 }
 
 .leftTeamStats p {
+  padding-left: 5px;
   font-size: 19px;
   color: lightgray;
 }
@@ -62,11 +63,13 @@
 }
 
 .rightTeamStats p {
+  padding-left: 5px;
   font-size: 19px;
   color: lightgray;
 }
 
 .winLossMatch {
+  padding-left: 5px;
   font-size: 30px;
 }
 

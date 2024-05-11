@@ -28,14 +28,14 @@ server_regions = {
     "LA1": "americas",
     "LA2": "americas",
     "NA1": "americas",
-    "OC1": "americas",
+    "OC1": "sea",
     "PH2": "sea",
     "RU": "europa",
     "SG2": "sea",
     "TH2": "sea",
     "TR1": "europa",
     "TW2": "sea",
-    "VN": "sea"
+    "VN": "sea",
 }
 
 @app.get("/get-validuser")
