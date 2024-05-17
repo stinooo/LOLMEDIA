@@ -204,7 +204,7 @@ export const History = ({ MatchID ,region, Puuid , name ,tag}) => {
                         </div>
                     </div>
                     <div className="groupThree">
-                        <p><Link to={`http://localhost:3000/Match/${MatchID}/${region}/${name}/${tag}`}><i class="arrowDown"></i></Link></p>
+                        <p><Link className="arrowDownButton" to={`http://localhost:3000/Match/${MatchID}/${region}/${name}/${tag}`}><i class="arrowDown"></i></Link></p>
                     </div>
                 </div>
             )}
