@@ -73,11 +73,12 @@ export const History = ({ MatchID ,region, Puuid , name ,tag}) => {
         const minutes = Math.round(differenceInMinutes);
         timeElapsed = `${minutes} minutes ago`;
     }
-    const unKDA = matchData?.info.participants[rightplayer]?.challenges.kda ?? "";
+    const unKDA = matchData?.info.participants[rightplayer]?.challenges?.kda ?? "";
     const KDA = Math.round(unKDA * 100) / 100;
 
     let gamemode = matchData ? matchData.info.queueId: "";
     const gamemodeInfo = gamemode !== "" ? gameModesData[gamemode] : null;
+    const CS = (matchData?.info.participants[rightplayer]?.totalMinionsKilled ?? 0) + (matchData?.info.participants[rightplayer]?.neutralMinionsKilled ?? 0);
 
     return (
         <div className="historyMain">
@@ -100,7 +101,7 @@ export const History = ({ MatchID ,region, Puuid , name ,tag}) => {
                                 <p>{matchData ? matchData?.info.participants[rightplayer]?.kills: ""} / {matchData ? matchData?.info.participants[rightplayer]?.deaths: ""} / {matchData ? matchData?.info.participants[rightplayer]?.assists: ""}</p>
                                 <p> {KDA} KDA</p>
                                 
-                                <p>{matchData ? matchData?.info.participants[rightplayer]?.totalMinionsKilled: ""} CS</p>
+                                <p>{CS} CS</p>
                                 <p>{matchData ? matchData?.info.participants[rightplayer]?.totalDamageDealtToChampions: ""} DMG</p>
                             </div>
                         </div> 

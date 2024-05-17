@@ -113,6 +113,8 @@
 .history {
     padding: 10px 0px 0px 0px;
     size: 90%;
+    display: flex;
+    flex-direction: column;
 }
 
 .searchBarPlayer {
@@ -121,5 +123,8 @@
 
 .loadMoreMatches {
     color: black;
-    padding: 1px;
+    padding: 3px;
+    cursor: pointer;
+    border-radius: 12px;
+    align-self: center;
 }

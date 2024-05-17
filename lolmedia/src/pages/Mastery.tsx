@@ -33,7 +33,6 @@ const Masterypage: React.FC = () => {
                     <ul>
                         <li><Link to="/leaderboard">Leaderboard</Link></li>
                         <li><Link to="/Player/euw1/thomasoke/EUW">Players</Link></li>
-                        <li><Link to="#">Stats</Link></li>
                     </ul>
                 </nav>
             </div>
