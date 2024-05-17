@@ -3,6 +3,7 @@ import { Link, useParams } from 'react-router-dom';
 import { Grafe } from './comp/Grafe/grafe';
 import { Matchcomp } from './comp/Match/Matchcomp';
 import "../css/Matchpage.css";
+import gameModesData from "../all json/queues1.json";
 
 const Matchpage: React.FC = () => {
     const { MatchID, server, name, tag } = useParams();
@@ -106,7 +107,7 @@ const Matchpage: React.FC = () => {
                 </div>
                 <div className="matchStart">
                     <div className="matchHeader">
-                        <div className="leftTeamStats">
+                        <div className={`${matchData && matchData.info.participants[0].win ? 'MwinL' : 'MlossL'}`}>
                             <p>Dragons: {matchData ? matchData.info.teams[0].objectives.dragon?.kills : ""}</p>
                             <p>Barons: {matchData ? matchData.info.teams[0].objectives.baron?.kills : ""}</p>
                             <p>Towers destroyed: {matchData ? matchData.info.teams[0].objectives.tower?.kills : ""}</p>
@@ -120,8 +121,9 @@ const Matchpage: React.FC = () => {
                             <h2>Server: {server}</h2>
                             <p>Duration {formattedDuration}</p>
                             <p>{timeElapsed}</p>
+                            <p> </p>
                         </div>
-                        <div className="rightTeamStats">
+                        <div className={`${matchData && matchData.info.participants[9].win ? 'MwinR' : 'MlossR'}`}>
                             <p>Dragons: {matchData ? matchData.info.teams[1].objectives.dragon?.kills : ""}</p>
                             <p>Barons: {matchData ? matchData.info.teams[1].objectives.baron?.kills : ""}</p>
                             <p>Towers destroyed: {matchData ? matchData.info.teams[1].objectives.tower?.kills : ""}</p>

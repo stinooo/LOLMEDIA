@@ -22,6 +22,8 @@ interface LeaderData {
 const Leaderboardpage: React.FC = () => {
   const [leaderboardData, setLeaderboardData] = useState<LeaderData[]>([]);
   const [server, setServer] = useState<string>("euw1");
+  const [displayedMatches, setDisplayedMatches] = useState<number>(10);
+  const matchesToLoad = 5;
 
   useEffect(() => {
     const fetchData = async () => {
@@ -42,6 +44,10 @@ const Leaderboardpage: React.FC = () => {
   const handleServerChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setServer(e.target.value);
   };
+  const loadMoreMatches = () => {
+    setDisplayedMatches(prev => prev + matchesToLoad);
+};
+
 
   return (
     <div>
@@ -75,10 +81,12 @@ const Leaderboardpage: React.FC = () => {
           </div>
           <br />
           <div>
-            {leaderboardData.slice(0, 5).map((leader, index) => (
+            {leaderboardData.slice(0,displayedMatches).map((leader, index) => (
               <Leaderboard key={index} leader={leader} region={server} />
             ))}
+
           </div>
+          <button className="loadMoreMatches"onClick={loadMoreMatches}>Load More Matches</button>
         </div>
       </div>
     </div>
