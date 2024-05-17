@@ -42,27 +42,40 @@
   margin-left: 5px;
 }
 
-.leftTeamStats {
+.MwinL {
   display: flex;
   flex-direction: column;
   background: linear-gradient(70deg, rgb(128, 211, 112), rgb(34, 97, 7));
   width: 250px;
 }
-
-.leftTeamStats p {
-  padding-left: 5px;
-  font-size: 19px;
-  color: lightgray;
-}
-
-.rightTeamStats {
+.MlossL {
   display: flex;
   flex-direction: column;
   background: linear-gradient(70deg, rgb(215, 63, 63), rgb(135, 6, 6));
   width: 250px;
 }
 
-.rightTeamStats p {
+.MlossL .MwinL p {
+  padding-left: 5px;
+  font-size: 19px;
+  color: lightgray;
+}
+
+.MlossR {
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(70deg, rgb(215, 63, 63), rgb(135, 6, 6));
+  width: 250px;
+}
+
+.MwinR {
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(70deg, rgb(128, 211, 112), rgb(34, 97, 7));
+  width: 250px;
+}
+
+.MwinR .MwinL p {
   padding-left: 5px;
   font-size: 19px;
   color: lightgray;
