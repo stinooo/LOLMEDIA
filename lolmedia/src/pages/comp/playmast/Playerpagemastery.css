@@ -2,10 +2,9 @@
     border: 2px solid none;
     border-radius: 10px;
     padding: 15px;
-    padding-left: 125px;
-    padding-right: 125px;
     width: fit-content;
     display: flex;
+    justify-content: space-between;
     background: linear-gradient(70deg, rgb(118, 122, 225), rgb(11, 0, 133)) no-repeat;
     margin-top: 60px;
     /* Display flex to arrange items horizontally */
@@ -19,9 +18,8 @@
     /* Add margin for spacing between blocks */
 }
 
-.mastery-info:last-child {
-    margin-right: 0;
-    /* Remove margin from last block */
+.mastery-info:first-child {
+    padding-left: 125px;
 }
 
 .mastery-info img {
@@ -37,7 +35,12 @@
     color: white;
 }
 
+.linkMastHead {
+    padding-left: 80px;
+}
+
 .linkMast {
     color: lightgray;
     text-decoration: none;
+    align-self: flex-end;
 }

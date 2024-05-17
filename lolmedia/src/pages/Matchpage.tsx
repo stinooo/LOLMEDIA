@@ -145,27 +145,18 @@ const Matchpage: React.FC = () => {
                 </div>
             </div>
             <div className="graphDrop">
-                <form method="post">
-                    <label className="dropDownLabel" htmlFor="DATA">Choose an option:</label>
-                    <select className="drop" name="DATA" id="Datalist" value={willbeshow} onChange={handleOptionSelect}>
-                        <option value="totalDamageDealtToChampions">Damage</option>
-                        <option value="totalDamageTaken">Tanked</option>
-                        <option value="totalHeal">Healed</option>
-                        <option value="goldEarned">Gold</option>
-                    </select>
-                </form>
+                <label className="dropDownLabel" htmlFor="DATA">Choose an option:</label>
+                <select className="drop" name="DATA" id="Datalist" value={willbeshow} onChange={handleOptionSelect}>
+                    <option value="totalDamageDealtToChampions">Damage</option>
+                    <option value="totalDamageTaken">Tanked</option>
+                    <option value="totalHeal">Healed</option>
+                    <option value="goldEarned">Gold</option>
+                </select>
             </div>
 
             <div className="grafe">
                 <Grafe key={willbeshow} matchData={matchData} shows={willbeshow} />
             </div>
-            <div className="match-details">
-            </div>
-            <div>
-
-            </div>
-
-
         </div>
     );
 }

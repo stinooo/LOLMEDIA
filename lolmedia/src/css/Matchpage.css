@@ -94,14 +94,21 @@
 }
 
 .drop {
-  color: black;
-  padding: 2px;
+  background-color: white;
+  color: #212121;
+  padding: 10px 15px;
+  font-size: 15px;
+  font-weight: bold;
+  border: 2px solid transparent;
+  border-radius: 15px;
+  cursor: pointer;
+  padding: 3px;
 }
 
 .drop option {
   color: black;
 }
 
-.graphDrop {
-  margin-top: 50px;
+.drop:hover {
+  cursor: pointer
 }

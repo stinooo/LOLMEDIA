@@ -48,7 +48,7 @@ export const Mastery = ({ puuid, region, tag, name }) => {
                 <img src={`https://localhost/champion/${championName2}.png`} alt={championName2} />
                 <p>Points: {masteryData[2]?.championPoints.toLocaleString('en-US').replace(/,/g, ' ')}</p>
             </div>
-            <div>
+            <div className="linkMastHead">
                 <Link to={`/Mastery/${region}/${name}/${tag}`} className="linkMast">See more..</Link>
             </div>
         </div>

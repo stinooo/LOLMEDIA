@@ -84,7 +84,7 @@ export const History = ({ MatchID ,region, Puuid , name ,tag}) => {
         <div className="historyMain">
             {errorMessage && <div className="error-message">{errorMessage}</div>}
             {matchData && (
-                <div className={`history-container ${matchData && matchData.info.participants[rightplayer].win ? 'win' : 'lose'}`}>
+                <div className={`history-container ${matchData && matchData?.info?.participants[rightplayer]?.win ? 'win' : 'lose'}`}>
                     <div className="groupOne">
                         <div className="historyText">
                             <p>{gamemodeInfo ? gamemodeInfo.name : "Unknown Game Mode"}</p>
@@ -205,7 +205,7 @@ export const History = ({ MatchID ,region, Puuid , name ,tag}) => {
                         </div>
                     </div>
                     <div className="groupThree">
-                        <p><Link to={`http://localhost:3000/Match/${MatchID}/${region}/${name}/${tag}`}><i class="arrowDown"></i></Link></p>
+                        <p><Link className="arrowDownButton" to={`http://localhost:3000/Match/${MatchID}/${region}/${name}/${tag}`}><i class="arrowDown"></i></Link></p>
                     </div>
                 </div>
             )}
