@@ -14,3 +14,31 @@ To run the LOLMEDIA website, follow these steps:
 
    ```sh
    npm start
+
+   If you encounter any errors, you may need to install the necessary dependencies:
+   ```sh
+   npm install 
+
+   After the installation is complete, try starting the frontend again:
+
+Project Structure
+
+The Folder is organized as follows:
+
+    /src: Contains all the source code.
+        /alljson: Holds JSON data fetched from the API, which includes coordinates and other necessary data.
+        /css: Contains the CSS files for styling each page.
+        /pages: Includes the main code that gets displayed on the page.
+            /comp: Contains all the custom components along with their respective CSS files.
+
+    App.tsx: The main homepage of the application.
+
+Technologies Used
+
+    React: A JavaScript library for building user interfaces.
+    TypeScript: A superset of JavaScript that adds static typing.
+    CSS: Cascading Style Sheets for styling the application.
+
+If you have any questions or suggestions, feel free to open an issue or contact us directly.
+
+Happy Coding!
