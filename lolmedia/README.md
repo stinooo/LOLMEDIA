@@ -14,12 +14,17 @@ To run the LOLMEDIA website, follow these steps:
 
    ```sh
    npm start
-
+   ```
+   
    If you encounter any errors, you may need to install the necessary dependencies:
+   
    ```sh
    npm install 
-
+   ```
    After the installation is complete, try starting the frontend again:
+   ```sh
+   npm start
+   ```
 
 Project Structure
 
@@ -30,8 +35,6 @@ The Folder is organized as follows:
         /css: Contains the CSS files for styling each page.
         /pages: Includes the main code that gets displayed on the page.
             /comp: Contains all the custom components along with their respective CSS files.
-
-    App.tsx: The main homepage of the application.
 
 Technologies Used
 
