@@ -18,9 +18,7 @@ function Player() {
 
             const data = await response.json();
             if (!data["success"]) setPlayerData(data);
-            if (!data["success"]) {
-                setPlayerData(data);
-            }
+            else setPlayerData(null);
         } catch (error) {
             console.error('There was a problem with the fetch operation:', error);
         }
