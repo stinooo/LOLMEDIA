@@ -79,13 +79,13 @@ const Leaderboardpage: React.FC = () => {
             </select>
           </div>
           <br />
-          <div>
+          
+          <div className='leadrecom'>
             {leaderboardData.slice(0,displayedMatches).map((leader, index) => (
               <Leaderboard key={index} leader={leader} region={server} />
             ))}
-
+            <button className="loadMoreMatches"onClick={loadMoreMatches}>Load More Matches</button>
           </div>
-          <button className="loadMoreMatches"onClick={loadMoreMatches}>Load More Matches</button>
         </div>
       </div>
     </div>
