@@ -159,7 +159,7 @@ async def getStatsAccount(name : str, tag : str, region : str):
     if not rankedRQ.status_code == 200:
         raise HTTPException(status_code=rankedRQ.status_code, detail="RankedRQ")
     ranked_data = rankedRQ.json()
-    
+
     fake_data_unranked = {
         "queueType": "UNRANKED",
         "tier": "Unranked",
@@ -172,20 +172,24 @@ async def getStatsAccount(name : str, tag : str, region : str):
         "freshBlood": False,
         "hotStreak": False
     }
-
+    # Initialize ranked_data if it's empty or not provided
     if not ranked_data or len(ranked_data) == 0:
-        # If no data is returned, create fake data for both queues
-        ranked_data = [fake_data_unranked.copy(), fake_data_unranked.copy()]
-    elif len(ranked_data) == 1:
-        # If only one queue is returned, insert fake data for the missing queue
-        if ranked_data[0]["queueType"] == "RANKED_SOLO_5x5":
-            ranked_data.insert(0, fake_data_unranked.copy())
-        else:
-            ranked_data.append(fake_data_unranked.copy())
-    elif len(ranked_data) == 2:
-        # If both queues are returned, ensure flex queue is in index 0
-        if ranked_data[0]["queueType"] != "RANKED_FLEX_SR":
-            ranked_data[0], ranked_data[1] = ranked_data[1], ranked_data[0]
+        ranked_data = [fake_data_unranked.copy(), fake_data_unranked.copy(), fake_data_unranked.copy()]
+
+    # Ensure at least three items
+    while len(ranked_data) < 3:
+        ranked_data.append(fake_data_unranked.copy())
+
+    # Create a dictionary to easily find the existing queue types
+    queue_map = {entry["queueType"]: entry for entry in ranked_data}
+
+    # Ensure the correct order: RANKED_FLEX_SR, RANKED_SOLO_5x5, RANKED_CHERRY
+    ranked_data = [
+        queue_map.get("RANKED_FLEX_SR", fake_data_unranked.copy()),
+        queue_map.get("RANKED_SOLO_5x5", fake_data_unranked.copy()),
+        queue_map.get("RANKED_CHERRY", fake_data_unranked.copy())
+    ]
+
 
 
     #history data
