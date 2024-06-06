@@ -33,15 +33,15 @@ export const Mastery = ({ puuid, region, tag, name }) => {
     return (
         <div className="mastery-container">
             <div className="mastery-info">
-                <div>{championName}</div>
-                <img src={`https://localhost/champion/${championName}.png`} alt={championName} />
-                <p>Points: {masteryData[0]?.championPoints.toLocaleString('en-US').replace(/,/g, ' ')}</p>
-
-            </div>
-            <div className="mastery-info">
                 <div>{championName1}</div>
                 <img src={`https://localhost/champion/${championName1}.png`} alt={championName1} />
                 <p>Points: {masteryData[1]?.championPoints.toLocaleString('en-US').replace(/,/g, ' ')}</p>
+
+            </div>
+            <div className="mastery-info">
+                <div>{championName}</div>
+                <img src={`https://localhost/champion/${championName}.png`} alt={championName} />
+                <p>Points: {masteryData[0]?.championPoints.toLocaleString('en-US').replace(/,/g, ' ')}</p>
             </div>
             <div className="mastery-info">
                 <div>{championName2}</div>

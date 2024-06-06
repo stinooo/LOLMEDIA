@@ -22,7 +22,7 @@ interface LeaderData {
 const Leaderboardpage: React.FC = () => {
   const [leaderboardData, setLeaderboardData] = useState<LeaderData[]>([]);
   const [server, setServer] = useState<string>("euw1");
-  const [displayedMatches, setDisplayedMatches] = useState<number>(10);
+  const [displayedMatches, setDisplayedMatches] = useState<number>(6);
   const matchesToLoad = 5;
 
   useEffect(() => {

@@ -52,9 +52,7 @@ async def getValidUser(name : str, tag : str, region : str):
     if not puuidRQ.status_code == 200:
         raise HTTPException(status_code=puuidRQ.status_code)
     puuid_data = puuidRQ.json()
-    # need to get PUUID out for summoner data
-    
-    # Fetch summoner data
+
     summonerRQ = requests.get("https://" + region + ".api.riotgames.com/lol/summoner/v4/summoners/by-puuid/"
                               + puuid_data["puuid"] + "?api_key=" + API_KEY)
     if not summonerRQ.status_code == 200:
@@ -172,18 +170,15 @@ async def getStatsAccount(name : str, tag : str, region : str):
         "freshBlood": False,
         "hotStreak": False
     }
-    # Initialize ranked_data if it's empty or not provided
+
     if not ranked_data or len(ranked_data) == 0:
         ranked_data = [fake_data_unranked.copy(), fake_data_unranked.copy(), fake_data_unranked.copy()]
 
-    # Ensure at least three items
     while len(ranked_data) < 3:
         ranked_data.append(fake_data_unranked.copy())
 
-    # Create a dictionary to easily find the existing queue types
     queue_map = {entry["queueType"]: entry for entry in ranked_data}
 
-    # Ensure the correct order: RANKED_FLEX_SR, RANKED_SOLO_5x5, RANKED_CHERRY
     ranked_data = [
         queue_map.get("RANKED_FLEX_SR", fake_data_unranked.copy()),
         queue_map.get("RANKED_SOLO_5x5", fake_data_unranked.copy()),
@@ -192,8 +187,6 @@ async def getStatsAccount(name : str, tag : str, region : str):
 
 
 
-    #history data
-    # Get the region corresponding to the server
     server = server_regions[region.upper()]
 
     # Define base URLs for each region
@@ -303,7 +296,6 @@ async def getHistory(name : str, tag :str, region : str):
         raise HTTPException(status_code=puuidRQ.status_code)
     puuid_data = puuidRQ.json()
 
-    # Get the region corresponding to the server
     server = server_regions[region.upper()]
 
     # Define base URLs for each region
@@ -318,7 +310,6 @@ async def getHistory(name : str, tag :str, region : str):
     base_url = region_base_urls[server]
     match_history_url = base_url + "/lol/match/v5/matches/by-puuid/" + puuid_data["puuid"] + "/ids?start=0&count=100&api_key=" + API_KEY
 
-    # Fetch match history data
     match_history_rq = requests.get(match_history_url)
 
     match_history_data = match_history_rq.json()
@@ -345,5 +336,5 @@ async def getTest(puuid : str, region : str):
 
 if __name__ == "__main__":
     uvicorn.run("main:app", host="127.0.0.1", port=7000, log_level="info") #local development
- #   uvicorn.run(app, host="0.0.0.0", port=2000) #Run mode
+ 
 
